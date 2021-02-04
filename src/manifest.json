@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "AmazingSearcher",
+    "version": "0.1.0",
+    "description": "Add useful infomation at result of Google Search",
+    "author": "eetann",
+    "content_scripts": [
+        {
+            "matches": ["https://www.google.com/search?*"],
+            "css": ["content.css"],
+            "js": ["chunk.js", "content.js"]
+        }
+    ],
+    "background": {
+        "scripts": ["reload.js"]
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
