@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const CopyPlugin = require("copy-webpack-plugin");
 const {VueLoaderPlugin} = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
 // const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
 // const {manifest} = require('./manifest.js');
 const path = require('path');
@@ -38,14 +37,6 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-loader',
-          },
-        ],
-      },
-      {
         test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
         loader: 'file-loader',
         options: {
@@ -77,11 +68,6 @@ module.exports = {
     //     return newSeed;
     //   }
     // }),
-    new HtmlWebPackPlugin({
-      template: './public/background.html',
-      filename: './background.html',
-      chunks: ['reload'],
-    }),
     new CopyPlugin(
       [
         {from: 'src/manifest.json'},
