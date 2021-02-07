@@ -29,7 +29,8 @@
     "vue-template-compiler": "^2.6.12",
     "webpack-cli": "^4.4.0",
     "webpack-extension-reloader": "^1.1.4",
-    "webpack-manifest-plugin": "^3.0.0"
+    "webpack-manifest-plugin": "^3.0.0",
+    "zip-webpack-plugin": "^4.0.1"
   },
   "eslintConfig": {
     "root": true,

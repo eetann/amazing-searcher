@@ -11,8 +11,5 @@
             "js": ["chunk.js", "content.js"]
         }
     ],
-    "background": {
-        "scripts": ["reload.js"]
-    },
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

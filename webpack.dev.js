@@ -1,18 +1,33 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
+const CopyPlugin = require("copy-webpack-plugin");
 const ExtensionReloader = require('webpack-extension-reloader');
-const path = require('path');
 
 module.exports = merge(common, {
   mode: 'development',
   watch: true,
   devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist',
-  },
   plugins: [
+    new CopyPlugin([
+      {
+        from: 'src/manifest.json',
+        transform: (content) => {
+          const manifestJSON = JSON.parse(content.toString());
+          return JSON.stringify(
+            Object.assign({}, manifestJSON, {
+              "background": {
+                "scripts": ["reload.js"]
+              }
+            }),
+            null, ' ');
+        },
+      },
+    ]),
     new ExtensionReloader({
-      manifest: path.resolve(__dirname, './src/manifest.json'),
+      entries: {
+        contentScript: 'content',
+        background: 'reload'
+      },
       reloadPage: true,
     }),
   ]

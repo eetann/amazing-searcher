@@ -1,9 +1,7 @@
 const webpack = require('webpack');
-const CopyPlugin = require("copy-webpack-plugin");
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
-// const {manifest} = require('./manifest.js');
 const path = require('path');
 
 module.exports = {
@@ -49,29 +47,9 @@ module.exports = {
     ],
   },
   plugins: [
-    // new WebpackManifestPlugin({
-    //   seed: manifest,
-    //   generate: (seed, _, entrypoints) => {
-    //     let newSeed = JSON.parse(JSON.stringify(seed));
-    //     // console.log(entrypoints);
-    //     entrypoints.content.filter(fileName => {
-    //       if (fileName.match(/chunk.*js$/)) {
-    //         newSeed["content_scripts"][0]["js"].unshift(fileName);
-    //       }
-    //       else if (fileName.match(/content.*js$/)) {
-    //         newSeed["content_scripts"][0]["js"].push(fileName);
-    //       }
-    //       else if (fileName.match(/content.*css$/)) {
-    //         newSeed["content_scripts"][0]["css"].push(fileName);
-    //       }
-    //     });
-    //     return newSeed;
-    //   }
-    // }),
-    new CopyPlugin(
-      [
-        {from: 'src/manifest.json'},
-      ]),
+    new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: false,
+    }),
     new MiniCssExtractPlugin(),
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
