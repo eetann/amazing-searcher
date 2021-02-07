@@ -6,6 +6,9 @@ const path = require('path');
 
 module.exports = merge(common, {
   mode: 'production',
+  entry: {
+    content: "./src/content-scripts/main.js",
+  },
   plugins: [
     new ZipPlugin({
       filename: path.basename(__dirname) + ".zip",

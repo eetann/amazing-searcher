@@ -7,6 +7,10 @@ module.exports = merge(common, {
   mode: 'development',
   watch: true,
   devtool: 'inline-source-map',
+  entry: {
+    content: "./src/content-scripts/main.js",
+    reload: "./src/background/reload.js",
+  },
   plugins: [
     new CopyPlugin([
       {

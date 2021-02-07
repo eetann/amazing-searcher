@@ -5,10 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: {
-    content: "./src/content-scripts/main.js",
-    reload: "./src/background/reload.js",
-  },
   output: {
     path: path.resolve(__dirname, 'dist/'),
   },
