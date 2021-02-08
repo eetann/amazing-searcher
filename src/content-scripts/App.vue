@@ -7,6 +7,7 @@
 </template>
 
 <script>
+console.log("あ表!！&");
 export default {
   name: "App",
 };
