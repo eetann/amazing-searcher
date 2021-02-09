@@ -1,63 +1,53 @@
-const {CleanWebpackPlugin} = require("clean-webpack-plugin");
-const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
+const ExtensionReloader = require('webpack-extension-reloader');
+const ZipPlugin = require('zip-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  productionSourceMap: false,
-  pages: {
-    content: {
-      entry: "src/content-scripts/main.js",
-    }
-  },
-  css: {extract: true},
-  configureWebpack: {
-    optimization: {
-      minimize: false
+    productionSourceMap: false,
+    css: { extract: true },
+    filenameHashing: false,
+    chainWebpack: config => {
+        config.entryPoints.clear().end()
+        config.entry("content").add("./src/content-scripts/main.js").end()
+        config.plugins.delete('html')
+        config.plugins.delete('preload')
+        config.plugins.delete('prefetch')
+        if (process.env.NODE_ENV === "production") {
+            config.plugin("zip-plgin").use(
+                ZipPlugin, [{
+                    filename: path.basename(__dirname) + ".zip",
+                    pathPrefix: path.basename(__dirname)
+                }]
+            )
+            config.plugin("copy").tap(([options]) => {
+                const manifest = { from: 'src/manifest.json' };
+                options = [...options, manifest];
+                return [options];
+            });
+        } else {
+            config.entry("reload").add("./src/background/reload.js").end();
+            config.plugin("copy").tap(([options]) => {
+                const manifest = {
+                    from: 'src/manifest.json',
+                    transform: (content) => {
+                        return JSON.stringify(
+                            Object.assign({}, JSON.parse(content.toString()), {
+                                "background": { "scripts": ["js/reload.js"] },
+                            }), null, ' ');
+                    },
+                };
+                options = [...options, manifest];
+                return [options];
+            });
+            config.plugin("extension-reloader").use(
+                ExtensionReloader, [{
+                    entries: {
+                        contentScript: 'content',
+                        background: 'reload'
+                    },
+                    reloadPage: true,
+                }]
+            );
+        }
     },
-    plugins: [
-      new WebpackManifestPlugin({
-        seed: {
-          "manifest_version": 2,
-          "name": "AmazingSearcher",
-          "version": "0.1.0",
-          "description": "Add useful infomation at result of Google Search",
-          "icons": {},
-          "author": "eetann",
-          "content_scripts": [
-            {
-              "matches": ["https://www.google.com/search?*"],
-              "css": [
-              ],
-              "js": [
-                "chuck-vendors.js", "main.js"
-              ]
-            }
-          ],
-        },
-        generate: (seed, _, entrypoints) => {
-          let newSeed = seed;
-          entrypoints.content.filter(fileName => {
-            if (fileName.match(/chunk.*js$/)) {
-              newSeed["content_scripts"][0]["js"][0] = fileName;
-            }
-            else if (fileName.match(/content.*js$/)) {
-              newSeed["content_scripts"][0]["js"][1] = fileName;
-            }
-            else if (fileName.match(/content.*css$/)) {
-              newSeed["content_scripts"][0]["css"][0] = fileName;
-            }
-          }
-          );
-          return newSeed;
-        },
-      }),
-      new CleanWebpackPlugin(),
-    ]
-  },
-  filenameHashing: false,
-  chainWebpack: config => {
-    config.plugins.delete('html')
-    config.plugins.delete('preload')
-    config.plugins.delete('prefetch')
-  }
 }

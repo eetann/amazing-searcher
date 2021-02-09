@@ -7,8 +7,8 @@
     "content_scripts": [
         {
             "matches": ["https://www.google.com/search?*"],
-            "css": ["content.css"],
-            "js": ["chunk.js", "content.js"]
+            "css": ["css/content.css"],
+            "js": ["js/chunk-vendors.js", "js/content.js"]
         }
     ]
 }
