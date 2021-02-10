@@ -13,7 +13,7 @@ amzSchRoot.style.paddingRight = `${amzSchRootPx}px`;
 
 // calculate value to set marginLeft
 let forCoord = document.getElementById('center_col');
-style = window.getComputedStyle(forCoord);
+let style = window.getComputedStyle(forCoord);
 let width = parseInt(style.marginLeft) + parseInt(style.width);
 
 // set margin
@@ -23,20 +23,25 @@ amzSchRoot.style.marginLeft = `${width + amzSchRootMx}px`;
 amzSchRoot.style.marginRight = `${amzSchRootMx}px`;
 
 
-// make dummy div for position adjustment
-let amzSchDummy = document.createElement('div');
-amzSchDummy.id = 'amzSchDummy';
-// set height to prevent element that id=main from shifting
-amzSchDummy.style.height = 0;
+let rhs = document.getElementById('rhs');
+if (rhs) {
+  rhs.insertAdjacentElement('beforebegin', amzSchRoot);
+} else {
+  // make dummy div for position adjustment
+  let amzSchDummy = document.createElement('div');
+  amzSchDummy.id = 'amzSchDummy';
+  // set height to prevent element that id=main from shifting
+  amzSchDummy.style.height = 0;
 
-// set zIndex to display space for this extension deeper than element that id=searchform
-let searchform = document.getElementById('searchform');
-let style = window.getComputedStyle(searchform);
-amzSchDummy.style.zIndex = style.zIndex - 1;
+  // set zIndex to display space for this extension deeper than element that id=searchform
+  let searchform = document.getElementById('searchform');
+  let style = window.getComputedStyle(searchform);
+  amzSchDummy.style.zIndex = style.zIndex - 1;
 
-// mount dummy div for position adjustment
-amzSchDummy.appendChild(amzSchRoot);
-document.getElementById('rcnt').insertAdjacentElement('afterbegin', amzSchDummy);
+  // mount dummy div for position adjustment
+  amzSchDummy.appendChild(amzSchRoot);
+  document.getElementById('rcnt').insertAdjacentElement('afterbegin', amzSchDummy);
+}
 
 
 // mount elements of this extension
