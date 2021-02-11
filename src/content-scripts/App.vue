@@ -1,5 +1,5 @@
 <template>
-  <div>Mooooe</div>
+  <div class="text-green-600">Mooooe</div>
   <div>Gooooe</div>
   <b>mini</b>
   <div>Fooooe</div>
