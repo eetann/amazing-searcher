@@ -1,36 +1,39 @@
 <template>
   <div class="flex flex-col border rounded-lg border-black">
-    <div class="flex items-center">
-      <div
-        class="w-5 h-5 bg-pink-900 bg-opacity-50 border-2 rounded-lg border-gray-700"
-      ></div>
-      <p class="text-2xl">hoge.com</p>
-    </div>
-    <div class="flex items-center">
-      <div
-        class="w-5 h-5 bg-pink-900 bg-opacity-50 border-2 rounded-lg border-gray-700"
-      ></div>
-      <p class="text-2xl">Document</p>
-    </div>
-    <div class="flex items-center">
-      <div
-        class="w-5 h-5 bg-pink-900 bg-opacity-50 border-2 rounded-lg border-gray-700"
-      ></div>
-      <p class="text-2xl">Search By Document</p>
+    <div v-for="item in headings.slice(0, 3)" :key="item.id">
+      <MyHeading :heading="item"></MyHeading>
     </div>
     <div class="flex flex-col justify-center">
-      <div class="flex items-center">
-        <div
-          class="w-5 h-5 bg-pink-900 bg-opacity-50 border-2 rounded-lg border-gray-700"
-        ></div>
-        <p class="text-2xl">Search By Google</p>
-      </div>
+      <MyHeading :heading="headings[3]"></MyHeading>
     </div>
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
+import MyHeading from "@/components/MyHeading.vue";
 export default {
-  name: "App",
+  components: {
+    MyHeading,
+  },
+  setup() {
+    const headings = ref([
+      { id: 0, name: "hoge.com", link: "https://example.com/", icon: "hoge" },
+      { id: 1, name: "Document", link: "https://example.com/", icon: "hoge" },
+      {
+        id: 2,
+        name: "Search By Document",
+        link: "https://example.com/",
+        icon: "hoge",
+      },
+      {
+        id: 3,
+        name: "Search By Google",
+        link: "https://example.com/",
+        icon: "hoge",
+      },
+    ]);
+    return { headings };
+  },
 };
 </script>
