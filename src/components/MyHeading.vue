@@ -1,8 +1,6 @@
 <template>
   <div class="flex items-center">
-    <div
-      class="w-5 h-5 bg-pink-900 bg-opacity-50 border-2 rounded-lg border-gray-700"
-    ></div>
+    <img :src="icon" width="24" height="24" />
     <a
       :href="heading.link"
       class="text-xl text-blue-600 visited:text-purple-600"
@@ -12,7 +10,14 @@
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
   props: ["heading"],
+  setup(props) {
+    const icon = ref(
+      chrome.extension.getURL("imgs/" + props.heading.icon + ".svg")
+    );
+    return { icon };
+  },
 };
 </script>
