@@ -5,22 +5,20 @@ import '../index.css';
 // make space for this extension
 let amzSchRoot = document.createElement('div');
 amzSchRoot.id = 'amzSchRoot';
+amzSchRoot.style.position = 'relative';
+amzSchRoot.style.width = 'max-content';
 
 // set padding
-let amzSchRootPx = 10;
-amzSchRoot.style.paddingLeft = `${amzSchRootPx}px`;
+let amzSchRootPx = 8;
 amzSchRoot.style.paddingRight = `${amzSchRootPx}px`;
 
 // calculate value to set marginLeft
-let forCoord = document.getElementById('center_col');
-let style = window.getComputedStyle(forCoord);
-let width = parseInt(style.marginLeft) + parseInt(style.width);
+let amzSchRootMlsp = 60;
+let style = window.getComputedStyle(document.getElementById('center_col'));
+let amzSchRoolMl = parseInt(style.marginLeft) + parseInt(style.width) + amzSchRootMlsp;
 
 // set margin
-let amzSchRootMx = 50;
-amzSchRoot.style.position = 'relative';
-amzSchRoot.style.marginLeft = `${width + amzSchRootMx}px`;
-amzSchRoot.style.marginRight = `${amzSchRootMx}px`;
+amzSchRoot.style.marginLeft = `${amzSchRoolMl}px`;
 
 
 let rhs = document.getElementById('rhs');

@@ -10,5 +10,6 @@
             "css": ["css/content.css"],
             "js": ["js/chunk-vendors.js", "js/content.js"]
         }
-    ]
+    ],
+    "web_accessible_resources": ["imgs/*"]
 }
