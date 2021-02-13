@@ -6,7 +6,7 @@ import '../index.css';
 let amzSchRoot = document.createElement('div');
 amzSchRoot.id = 'amzSchRoot';
 amzSchRoot.style.position = 'relative';
-amzSchRoot.style.minWidth = '268px';
+amzSchRoot.style.width = 'max-content';
 
 // set padding
 let amzSchRootPx = 8;
