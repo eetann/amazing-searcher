@@ -16,12 +16,13 @@
 
 <script>
 import MyHeading from "@/components/MyHeading.vue";
+import { getOfficialInfo } from "@/composables/getOfficialInfo.js";
 export default {
   components: {
     MyHeading,
   },
   setup() {
-    const headings = [
+    let headings = [
       {
         id: 0,
         name: "hoge.com",
@@ -47,6 +48,17 @@ export default {
         icon: "search",
       },
     ];
+    let info = getOfficialInfo("Python");
+    if (info.length !== 0) {
+      headings[0].name = info[0].homepage
+        .replace(/https?:\/\//, "")
+        .replace(/\/$/, "");
+      headings[0].link = info[0].homepage;
+
+      headings[1].link = info[0].doc;
+      headings[2].link = info[0].doc_search;
+      // headings[3].link = info[3].keyword;
+    }
     return { headings };
   },
 };

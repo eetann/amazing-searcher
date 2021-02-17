@@ -1,7 +1,3 @@
-const ExtensionReloader = require('webpack-extension-reloader');
-const ZipPlugin = require('zip-webpack-plugin');
-const path = require('path');
-
 module.exports = {
   productionSourceMap: false,
   css: {extract: true},
@@ -12,7 +8,18 @@ module.exports = {
     config.plugins.delete('html')
     config.plugins.delete('preload')
     config.plugins.delete('prefetch')
+    config.module
+      .rule('yaml')
+      .test(/\.ya?ml?$/)
+      .use('json-loader')
+      .loader('json-loader')
+      .end()
+      .use('yaml-loader')
+      .loader('yaml-loader')
+      .end()
     if (process.env.NODE_ENV === "production") {
+      const path = require('path');
+      const ZipPlugin = require('zip-webpack-plugin');
       config.plugin("zip-plgin").use(
         ZipPlugin, [{
           filename: path.basename(__dirname) + ".zip",
@@ -39,6 +46,7 @@ module.exports = {
         options = [...options, manifest];
         return [options];
       });
+      const ExtensionReloader = require('webpack-extension-reloader');
       config.plugin("extension-reloader").use(
         ExtensionReloader, [{
           reloadPage: true,
