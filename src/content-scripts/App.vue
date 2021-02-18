@@ -48,7 +48,10 @@ export default {
         icon: "search",
       },
     ];
-    let info = getOfficialInfo("Python");
+    var queryString = window.location.search;
+    let params = new URLSearchParams(queryString);
+    let q = params.get("q");
+    let info = getOfficialInfo(q);
     if (info.length !== 0) {
       headings[0].name = info[0].homepage
         .replace(/https?:\/\//, "")
