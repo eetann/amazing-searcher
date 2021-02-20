@@ -9,13 +9,11 @@ module.exports = {
     config.plugins.delete('preload')
     config.plugins.delete('prefetch')
     config.module
-      .rule('yaml')
-      .test(/\.ya?ml?$/)
+      .rule('json')
+      .test(/\.json$/)
+      .type('javascript/auto')
       .use('json-loader')
       .loader('json-loader')
-      .end()
-      .use('yaml-loader')
-      .loader('yaml-loader')
       .end()
     if (process.env.NODE_ENV === "production") {
       const path = require('path');

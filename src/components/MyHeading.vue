@@ -4,7 +4,7 @@
     <a
       :href="heading.link"
       class="text-xl text-blue-600 visited:text-purple-600"
-      >{{ heading.name }}</a
+      >{{ heading.title }}</a
     >
   </div>
 </template>

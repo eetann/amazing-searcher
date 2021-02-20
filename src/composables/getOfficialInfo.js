@@ -1,6 +1,6 @@
-import officialInfo from '@/assets/official-info.yaml';
+import officialInfo from '@/assets/official-info.json';
 export function getOfficialInfo(keyword) {
-  let matches = officialInfo.filter((value) => {
+  let matches = officialInfo["items"].filter((value) => {
     const regex = new RegExp(value.keyword, 'i');
     return regex.test(keyword);
   })

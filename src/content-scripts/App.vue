@@ -25,25 +25,25 @@ export default {
     let headings = [
       {
         id: 0,
-        name: "hoge.com",
+        title: "hoge.com",
         link: "https://example.com/",
         icon: "badge-check",
       },
       {
         id: 1,
-        name: "Document",
+        title: "Document",
         link: "https://example.com/",
         icon: "document-text",
       },
       {
         id: 2,
-        name: "Search By Document",
+        title: "Search By Document",
         link: "https://example.com/",
         icon: "document-search",
       },
       {
         id: 3,
-        name: "Search By Google",
+        title: "Search By Google",
         link: "https://example.com/",
         icon: "search",
       },
@@ -53,12 +53,12 @@ export default {
     let q = params.get("q");
     let info = getOfficialInfo(q);
     if (info.length !== 0) {
-      headings[0].name = info[0].homepage
+      headings[0].title = info[0].home_url
         .replace(/https?:\/\//, "")
         .replace(/\/$/, "");
-      headings[0].link = info[0].homepage;
+      headings[0].link = info[0].home_url;
 
-      headings[1].link = info[0].doc;
+      headings[1].link = info[0].doc_url;
       headings[2].link = info[0].doc_search;
       // headings[3].link = info[3].keyword;
     }
