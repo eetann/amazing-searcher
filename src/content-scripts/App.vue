@@ -1,14 +1,8 @@
 <template>
   <div class="flex flex-col border rounded-lg border-gray-300">
     <div class="m-4">
-      <div
-        v-for="item in headings.slice(0, headings.length - 1)"
-        :key="item.id"
-      >
+      <div v-for="item in headings" :key="item.id">
         <MyHeading :heading="item"></MyHeading>
-      </div>
-      <div class="flex flex-col justify-center">
-        <MyHeading :heading="headings[headings.length - 1]"></MyHeading>
       </div>
     </div>
   </div>
@@ -48,10 +42,7 @@ export default {
         icon: "search",
       },
     ];
-    var queryString = window.location.search;
-    let params = new URLSearchParams(queryString);
-    let q = params.get("q");
-    let info = getOfficialInfo(q);
+    let info = getOfficialInfo();
     if (info.length !== 0) {
       headings[0].title = info[0].home_url
         .replace(/https?:\/\//, "")
