@@ -52,6 +52,8 @@ export default {
       headings[1].link = info[0].doc_url;
       headings[2].link = info[0].doc_search;
       // headings[3].link = info[3].keyword;
+    } else {
+      headings = [];
     }
     return { headings };
   },
