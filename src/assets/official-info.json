@@ -6,6 +6,41 @@
             "doc_url": "https://docs.python.org/",
             "doc_search": "https://docs.python.org/3.9/search.html?q={}&check_keywords=yes&area=default",
             "keyword": "python|パイソン|pyてょn"
+        },
+        {
+            "name": "Zenn",
+            "home_url": "https://zenn.dev/",
+            "doc_url": "https://zenn.dev/zenn",
+            "doc_search": "",
+            "keyword": "zenn|ゼン|ぜん"
+        },
+        {
+            "name": "Matplotlib",
+            "home_url": "https://matplotlib.org/",
+            "doc_url": "https://matplotlib.org/stable/contents.html",
+            "doc_search": "https://matplotlib.org/stable/search.html?q={}",
+            "keyword": "matplotlib|plt|まtpぉtぃb"
+        },
+        {
+            "name": "NumPy",
+            "home_url": "https://numpy.org/",
+            "doc_url": "https://numpy.org/doc/stable/",
+            "doc_search": "https://numpy.org/doc/stable/search.html?q={}",
+            "keyword": "numpy|np|ぬmpy"
+        },
+        {
+            "name": "C++",
+            "home_url": "https://isocpp.org/",
+            "doc_url": "https://cpprefjp.github.io/",
+            "doc_search": "",
+            "keyword": "c++|cpp|cっp"
+        },
+        {
+            "name": "JavaScript",
+            "home_url": "https://developer.mozilla.org/docs/Web/JavaScript",
+            "doc_url": "https://developer.mozilla.org/docs/Web/JavaScript/Reference",
+            "doc_search": "https://developer.mozilla.org/search?q={}",
+            "keyword": "javascript|js|じゃゔぁscりpt"
         }
     ]
 }
