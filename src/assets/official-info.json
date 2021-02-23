@@ -2,44 +2,62 @@
     "items": [
         {
             "name": "Python",
-            "home_url": "https://www.python.org/",
-            "doc_url": "https://docs.python.org/",
-            "doc_search": "https://docs.python.org/3.9/search.html?q={}&check_keywords=yes&area=default",
+            "home_url": [
+                {"lang":"en", "url":"https://www.python.org/"},
+                {"lang":"ja", "url":"https://www.python.jp/"}
+            ],
+            "doc_url": [
+                {"lang":"en", "url":"https://docs.python.org/"},
+                {"lang":"ja", "url":"https://docs.python.org/ja/"}
+            ],
+            "doc_search": [
+                {"lang":"en","url":"https://docs.python.org/ja/3/search.html?q={}&check_keywords=yes&area=default"},
+                {"lang":"ja","url":"https://docs.python.org/3/search.html?q={}&check_keywords=yes&area=default"}
+            ],
             "keyword": "python|パイソン|pyてょn"
         },
         {
             "name": "Zenn",
-            "home_url": "https://zenn.dev/",
-            "doc_url": "https://zenn.dev/zenn",
+            "home_url": [{"lang":"ja","url":"https://zenn.dev/"}],
+            "doc_url": [{"lang":"ja","url":"https://zenn.dev/zenn"}],
             "doc_search": "",
             "keyword": "zenn|ゼン|ぜん"
         },
         {
             "name": "Matplotlib",
-            "home_url": "https://matplotlib.org/",
-            "doc_url": "https://matplotlib.org/stable/contents.html",
-            "doc_search": "https://matplotlib.org/stable/search.html?q={}",
+            "home_url": [{"lang":"en","url":"https://matplotlib.org/"}],
+            "doc_url": [{"lang":"en","url":"https://matplotlib.org/stable/contents.html"}],
+            "doc_search": [{"lang":"en","url":"https://matplotlib.org/stable/search.html?q={}"}],
             "keyword": "matplotlib|plt|まtpぉtぃb"
         },
         {
             "name": "NumPy",
-            "home_url": "https://numpy.org/",
-            "doc_url": "https://numpy.org/doc/stable/",
-            "doc_search": "https://numpy.org/doc/stable/search.html?q={}",
+            "home_url": [{"lang":"en","url":"https://numpy.org/"}],
+            "doc_url": [{"lang":"en","url":"https://numpy.org/doc/stable/"}],
+            "doc_search": [{"lang":"en","url":"https://numpy.org/doc/stable/search.html?q={}"}],
             "keyword": "numpy|np|ぬmpy"
         },
         {
             "name": "C++",
-            "home_url": "https://isocpp.org/",
-            "doc_url": "https://cpprefjp.github.io/",
+            "home_url": [{"lang":"en","url":"https://isocpp.org/"}],
+            "doc_url": [],
             "doc_search": "",
-            "keyword": "c++|cpp|cっp"
+            "keyword": "c\\+\\+|cpp|cっp"
         },
         {
             "name": "JavaScript",
-            "home_url": "https://developer.mozilla.org/docs/Web/JavaScript",
-            "doc_url": "https://developer.mozilla.org/docs/Web/JavaScript/Reference",
-            "doc_search": "https://developer.mozilla.org/search?q={}",
+            "home_url": [
+                {"lang":"en","url":"https://developer.mozilla.org/en-US/docs/Web/JavaScript"},
+                {"lang":"ja","url":"https://developer.mozilla.org/ja/docs/Web/JavaScript"}
+            ],
+            "doc_url": [
+                {"lang":"en","url":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"},
+                {"lang":"ja","url":"https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference"}
+            ],
+            "doc_search": [
+                {"lang":"en","url":"https://developer.mozilla.org/en-US/search?q={}"},
+                {"lang":"ja","url":"https://developer.mozilla.org/ja/search?q={}"}
+            ],
             "keyword": "javascript|js|じゃゔぁscりpt"
         }
     ]
