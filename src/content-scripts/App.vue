@@ -6,7 +6,7 @@
       :key="headings.name"
     >
       {{ headings.name }}
-      <div v-for="heading in headings.item" :key="heading.id">
+      <div v-for="heading in headings.items" :key="heading.id">
         <MyHeading :heading="heading"></MyHeading>
       </div>
     </div>

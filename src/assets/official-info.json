@@ -79,7 +79,7 @@
             "home_url": [
                 {"lang":"en v2", "url":"https://vuejs.org/"},
                 {"lang":"en v3", "url":"https://v3.vuejs.org/"},
-                {"lang":"ja v2", "url":"https://jp.vuejs.org/index.html"},
+                {"lang":"ja v2", "url":"https://jp.vuejs.org/"},
                 {"lang":"ja v3", "url":"https://v3.ja.vuejs.org/"}
             ],
             "doc_url": [
@@ -112,8 +112,8 @@
                 {"lang":"ja", "url":"https://jp.mathworks.com/index.html"}
             ],
             "doc_url": [
-                {"lang":"en", "url":"https://mathworks.com/help/index.html"},
-                {"lang":"ja", "url":"https://jp.mathworks.com/help/index.html"}
+                {"lang":"en", "url":"https://mathworks.com/help/"},
+                {"lang":"ja", "url":"https://jp.mathworks.com/help/"}
             ],
             "doc_search": [
                 {"lang":"en", "url":"https://mathworks.com/support/search.html?q={}"},
