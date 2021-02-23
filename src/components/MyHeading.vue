@@ -3,7 +3,10 @@
     <img :src="icon" width="24" height="24" />
     <div>
       <div class="flex items-center" v-for="link in heading.links" :key="link">
-        <a :href="link" class="text-xl text-blue-600 visited:text-purple-600">
+        <a
+          :href="link.url"
+          class="text-xl text-blue-600 visited:text-purple-600"
+        >
           {{
             heading.links.length > 1
               ? heading.title + " (" + link.lang + ")"

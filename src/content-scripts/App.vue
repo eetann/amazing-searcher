@@ -1,10 +1,11 @@
 <template>
   <div class="flex flex-col border rounded-lg border-gray-300">
     <div
-      class="m-4 space-y-2"
+      class="m-4 space-y-2 text-2xl"
       v-for="headings in officialInfos"
-      :key="headings.id"
+      :key="headings.name"
     >
+      {{ headings.name }}
       <div v-for="heading in headings.item" :key="heading.id">
         <MyHeading :heading="heading"></MyHeading>
       </div>
