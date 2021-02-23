@@ -4,11 +4,15 @@ function getOfficialInfos() {
   var queryString = window.location.search;
   let params = new URLSearchParams(queryString);
   let param_q = params.get("q");
-  let matches = officialInfo["items"].filter((value) => {
-    const regex = new RegExp(value.keyword, 'i');
-    return regex.test(param_q);
-  })
-  return matches;
+  let infos = [];
+  for (let item of officialInfo.items) {
+    const regex = new RegExp(item.keyword, 'i');
+    if (regex.test(param_q)) {
+      item.keyword = param_q.replace(regex, "").trim();
+      infos.push(item);
+    }
+  }
+  return infos;
 }
 
 let officials = [];
@@ -34,15 +38,21 @@ if (infos.length !== 0) {
     // add Search By Document
     heading = {id: 2, title: "Search By Document", links: [], icon: "document-search"};
     for (let item of info.doc_search) {
+      item.url = item.url.replace("{}", info.keyword);
       heading.links.push(item);
     }
     items.push(heading);
 
     // add Search By Google
     heading = {id: 3, title: "Search By Google", links: [], icon: "search"};
-    heading.links.push("site: ")
+    for (let item of info.doc_url) {
+      let doc_url = item.url
+        .replace(/https?:\/\//, "")
+        .replace(/[^/]*\.(html|php)$/, "")
+      item.url = "https://www.google.com/search?q=site:" + doc_url + " " + info.keyword;
+      heading.links.push(item)
+    }
     items.push(heading);
-
     officials.push({"name": info.name, "items": items});
   }
 }
