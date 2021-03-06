@@ -24,7 +24,7 @@ export default {
   props: ["heading"],
   setup(props) {
     const icon = ref(
-      chrome.extension.getURL("imgs/" + props.heading.icon + ".svg")
+      chrome.runtime.getURL("imgs/" + props.heading.icon + ".svg")
     );
     return { icon };
   },
