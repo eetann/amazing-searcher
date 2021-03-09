@@ -2,12 +2,13 @@ const webpack = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path');
 
 module.exports = {
   entry: {
     content: "./src/content-scripts/main.js",
-    // options: "./src/options/main.js",
+    options: "./src/options/main.js",
   },
   output: {
     path: path.resolve(__dirname, 'dist/'),
@@ -59,6 +60,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false,
+    }),
+    new HtmlWebpackPlugin({
+      template: 'public/options.html',
+      filename: 'options.html',
+      chunks: ['chunk', 'options']
     }),
     new MiniCssExtractPlugin(),
     new VueLoaderPlugin(),

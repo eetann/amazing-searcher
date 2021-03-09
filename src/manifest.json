@@ -7,10 +7,11 @@
     "content_scripts": [
         {
             "matches": ["https://www.google.com/search?*"],
-            "css": ["content.css"],
+            "css": ["chunk.css"],
             "js": ["chunk.js", "content.js"]
         }
     ],
+    "options_page": "options.html",
     "web_accessible_resources": [{
         "resources": ["/imgs/*"],
         "matches": []

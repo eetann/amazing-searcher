@@ -29,7 +29,7 @@ module.exports = merge(common, {
     },
     {
       context: 'public',
-      from: '**/*',
+      from: 'imgs/*',
     }
     ]),
   ]

@@ -42,6 +42,13 @@ class ExtensionReloader {
         entry.content = [entry.content, content_reload];
       }
     }
+    if (entry.options) {
+      if (Array.isArray(entry.options)) {
+        entry.options.push(content_reload);
+      } else {
+        entry.options = [entry.options, content_reload];
+      }
+    }
   };
 }
 module.exports = ExtensionReloader
