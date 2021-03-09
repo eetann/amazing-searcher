@@ -7,9 +7,6 @@ const path = require('path');
 
 module.exports = merge(common, {
   mode: 'production',
-  entry: {
-    content: "./src/content-scripts/main.js",
-  },
   optimization: {
     minimizer: [
       new TerserPlugin({
