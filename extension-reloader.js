@@ -4,33 +4,35 @@ const green = '\u001b[32m';
 const WebSocket = require('ws');
 class ExtensionReloader {
   constructor() {
-    this.server = new WebSocket.Server({port: 8000});
-    this.connections = [];
-    this.server.on('connection', (cb) => {
-      this.connections.push(cb);
-      cb.on('close', () => {
-        this.connections = this.connections.filter((conn, i) => {
-          return (conn === cb) ? false : true;
-        });
-      });
-      cb.addEventListener("error", (event) => {
+    // create server to tell clients when to reload
+    this.wss = new WebSocket.Server({port: 8000});
+    this.wss.on('connection', (ws) => {
+      ws.on('error', (event) => {
         consle.log(red + 'ExtensionReloader error:' + event + reset);
-      });
-
-      cb.on("message", (msg) => {
-        console.log(msg);
       });
     });
   };
   apply(compiler) {
     compiler.hooks.done.tap('ExtensionReloader', () => {
-      for (var i = 0, len = this.connections.length; i < len - 1; i++) {
-        this.connections[i].send('reload');
-      }
-      this.connections[this.connections.length - 1].send('restart');
-      console.log('Successful bundle!');
-      console.log(green + 'Please open "chrome://extensions/" and load your extension!' + reset);
+      // count to divide "reload" and "restart"
+      let clients_count = 0;
+      let clients_len = this.wss.clients.size;
+
+      // send "reload" or "restart"
+      this.wss.clients.forEach((client) => {
+        clients_count++;
+        if (clients_count == clients_len) {
+          // send "restart" to the last client to reload tab and extension
+          client.send('restart');
+        } else {
+          // send "reload" to reload tab
+          client.send('reload');
+        }
+      })
+      console.log('reloaded!');
     })
+
+    // register file to reload with webpack entry
     let entry = compiler.options.entry;
     let content_reload = './content_reload.js';
     if (entry.content) {

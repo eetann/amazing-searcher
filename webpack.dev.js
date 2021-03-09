@@ -31,11 +31,7 @@ module.exports = merge(common, {
         transform: (content) => {
           return JSON.stringify(
             Object.assign({}, JSON.parse(content.toString()), {
-              "permissions": ["tabs", "alarms"],
               "background": {"service_worker": "reload.js"},
-              "content_security_policy": {
-                "extension_pages": "script-src 'self'; object-src 'self'"
-              },
             }), null, ' ');
         },
       },
