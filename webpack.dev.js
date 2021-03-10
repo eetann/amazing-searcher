@@ -2,7 +2,6 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const CopyPlugin = require("copy-webpack-plugin");
 const ExtensionReloader = require('./extension-reloader');
-common.entry['reload'] = "./src/background/reload.js";
 
 module.exports = merge(common, {
   mode: 'development',

@@ -10,7 +10,20 @@ class ExtensionReloader {
       ws.on('error', (event) => {
         consle.log(red + 'ExtensionReloader error:' + event + reset);
       });
+      ws.on('message', (data) => {
+        if (data == 'options') {
+          this.openOptionsPage = true;
+        } else if (data == 'reloaded') {
+          if (this.openOptionsPage) {
+            ws.send('options');
+            this.openOptionsPage = false;
+          }
+        } else {
+          console.log(data);
+        }
+      });
     });
+    this.openOptionsPage = false;
   };
   apply(compiler) {
     compiler.hooks.done.tap('ExtensionReloader', () => {
@@ -42,13 +55,15 @@ class ExtensionReloader {
         entry.content = [entry.content, content_reload];
       }
     }
+    let options_reload = './options_reload.js';
     if (entry.options) {
       if (Array.isArray(entry.options)) {
-        entry.options.push(content_reload);
+        entry.options.push(options_reload);
       } else {
-        entry.options = [entry.options, content_reload];
+        entry.options = [entry.options, options_reload];
       }
     }
+    entry.reload = './background_reload.js';
   };
 }
 module.exports = ExtensionReloader
