@@ -1,5 +1,5 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "AmazingSearcher",
     "version": "0.1.0",
     "description": "Add useful infomation at result of Google Search",
@@ -7,9 +7,13 @@
     "content_scripts": [
         {
             "matches": ["https://www.google.com/search?*"],
-            "css": ["css/content.css"],
-            "js": ["js/chunk-vendors.js", "js/content.js"]
+            "css": ["chunk.css"],
+            "js": ["chunk.js", "content.js"]
         }
     ],
-    "web_accessible_resources": ["imgs/*"]
+    "options_page": "options.html",
+    "web_accessible_resources": [{
+        "resources": ["/imgs/*"],
+        "matches": []
+        }]
 }
