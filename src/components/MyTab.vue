@@ -1,7 +1,7 @@
 <template>
   <button
     @click="onClick"
-    class="w-36 text-sm text-center focus:outline-none rounded-t"
+    class="w-36 text-lg text-center focus:outline-none"
     :class="isActive"
   >
     {{ label }}
@@ -20,8 +20,8 @@ export default {
     const isActive = computed(() => {
       console.log(props.modelValue, props.id);
       return props.modelValue == props.id
-        ? "text-black border-gray-600 border-b-2"
-        : "text-gray-500 hover:bg-gray-100 hover:text-gray-700";
+        ? "text-black border-red-600 border-b-2"
+        : "text-gray-500 hover:border-gray-400 hover:border-b-2 hover:text-gray-700";
     });
     const onClick = () => {
       emit("update:modelValue", props.id);
