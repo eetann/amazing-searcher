@@ -16,20 +16,18 @@
         <td>{{ recipe.URL }}</td>
         <td>{{ recipe.from }}</td>
         <td>
-          <img
-            class="mx-auto"
+          <iconEye
+            class="cursor-pointer mx-auto"
             v-if="recipe.active"
-            :src="iconEye"
-            width="20"
-            height="20"
-          />
-          <img
-            class="mx-auto"
+            :width="20"
+            :height="20"
+          ></iconEye>
+          <iconEyeOff
+            class="cursor-pointer mx-auto"
             v-else
-            :src="iconEyeOff"
-            width="20"
-            height="20"
-          />
+            :width="20"
+            :height="20"
+          ></iconEyeOff>
         </td>
       </tr>
     </template>
@@ -38,10 +36,14 @@
 
 <script>
 import { ref } from "vue";
+import iconEye from "@/components/icons/iconEye.vue";
+import iconEyeOff from "@/components/icons/iconEyeOff.vue";
 import MyTable from "@/components/MyTable.vue";
 export default {
   components: {
     MyTable,
+    iconEye,
+    iconEyeOff,
   },
   setup() {
     const recipes = [
@@ -82,9 +84,7 @@ export default {
         active: true,
       },
     ];
-    const iconEye = ref(chrome.runtime.getURL("imgs/eye.svg"));
-    const iconEyeOff = ref(chrome.runtime.getURL("imgs/eye-off.svg"));
-    return { recipes, iconEye, iconEyeOff };
+    return { recipes };
   },
 };
 </script>

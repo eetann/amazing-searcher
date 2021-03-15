@@ -1,6 +1,9 @@
 <template>
   <div class="flex items-center">
-    <img :src="icon" width="24" height="24" />
+    <iconBadgeCheck v-if="heading.id == 0"></iconBadgeCheck>
+    <iconDocumentText v-else-if="heading.id == 1"></iconDocumentText>
+    <iconDocumentSearch v-else-if="heading.id == 2"></iconDocumentSearch>
+    <iconSearch v-else-if="heading.id == 3"></iconSearch>
     <div>
       <div class="flex items-center" v-for="link in heading.links" :key="link">
         <a
@@ -20,13 +23,17 @@
 
 <script>
 import { ref } from "vue";
+import iconBadgeCheck from "@/components/icons/iconBadgeCheck.vue";
+import iconDocumentText from "@/components/icons/iconDocumentText.vue";
+import iconDocumentSearch from "@/components/icons/iconDocumentSearch.vue";
+import iconSearch from "@/components/icons/iconSearch.vue";
 export default {
-  props: ["heading"],
-  setup(props) {
-    const icon = ref(
-      chrome.runtime.getURL("imgs/" + props.heading.icon + ".svg")
-    );
-    return { icon };
+  components: {
+    iconBadgeCheck,
+    iconDocumentText,
+    iconDocumentSearch,
+    iconSearch,
   },
+  props: ["heading"],
 };
 </script>

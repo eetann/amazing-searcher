@@ -15,26 +15,23 @@
         <td>{{ recipe.URL }}</td>
         <td>
           <div class="flex space-x-3">
-            <img
+            <iconEye
               class="cursor-pointer"
               v-if="recipe.active"
-              :src="iconEye"
-              width="20"
-              height="20"
-            />
-            <img
+              :width="20"
+              :height="20"
+            ></iconEye>
+            <iconEyeOff
               class="cursor-pointer"
               v-else
-              :src="iconEyeOff"
-              width="20"
-              height="20"
-            />
-            <img
+              :width="20"
+              :height="20"
+            ></iconEyeOff>
+            <iconTrash
               class="cursor-pointer"
-              :src="iconTrash"
-              width="20"
-              height="20"
-            />
+              :width="20"
+              :height="20"
+            ></iconTrash>
           </div>
         </td>
       </tr>
@@ -52,12 +49,11 @@
           <input type="url" placeholder="recipe URL" />
         </td>
         <td>
-          <img
+          <iconUpload
             class="cursor-pointer"
-            :src="iconUpload"
-            width="20"
-            height="20"
-          />
+            :width="20"
+            :height="20"
+          ></iconUpload>
         </td>
       </tr>
     </template>
@@ -67,9 +63,17 @@
 <script>
 import { ref } from "vue";
 import MyTable from "@/components/MyTable.vue";
+import iconEye from "@/components/icons/iconEye.vue";
+import iconEyeOff from "@/components/icons/iconEyeOff.vue";
+import iconTrash from "@/components/icons/iconTrash.vue";
+import iconUpload from "@/components/icons/iconUpload.vue";
 export default {
   components: {
     MyTable,
+    iconEye,
+    iconEyeOff,
+    iconTrash,
+    iconUpload,
   },
   setup() {
     const custom_recipes = [
@@ -106,11 +110,7 @@ export default {
         active: true,
       },
     ];
-    const iconEye = ref(chrome.runtime.getURL("imgs/eye.svg"));
-    const iconEyeOff = ref(chrome.runtime.getURL("imgs/eye-off.svg"));
-    const iconTrash = ref(chrome.runtime.getURL("imgs/trash.svg"));
-    const iconUpload = ref(chrome.runtime.getURL("imgs/upload.svg"));
-    return { custom_recipes, iconEye, iconEyeOff, iconTrash, iconUpload };
+    return { custom_recipes };
   },
 };
 </script>

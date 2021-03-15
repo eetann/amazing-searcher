@@ -11,9 +11,5 @@
             "js": ["chunk.js", "content.js"]
         }
     ],
-    "options_page": "options.html",
-    "web_accessible_resources": [{
-        "resources": ["/imgs/*"],
-        "matches": []
-        }]
+    "options_page": "options.html"
 }

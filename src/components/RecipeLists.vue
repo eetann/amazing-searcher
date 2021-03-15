@@ -11,26 +11,23 @@
         <td>{{ recipe_list.URL }}</td>
         <td>
           <div class="flex space-x-3">
-            <img
+            <iconEye
               class="cursor-pointer"
               v-if="recipe_list.active"
-              :src="iconEye"
-              width="20"
-              height="20"
-            />
-            <img
+              :width="20"
+              :height="20"
+            ></iconEye>
+            <iconEyeOff
               class="cursor-pointer"
               v-else
-              :src="iconEyeOff"
-              width="20"
-              height="20"
-            />
-            <img
+              :width="20"
+              :height="20"
+            ></iconEyeOff>
+            <iconTrash
               class="cursor-pointer"
-              :src="iconTrash"
-              width="20"
-              height="20"
-            />
+              :width="20"
+              :height="20"
+            ></iconTrash>
           </div>
         </td>
       </tr>
@@ -50,9 +47,15 @@
 <script>
 import { ref } from "vue";
 import MyTable from "@/components/MyTable.vue";
+import iconEye from "@/components/icons/iconEye.vue";
+import iconEyeOff from "@/components/icons/iconEyeOff.vue";
+import iconTrash from "@/components/icons/iconTrash.vue";
 export default {
   components: {
     MyTable,
+    iconEye,
+    iconEyeOff,
+    iconTrash,
   },
   setup() {
     const recipe_lists = [
@@ -61,10 +64,7 @@ export default {
       { id: 2, name: "momo", URL: "https://example.com", active: false },
       { id: 3, name: "gagagagaga", URL: "https://example.com", active: true },
     ];
-    const iconEye = ref(chrome.runtime.getURL("imgs/eye.svg"));
-    const iconEyeOff = ref(chrome.runtime.getURL("imgs/eye-off.svg"));
-    const iconTrash = ref(chrome.runtime.getURL("imgs/trash.svg"));
-    return { recipe_lists, iconEye, iconEyeOff, iconTrash };
+    return { recipe_lists };
   },
 };
 </script>
