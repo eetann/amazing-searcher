@@ -23,29 +23,35 @@ if (infos.length !== 0) {
     let items = [];
 
     // add Homepage
-    let heading = {id: 0, title: "Homepage", links: [], icon: "badge-check"};
+    let heading = {id: 0, title: "Homepage", links: []};
     for (let item of info.home_url) {
       heading.links.push(item);
     }
-    items.push(heading);
+    if (heading.links.length > 0) {
+      items.push(heading);
+    }
 
     // add Document
-    heading = {id: 1, title: "Document", links: [], icon: "document-text"};
+    heading = {id: 1, title: "Document", links: []};
     for (let item of info.doc_url) {
       heading.links.push(item);
     }
-    items.push(heading);
+    if (heading.links.length > 0) {
+      items.push(heading);
+    }
 
     // add Search By Document
-    heading = {id: 2, title: "Search By Document", links: [], icon: "document-search"};
+    heading = {id: 2, title: "Search By Document", links: []};
     for (let item of info.doc_search) {
       item.url = item.url.replace("{}", info.keyword);
       heading.links.push(item);
     }
-    items.push(heading);
+    if (heading.links.length > 0) {
+      items.push(heading);
+    }
 
     // add Search By Google
-    heading = {id: 3, title: "Search By Google", links: [], icon: "search"};
+    heading = {id: 3, title: "Search By Google", links: []};
     for (let item of info.doc_url) {
       let doc_url = item.url
         .replace(/https?:\/\//, "")
@@ -53,7 +59,9 @@ if (infos.length !== 0) {
       item.url = "https://www.google.com/search?q=site:" + doc_url + " " + info.keyword;
       heading.links.push(item)
     }
-    items.push(heading);
+    if (heading.links.length > 0) {
+      items.push(heading);
+    }
     officials.push({"name": info.name, "items": items});
   }
 }
