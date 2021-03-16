@@ -6,15 +6,10 @@ function getOfficialInfos() {
   let param_q = params.get("q");
   let infos = [];
   for (let item of officialInfo.items) {
-    // const regex_q = new RegExp('(^|\s)(' + item.keyword + ')(\s|$)', 'i');
-    // if (regex_q.test(param_q)) {
-    //   const regex_r = new RegExp(item.keyword, 'i');
-    //   item.keyword = param_q.replace(regex_r, "").trim();
-    //   infos.push(item);
-    // }
-    const regex = new RegExp(item.keyword, 'i');
-    if (regex.test(param_q)) {
-      item.keyword = param_q.replace(regex, "").trim();
+    const regex_q = new RegExp('(^|\\s)(' + item.keyword + ')(\\s|$)', 'i');
+    if (regex_q.test(param_q)) {
+      const regex_r = new RegExp(item.keyword, 'i');
+      item.keyword = param_q.replace(regex_r, "").trim();
       infos.push(item);
     }
   }
