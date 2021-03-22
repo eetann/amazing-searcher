@@ -13,7 +13,7 @@
 
 <script>
 import MyHeading from "@/components/MyHeading.vue";
-import { getRecipes } from "@/composables/getOfficialInfo.js";
+import { getRecipes } from "@/composables/getRecipes.js";
 export default {
   components: {
     MyHeading,
