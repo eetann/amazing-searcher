@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { ref } from "vue";
 import iconBadgeCheck from "@/components/icons/iconBadgeCheck.vue";
 import iconDocumentText from "@/components/icons/iconDocumentText.vue";
 import iconDocumentSearch from "@/components/icons/iconDocumentSearch.vue";
