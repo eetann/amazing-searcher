@@ -6,7 +6,7 @@
       <th>Action</th>
     </template>
     <template v-slot:my-tbody>
-      <tr v-for="recipe_list in recipe_lists" :key="recipe_list.id">
+      <tr v-for="recipe_list in recipeList" :key="recipe_list.id">
         <td>{{ recipe_list.name }}</td>
         <td>{{ recipe_list.URL }}</td>
         <td>
@@ -33,12 +33,21 @@
       </tr>
     </template>
     <template v-slot:my-footer>
-      <div class="table-footer-div border-t-2 border-gray-200">
+      <div
+        class="flex justify-between table-footer-div border-t-2 border-gray-200"
+      >
         <input
           type="url"
           placeholder="Input new recipe list URL"
-          class="w-full text-gray-500 focus:text-gray-900 focus:outline-none"
+          class="table-footer-input"
+          v-model="inputUrl"
         />
+        <iconUpload
+          class="cursor-pointer"
+          :width="20"
+          :height="20"
+          @click="setRecipeList"
+        ></iconUpload>
       </div>
     </template>
   </MyTable>
@@ -50,21 +59,37 @@ import MyTable from "@/components/MyTable.vue";
 import iconEye from "@/components/icons/iconEye.vue";
 import iconEyeOff from "@/components/icons/iconEyeOff.vue";
 import iconTrash from "@/components/icons/iconTrash.vue";
+import iconUpload from "@/components/icons/iconUpload.vue";
 export default {
   components: {
     MyTable,
     iconEye,
     iconEyeOff,
     iconTrash,
+    iconUpload,
   },
   setup() {
-    const recipe_lists = [
+    let inputUrl = ref("");
+    let recipeList = ref([
       { id: 0, name: "hoge", URL: "https://example.com", active: true },
       { id: 1, name: "fugaaa", URL: "https://example.com", active: true },
       { id: 2, name: "momo", URL: "https://example.com", active: false },
       { id: 3, name: "gagagagaga", URL: "https://example.com", active: true },
-    ];
-    return { recipe_lists };
+    ]);
+    const setRecipeList = () => {
+      if (inputUrl.value.match(/^https?:\/\/.*json$/)) {
+        // TODO: ここで登録
+        recipeList.value.push({
+          id: 4,
+          name: "test",
+          URL: inputUrl.value,
+          active: true,
+        });
+        return true;
+      }
+      return false;
+    };
+    return { inputUrl, recipeList, setRecipeList };
   },
 };
 </script>

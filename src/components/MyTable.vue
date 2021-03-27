@@ -25,7 +25,8 @@
 .table-footer-div {
   @apply px-5 py-1 text-left text-base whitespace-nowrap;
 }
+.table-footer-input,
 .table-body-td > tr > td > input {
-  @apply text-gray-500 focus:text-gray-900 focus:outline-none;
+  @apply text-gray-500 focus:text-gray-900 focus:outline-none focus:ring;
 }
 </style>
