@@ -11,20 +11,9 @@
         <td>{{ recipe_list.URL }}</td>
         <td>
           <div class="flex space-x-3">
-            <iconEye
-              class="cursor-pointer"
-              v-if="recipe_list.active"
-              :width="20"
-              :height="20"
-            ></iconEye>
-            <iconEyeOff
-              class="cursor-pointer"
-              v-else
-              :width="20"
-              :height="20"
-            ></iconEyeOff>
             <iconTrash
               class="cursor-pointer"
+              @click="removeRecipeList(recipe_list.name)"
               :width="20"
               :height="20"
             ></iconTrash>
@@ -55,16 +44,13 @@
 
 <script>
 import { ref, computed } from "vue";
+import { checkRecipeList } from "@/composables/checkRecipeList.js";
 import MyTable from "@/components/MyTable.vue";
-import iconEye from "@/components/icons/iconEye.vue";
-import iconEyeOff from "@/components/icons/iconEyeOff.vue";
 import iconTrash from "@/components/icons/iconTrash.vue";
 import iconUpload from "@/components/icons/iconUpload.vue";
 export default {
   components: {
     MyTable,
-    iconEye,
-    iconEyeOff,
     iconTrash,
     iconUpload,
   },
@@ -77,15 +63,32 @@ export default {
       }
     });
     const setRecipeList = async () => {
+      // check input url
       let listUrl = inputUrl.value;
       const regex = new RegExp("^https?://.*json$");
       if (!regex.test(listUrl)) {
         return false;
       }
+
       let resjson = null;
       try {
+        // get recipe list
         const res = await fetch(listUrl);
         resjson = await res.json();
+
+        // register recipe from recipe list
+        let recipes = checkRecipeList(resjson);
+        chrome.storage.local.get("recipes", (result) => {
+          // join recipes
+          if (typeof result.recipes !== "undefined") {
+            recipes.push(...JSON.parse(result.recipes));
+          }
+        });
+        chrome.storage.local.set({
+          recipes: JSON.stringify(recipes),
+        });
+
+        // register recipe list
         let nextId = recipeList.value.length;
         recipeList.value.push({
           id: nextId,
@@ -106,7 +109,23 @@ export default {
     const showRecipeList = computed(() => {
       return recipeList.value;
     });
-    return { inputUrl, recipeList, setRecipeList, showRecipeList };
+    const removeRecipeList = (listName) => {
+      let removeIndex = recipeList.value.findIndex(
+        (item) => item.name == listName
+      );
+      recipeList.value.splice(removeIndex, 1);
+      console.log(recipeList.value);
+      chrome.storage.local.set({
+        recipe_list: JSON.stringify(recipeList.value),
+      });
+    };
+    return {
+      inputUrl,
+      recipeList,
+      setRecipeList,
+      showRecipeList,
+      removeRecipeList,
+    };
   },
 };
 </script>
