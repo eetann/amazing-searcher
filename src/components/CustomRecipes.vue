@@ -1,18 +1,18 @@
 <template>
   <MyTable>
     <template v-slot:my-theader>
-      <th>Name</th>
-      <th>Keywords</th>
-      <th>Kind</th>
-      <th>URL</th>
-      <th>Action</th>
+      <th class="w-2/12">Name</th>
+      <th class="w-3/12">Keywords</th>
+      <th class="w-2/12">Kind</th>
+      <th class="w-4/12">URL</th>
+      <th class="w-1/12">Action</th>
     </template>
     <template v-slot:my-tbody>
       <tr v-for="recipe in custom_recipes" :key="recipe.id">
-        <td>{{ recipe.name }}</td>
+        <td class="truncate">{{ recipe.name }}</td>
         <td>{{ recipe.keywords }}</td>
         <td>{{ recipe.kind }}</td>
-        <td>{{ recipe.URL }}</td>
+        <td class="truncate">{{ recipe.URL }}</td>
         <td>
           <div class="flex space-x-3">
             <iconEye
@@ -35,27 +35,20 @@
           </div>
         </td>
       </tr>
-      <tr>
-        <td>
-          <input type="text" placeholder="Name" />
-        </td>
-        <td>
-          <input type="text" placeholder="Keywords" />
-        </td>
-        <td>
-          <input type="text" placeholder="kind" />
-        </td>
-        <td>
-          <input type="url" placeholder="recipe URL" />
-        </td>
-        <td>
-          <iconUpload
-            class="cursor-pointer"
-            :width="20"
-            :height="20"
-          ></iconUpload>
-        </td>
-      </tr>
+    </template>
+    <template v-slot:my-footer>
+      <input class="w-2/12" type="text" placeholder="Name" />
+      <input class="w-3/12" type="text" placeholder="Keywords" />
+      <input class="w-2/12" type="text" placeholder="kind" />
+      <input class="w-4/12" type="url" placeholder="recipe URL" />
+      <div class="w-1/12 cursor-pointer">
+        <iconUpload
+          class="mx-auto"
+          :width="20"
+          :height="20"
+          @click="setRecipeList"
+        ></iconUpload>
+      </div>
     </template>
   </MyTable>
 </template>

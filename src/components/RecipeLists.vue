@@ -1,38 +1,34 @@
 <template>
   <MyTable>
     <template v-slot:my-theader>
-      <th>Name</th>
-      <th>URL</th>
-      <th>Action</th>
+      <th class="w-2/6">Name</th>
+      <th class="w-3/6">URL</th>
+      <th class="w-1/6">Action</th>
     </template>
     <template v-slot:my-tbody>
       <tr v-for="recipe_list in showRecipeList" :key="recipe_list.id">
-        <td>{{ recipe_list.name }}</td>
-        <td>{{ recipe_list.URL }}</td>
+        <td class="truncate">{{ recipe_list.name }}</td>
+        <td class="truncate">{{ recipe_list.URL }}</td>
         <td>
-          <div class="flex space-x-3">
-            <iconTrash
-              class="cursor-pointer"
-              @click="removeRecipeList(recipe_list.name)"
-              :width="20"
-              :height="20"
-            ></iconTrash>
-          </div>
+          <iconTrash
+            class="mx-auto cursor-pointer"
+            @click="removeRecipeList(recipe_list.name)"
+            :width="20"
+            :height="20"
+          ></iconTrash>
         </td>
       </tr>
     </template>
     <template v-slot:my-footer>
-      <div
-        class="flex justify-between table-footer-div border-t-2 border-gray-200"
-      >
-        <input
-          type="url"
-          placeholder="Input new recipe list URL"
-          class="table-footer-input"
-          v-model="inputUrl"
-        />
+      <input
+        type="url"
+        placeholder="Input new recipe list URL"
+        class="w-5/6"
+        v-model="inputUrl"
+      />
+      <div class="w-1/6 cursor-pointer">
         <iconUpload
-          class="cursor-pointer"
+          class="mx-auto"
           :width="20"
           :height="20"
           @click="setRecipeList"
