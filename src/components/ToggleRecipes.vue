@@ -9,11 +9,11 @@
       <th class="w-1/12">Toggle</th>
     </template>
     <template v-slot:my-tbody>
-      <tr v-for="recipe in recipes" :key="recipe.id">
+      <tr v-for="recipe in showRecipes" :key="recipe.id">
         <td class="truncate">{{ recipe.name }}</td>
-        <td>{{ recipe.keywords }}</td>
+        <td>{{ recipe.keyword }}</td>
         <td>{{ recipe.kind }}</td>
-        <td class="truncate">{{ recipe.URL }}</td>
+        <td class="truncate">{{ recipe.url }}</td>
         <td>{{ recipe.from }}</td>
         <td>
           <iconEye
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import iconEye from "@/components/icons/iconEye.vue";
 import iconEyeOff from "@/components/icons/iconEyeOff.vue";
 import MyTable from "@/components/MyTable.vue";
@@ -47,45 +47,17 @@ export default {
     iconEyeOff,
   },
   setup() {
-    const recipes = [
-      {
-        id: 0,
-        name: "hoge",
-        keywords: "python|pyてょn",
-        kind: "homepage",
-        URL: "https://example.com",
-        from: "eetann",
-        active: true,
-      },
-      {
-        id: 1,
-        name: "hoge",
-        keywords: "python|pyてょn",
-        kind: "document",
-        URL: "https://example.com",
-        from: "eetann",
-        active: true,
-      },
-      {
-        id: 2,
-        name: "hoge",
-        keywords: "python|pyてょn",
-        kind: "d_search",
-        URL: "https://example.com",
-        from: "eetann",
-        active: false,
-      },
-      {
-        id: 3,
-        name: "hoge",
-        keywords: "python|pyてょn",
-        kind: "g_search",
-        URL: "https://example.com",
-        from: "eetann",
-        active: true,
-      },
-    ];
-    return { recipes };
+    const recipes = ref([]);
+    chrome.storage.local.get("recipes", (result) => {
+      // join recipes
+      if (typeof result.recipes !== "undefined") {
+        recipes.value.push(...JSON.parse(result.recipes));
+      }
+    });
+    const showRecipes = computed(() => {
+      return recipes.value;
+    });
+    return { recipes, showRecipes };
   },
 };
 </script>
