@@ -42,12 +42,7 @@
       <input class="w-2/12" type="text" placeholder="kind" />
       <input class="w-4/12" type="url" placeholder="recipe URL" />
       <div class="w-1/12 cursor-pointer">
-        <iconUpload
-          class="mx-auto"
-          :width="20"
-          :height="20"
-          @click="setRecipeList"
-        ></iconUpload>
+        <iconUpload class="mx-auto" :width="20" :height="20"></iconUpload>
       </div>
     </template>
   </MyTable>
