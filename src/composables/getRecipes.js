@@ -33,7 +33,7 @@ export async function getRecipes() {
 
       // add Homepage
       let heading = {id: 0, title: "Homepage", links: []};
-      for (let item of recipe.home_url) {
+      for (let item of recipe.homepage) {
         heading.links.push(item);
       }
       if (heading.links.length > 0) {
@@ -42,7 +42,7 @@ export async function getRecipes() {
 
       // add Document
       heading = {id: 1, title: "Document", links: []};
-      for (let item of recipe.doc_url) {
+      for (let item of recipe.doc) {
         heading.links.push(item);
       }
       if (heading.links.length > 0) {
@@ -51,7 +51,7 @@ export async function getRecipes() {
 
       // add Search By Document
       heading = {id: 2, title: "Search By Document", links: []};
-      for (let item of recipe.doc_search) {
+      for (let item of recipe.search_by_doc) {
         item.url = item.url.replace("{}", recipe.keyword);
         heading.links.push(item);
       }
@@ -61,7 +61,7 @@ export async function getRecipes() {
 
       // add Search By Google
       heading = {id: 3, title: "Search By Google", links: []};
-      for (let item of recipe.doc_url) {
+      for (let item of recipe.doc) {
         let doc_url = item.url
           .replace(/https?:\/\//, "")
           .replace(/[^/]*\.(html|php)$/, "")

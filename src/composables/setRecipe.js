@@ -29,59 +29,56 @@ function checkRecipe(recipe) {
     console.log("keyword '" + recipe.name + "' is wrong.(recipe name is " + recipe.name + ")");
     return []
   }
-  if ("home_url" in recipe) {
-    // check home_url expression
-    if (!Array.isArray(recipe.home_url)) {
+  if ("homepage" in recipe) {
+    // check homepage expression
+    if (!Array.isArray(recipe.homepage)) {
       return [];
     }
-    recipe.home_url.forEach(element => {
+    recipe.homepage.forEach(element => {
       if (checkElement(element)) {
-        let aKindRecipe = {
+        kindRecipes.push({
           'name': recipe.name,
           'keyword': recipe.keyword,
-          'kind': 'home_url',
+          'kind': 'homepage',
           'lang': element.lang,
           'url': element.url
-        };
-        kindRecipes.push(aKindRecipe);
+        });
       }
     })
   }
-  if ("doc_url" in recipe) {
-    if (!Array.isArray(recipe.doc_url)) {
+  if ("doc" in recipe) {
+    if (!Array.isArray(recipe.doc)) {
       return [];
     }
-    recipe.doc_url.forEach(element => {
+    recipe.doc.forEach(element => {
       if (checkElement(element)) {
-        let aKindRecipe = {
+        kindRecipes.push({
           'name': recipe.name,
           'keyword': recipe.keyword,
-          'kind': 'doc_url',
+          'kind': 'doc',
           'lang': element.lang,
           'url': element.url
-        };
-        kindRecipes.push(aKindRecipe);
+        });
       }
     })
   }
-  if ("doc_search" in recipe) {
-    if (!Array.isArray(recipe.doc_search)) {
+  if ("search_by_doc" in recipe) {
+    if (!Array.isArray(recipe.search_by_doc)) {
       return [];
     }
-    let checkDocSearch = recipe.doc_search.every(element => checkElement(element));
+    let checkDocSearch = recipe.search_by_doc.every(element => checkElement(element));
     if (!checkDocSearch) {
       return []
     }
-    recipe.doc_search.forEach(element => {
+    recipe.search_by_doc.forEach(element => {
       if (checkElement(element)) {
-        let aKindRecipe = {
+        kindRecipes.push({
           'name': recipe.name,
           'keyword': recipe.keyword,
-          'kind': 'doc_search',
+          'kind': 'search_by_doc',
           'lang': element.lang,
           'url': element.url
-        };
-        kindRecipes.push(aKindRecipe);
+        });
       }
     })
   }
@@ -101,14 +98,20 @@ export function checkRecipeList(resjson) {
   if (!Array.isArray(resjson.items)) {
     return [];
   }
-  // TODO: レシピをkindとURLごとに分ける
   let recipes = [];
   resjson.items.forEach(recipe => recipes.push(...checkRecipe(recipe)));
-  recipes = recipes.map(recipe => {
-    recipe.active = true;
-    recipe.from = resjson.name;
-    return recipe
-  })
-  console.log(recipes);
   return recipes
+}
+
+export function setRecipe(recipes) {
+  // set recipe.id
+  let recipeId = 0;
+  let newRecipes = recipes.map((recipe) => {
+    recipe.id = recipeId;
+    recipeId++;
+    return recipe;
+  });
+  chrome.storage.local.set({
+    recipes: JSON.stringify(newRecipes),
+  });
 }
