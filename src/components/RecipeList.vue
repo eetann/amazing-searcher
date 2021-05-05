@@ -1,19 +1,28 @@
 <template>
-  <div class="mt-5 mb-2 text-lg">Add new recipe.</div>
-  <div
-    class="flex space-x-4 items-center p-4 shadow rounded-lg border-b-2 border-gray-200"
-  >
-    <InputText label="Target" type="text" v-model="newTarget"></InputText>
-    <InputText label="Lang" type="text" v-model="newLang"></InputText>
-    <InputText label="Keyword" type="text" v-model="newKeyword"></InputText>
-    <InputText label="Kind" type="text" v-model="newKind"></InputText>
-    <InputText label="URL" type="URL" v-model="newURL"></InputText>
-    <div class="w-24">
-      <button type="button" class="my-button flex justify-center items-center">
-        <iconUpload class="mr-2" :width="20" :height="20"></iconUpload>
-        Add
-      </button>
+  <div class="mt-5 p-4 shadow rounded-lg border-b-2 border-gray-200">
+    <div class="text-lg">Add new recipe.</div>
+    <div class="flex space-x-4 items-center">
+      <InputText label="Target" type="text" v-model="newTarget"></InputText>
+      <InputText label="Lang" type="text" v-model="newLang"></InputText>
+      <InputText label="Keyword" type="text" v-model="newKeyword"></InputText>
+      <InputSelect
+        label="Kind"
+        :options="options"
+        v-model="newKind"
+      ></InputSelect>
+      <InputText label="URL" type="URL" v-model="newURL"></InputText>
+      <div class="w-24">
+        <button
+          type="button"
+          class="my-button flex justify-center items-center"
+          @click="addRecipe"
+        >
+          <iconUpload class="mr-2" :width="20" :height="20"></iconUpload>
+          Add
+        </button>
+      </div>
     </div>
+    <div class="pt-2 text-base text-red-600">TODO: エラーの表示</div>
   </div>
   <div class="mt-5 mb-2 text-lg">Recipes</div>
   <div class="mb-5 shadow rounded-lg w-full">
@@ -41,7 +50,7 @@
           </td>
           <td>
             <iconTrash
-              class="mx-auto cursor-pointer"
+              class="cursor-pointer"
               :width="20"
               :height="20"
               @click="removeRecipe(recipe.id)"
@@ -59,12 +68,14 @@
 <script>
 import { ref, computed } from "vue";
 import InputText from "@/components/InputText.vue";
+import InputSelect from "@/components/InputSelect.vue";
 import iconTrash from "@/components/icons/iconTrash.vue";
 import iconUpload from "@/components/icons/iconUpload.vue";
 import { checkRecipeList, setRecipe } from "@/composables/setRecipe.js";
 export default {
-  components: { InputText, iconTrash, iconUpload },
+  components: { InputText, InputSelect, iconTrash, iconUpload },
   setup() {
+    const options = ["homepage", "doc", "search by doc"];
     const newTarget = ref("");
     const newLang = ref("");
     const newKeyword = ref("");
@@ -96,7 +107,17 @@ export default {
       recipes.value.splice(recipeId, 1);
       setRecipe(recipes.value);
     };
+    const addRecipe = () => {
+      // TODO: ここでチェック
+      console.log("Target:" + newTarget.value);
+      console.log("Lang:" + newLang.value);
+      console.log("Keyword:" + newKeyword.value);
+      console.log("Kind:" + newKind.value);
+      console.log("URL:" + newURL.value);
+      // TODO: ここで入力欄KindとURLのリセット
+    };
     return {
+      options,
       newTarget,
       newLang,
       newKeyword,
@@ -106,6 +127,7 @@ export default {
       showRecipes,
       resetRecipes,
       removeRecipe,
+      addRecipe,
     };
   },
 };
@@ -119,9 +141,6 @@ export default {
 .table-body-td > tr > *,
 .table-out-div > * {
   @apply px-5 py-1 text-left text-base;
-}
-.table-out-div > input {
-  @apply text-gray-500 focus:text-gray-900 focus:outline-none focus:ring;
 }
 </style>
 
