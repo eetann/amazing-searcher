@@ -9,10 +9,10 @@ function checkElement(element) {
 function checkRecipe(recipe) {
   // check for correct recipe format
   let kindRecipes = [];
-  if (!("name" in recipe)) {
+  if (!("target" in recipe)) {
     return [];
   }
-  if (typeof recipe.name != "string") {
+  if (typeof recipe.target != "string") {
     return [];
   }
   if (!("keyword" in recipe)) {
@@ -26,7 +26,7 @@ function checkRecipe(recipe) {
     new RegExp(recipe.keyword);
   } catch (e) {
     console.log(recipe.keyword);
-    console.log("keyword '" + recipe.name + "' is wrong.(recipe name is " + recipe.name + ")");
+    console.log("keyword '" + recipe.target + "' is wrong.(recipe target is " + recipe.target + ")");
     return []
   }
   if ("homepage" in recipe) {
@@ -37,7 +37,7 @@ function checkRecipe(recipe) {
     recipe.homepage.forEach(element => {
       if (checkElement(element)) {
         kindRecipes.push({
-          'name': recipe.name,
+          'target': recipe.target,
           'keyword': recipe.keyword,
           'kind': 'homepage',
           'lang': element.lang,
@@ -53,7 +53,7 @@ function checkRecipe(recipe) {
     recipe.doc.forEach(element => {
       if (checkElement(element)) {
         kindRecipes.push({
-          'name': recipe.name,
+          'target': recipe.target,
           'keyword': recipe.keyword,
           'kind': 'doc',
           'lang': element.lang,
@@ -73,7 +73,7 @@ function checkRecipe(recipe) {
     recipe.search_by_doc.forEach(element => {
       if (checkElement(element)) {
         kindRecipes.push({
-          'name': recipe.name,
+          'target': recipe.target,
           'keyword': recipe.keyword,
           'kind': 'search_by_doc',
           'lang': element.lang,
@@ -86,12 +86,6 @@ function checkRecipe(recipe) {
 }
 export function checkRecipeList(resjson) {
   // check for correct 'recipe list' format
-  if (!("name" in resjson)) {
-    return [];
-  }
-  if (typeof resjson.name != "string") {
-    return [];
-  }
   if (!("items" in resjson)) {
     return [];
   }

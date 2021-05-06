@@ -39,7 +39,7 @@
       </thead>
       <tbody class="text-base divide-y divide-gray-200 table-body-td">
         <tr v-for="recipe in showRecipes" :key="recipe.id">
-          <td class="truncate">{{ recipe.name }}</td>
+          <td class="truncate">{{ recipe.target }}</td>
           <td>{{ recipe.lang }}</td>
           <td>{{ recipe.keyword }}</td>
           <td v-if="recipe.kind == 'homepage'">homepage</td>

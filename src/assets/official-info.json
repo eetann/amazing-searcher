@@ -2,7 +2,7 @@
     "name": "Amazing Searcher Recipes",
     "items": [
         {
-            "name": "Python",
+            "target": "Python",
             "homepage": [
                 {"lang":"en", "url":"https://www.python.org/"},
                 {"lang":"ja", "url":"https://www.python.jp/"}
@@ -18,35 +18,35 @@
             "keyword": "python|pyてょn"
         },
         {
-            "name": "Zenn",
+            "target": "Zenn",
             "homepage": [{"lang":"ja", "url":"https://zenn.dev/"}],
             "doc": [{"lang":"ja", "url":"https://zenn.dev/zenn"}],
             "search_by_doc": [],
             "keyword": "zenn|ぜん"
         },
         {
-            "name": "Matplotlib",
+            "target": "Matplotlib",
             "homepage": [{"lang":"en", "url":"https://matplotlib.org/"}],
             "doc": [{"lang":"en", "url":"https://matplotlib.org/stable/contents.html"}],
             "search_by_doc": [{"lang":"en", "url":"https://matplotlib.org/stable/search.html?q={}"}],
             "keyword": "matplotlib|plt|まtpぉtぃb"
         },
         {
-            "name": "NumPy",
+            "target": "NumPy",
             "homepage": [{"lang":"en", "url":"https://numpy.org/"}],
             "doc": [{"lang":"en", "url":"https://numpy.org/doc/stable/"}],
             "search_by_doc": [{"lang":"en", "url":"https://numpy.org/doc/stable/search.html?q={}"}],
             "keyword": "numpy|np|ぬmpy"
         },
         {
-            "name": "C++",
+            "target": "C++",
             "homepage": [{"lang":"en", "url":"https://isocpp.org/"}],
             "doc": [],
             "search_by_doc": [],
             "keyword": "c\\+\\+|cpp|cっp"
         },
         {
-            "name": "GitHub",
+            "target": "GitHub",
             "homepage": [
                 {"lang":"en", "url":"https://github.com"},
                 {"lang":"ja", "url":"https://github.co.jp/"}
@@ -62,21 +62,21 @@
             "keyword": "github|ぎてゅb"
         },
         {
-            "name": "Qiita",
+            "target": "Qiita",
             "homepage": [ {"lang":"ja", "url":"https://qiita.com/"} ],
             "doc": [ {"lang":"ja", "url":"https://help.qiita.com/"} ],
             "search_by_doc": [ {"lang":"ja", "url":"https://help.qiita.com/ja/search?query={}"} ],
             "keyword": "qiita|くぃいた"
         },
         {
-            "name": "Tailwind CSS",
+            "target": "Tailwind CSS",
             "homepage": [ {"lang":"en", "url":"https://tailwindcss.com/"} ],
             "doc": [ {"lang":"en", "url":"https://tailwindcss.com/docs"} ],
             "search_by_doc": [],
             "keyword": "tailwind\\s?css|たいlwいんdcっs"
         },
         {
-            "name": "Vue.js",
+            "target": "Vue.js",
             "homepage": [
                 {"lang":"en v2", "url":"https://vuejs.org/"},
                 {"lang":"en v3", "url":"https://v3.vuejs.org/"},
@@ -93,21 +93,21 @@
             "keyword": "vue\\.js|vue|ゔえ"
         },
         {
-            "name": "Vue CLI",
+            "target": "Vue CLI",
             "homepage": [ {"lang":"en", "url":"https://cli.vuejs.org/"} ],
             "doc": [ {"lang":"en", "url":"https://cli.vuejs.org/"} ],
             "search_by_doc": [],
             "keyword": "vue\\scli|vue"
         },
         {
-            "name": "Chrome Extensions",
+            "target": "Chrome Extensions",
             "homepage": [ {"lang":"en", "url":"https://chrome.google.com/webstore/category/extensions"} ],
             "doc": [ {"lang":"en", "url":"https://developer.chrome.com/docs/extensions/"} ],
             "search_by_doc": [],
             "keyword": "chrome\\sextensions?|chrome\\s拡張機能"
         },
         {
-            "name": "MATLAB",
+            "target": "MATLAB",
             "homepage": [
                 {"lang":"en", "url":"https://mathworks.com/index.html"},
                 {"lang":"ja", "url":"https://jp.mathworks.com/index.html"}
@@ -123,7 +123,7 @@
             "keyword": "matlab|マトラボ|まtぁb"
         },
         {
-            "name": "POV-Ray",
+            "target": "POV-Ray",
             "homepage": [
                 {"lang":"en", "url":"https://www.povray.org/"}
             ],
@@ -134,7 +134,7 @@
             "keyword": "pov(\\s|-)?ray"
         },
         {
-            "name": "JavaScript",
+            "target": "JavaScript",
             "homepage": [
                 {"lang":"en", "url":"https://developer.mozilla.org/en-US/docs/Web/JavaScript"},
                 {"lang":"ja", "url":"https://developer.mozilla.org/ja/docs/Web/JavaScript"}
