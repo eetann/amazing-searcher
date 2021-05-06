@@ -8,93 +8,54 @@ function checkElement(element) {
 
 function checkRecipe(recipe) {
   // check for correct recipe format
-  let kindRecipes = [];
-  if (!("target" in recipe)) {
-    return [];
+  // check 'target'
+  if (!recipe.target) {
+    throw "The value of the 'target' key is empty."
   }
-  if (typeof recipe.target != "string") {
-    return [];
-  }
-  if (!("keyword" in recipe)) {
-    return [];
-  }
-  if (typeof recipe.keyword != "string") {
-    return [];
+
+  // The 'lang' key can be empty, so don't check it.
+
+  // check 'keyword'
+  if (!recipe.keyword) {
+    throw "The value of the 'keyword' key is empty."
   }
   // check the regular expression
   try {
     new RegExp(recipe.keyword);
   } catch (e) {
-    console.log(recipe.keyword);
-    console.log("keyword '" + recipe.target + "' is wrong.(recipe target is " + recipe.target + ")");
-    return []
+    throw "The regular expression for the 'lang' key " + recipe.keyword + " is wrong."
   }
-  if ("homepage" in recipe) {
-    // check homepage expression
-    if (!Array.isArray(recipe.homepage)) {
-      return [];
-    }
-    recipe.homepage.forEach(element => {
-      if (checkElement(element)) {
-        kindRecipes.push({
-          'target': recipe.target,
-          'keyword': recipe.keyword,
-          'kind': 'homepage',
-          'lang': element.lang,
-          'url': element.url
-        });
-      }
-    })
+
+  // check 'kind'
+  if (!recipe.kind) {
+    throw "The value of the 'kind' key is empty."
   }
-  if ("doc" in recipe) {
-    if (!Array.isArray(recipe.doc)) {
-      return [];
-    }
-    recipe.doc.forEach(element => {
-      if (checkElement(element)) {
-        kindRecipes.push({
-          'target': recipe.target,
-          'keyword': recipe.keyword,
-          'kind': 'doc',
-          'lang': element.lang,
-          'url': element.url
-        });
-      }
-    })
+
+  // check 'URL'
+  if (!recipe.url) {
+    throw "The value of the 'url' key is empty."
   }
-  if ("search_by_doc" in recipe) {
-    if (!Array.isArray(recipe.search_by_doc)) {
-      return [];
-    }
-    let checkDocSearch = recipe.search_by_doc.every(element => checkElement(element));
-    if (!checkDocSearch) {
-      return []
-    }
-    recipe.search_by_doc.forEach(element => {
-      if (checkElement(element)) {
-        kindRecipes.push({
-          'target': recipe.target,
-          'keyword': recipe.keyword,
-          'kind': 'search_by_doc',
-          'lang': element.lang,
-          'url': element.url
-        });
-      }
-    })
-  }
-  return kindRecipes
+  return true
 }
-export function checkRecipeList(resjson) {
+
+export function checkRecipeJson(resjson) {
   // check for correct 'recipe list' format
-  if (!("items" in resjson)) {
-    return [];
+  if (!Array.isArray(resjson)) {
+    throw "There is no recipe list.";
   }
-  if (!Array.isArray(resjson.items)) {
-    return [];
-  }
-  let recipes = [];
-  resjson.items.forEach(recipe => recipes.push(...checkRecipe(recipe)));
-  return recipes
+
+  // get recipes
+  let errorMsg = "";
+  let recipes = resjson.filter((recipe, idx) => {
+    let correctRecipe = false;
+    try {
+      correctRecipe = checkRecipe(recipe);
+    } catch (e) {
+      errorMsg += "Eoor in recipe at index " + idx + ":" + e + "\n";
+    }
+    return correctRecipe
+  });
+  return {recipes: recipes, errorMsg: errorMsg}
 }
 
 export function setRecipe(recipes) {

@@ -1,153 +1,375 @@
 {
-    "name": "Amazing Searcher Recipes",
     "items": [
         {
             "target": "Python",
-            "homepage": [
-                {"lang":"en", "url":"https://www.python.org/"},
-                {"lang":"ja", "url":"https://www.python.jp/"}
-            ],
-            "doc": [
-                {"lang":"en", "url":"https://docs.python.org/"},
-                {"lang":"ja", "url":"https://docs.python.org/ja/"}
-            ],
-            "search_by_doc": [
-                {"lang":"en", "url":"https://docs.python.org/ja/3/search.html?q={}&check_keywords=yes&area=default"},
-                {"lang":"ja", "url":"https://docs.python.org/3/search.html?q={}&check_keywords=yes&area=default"}
-            ],
-            "keyword": "python|pyてょn"
+            "keyword": "python|pyてょn",
+            "kind": "homepage",
+            "lang": "en",
+            "url": "https://www.python.org/"
+        },
+        {
+            "target": "Python",
+            "keyword": "python|pyてょn",
+            "kind": "homepage",
+            "lang": "ja",
+            "url": "https://www.python.jp/"
+        },
+        {
+            "target": "Python",
+            "keyword": "python|pyてょn",
+            "kind": "doc",
+            "lang": "en",
+            "url": "https://docs.python.org/"
+        },
+        {
+            "target": "Python",
+            "keyword": "python|pyてょn",
+            "kind": "doc",
+            "lang": "ja",
+            "url": "https://docs.python.org/ja/"
+        },
+        {
+            "target": "Python",
+            "keyword": "python|pyてょn",
+            "kind": "search_by_doc",
+            "lang": "en",
+            "url": "https://docs.python.org/ja/3/search.html?q={}&check_keywords=yes&area=default"
+        },
+        {
+            "target": "Python",
+            "keyword": "python|pyてょn",
+            "kind": "search_by_doc",
+            "lang": "ja",
+            "url": "https://docs.python.org/3/search.html?q={}&check_keywords=yes&area=default"
         },
         {
             "target": "Zenn",
-            "homepage": [{"lang":"ja", "url":"https://zenn.dev/"}],
-            "doc": [{"lang":"ja", "url":"https://zenn.dev/zenn"}],
-            "search_by_doc": [],
-            "keyword": "zenn|ぜん"
+            "keyword": "zenn|ぜん",
+            "kind": "homepage",
+            "lang": "ja",
+            "url": "https://zenn.dev/"
+        },
+        {
+            "target": "Zenn",
+            "keyword": "zenn|ぜん",
+            "kind": "doc",
+            "lang": "ja",
+            "url": "https://zenn.dev/zenn"
         },
         {
             "target": "Matplotlib",
-            "homepage": [{"lang":"en", "url":"https://matplotlib.org/"}],
-            "doc": [{"lang":"en", "url":"https://matplotlib.org/stable/contents.html"}],
-            "search_by_doc": [{"lang":"en", "url":"https://matplotlib.org/stable/search.html?q={}"}],
-            "keyword": "matplotlib|plt|まtpぉtぃb"
+            "keyword": "matplotlib|plt|まtpぉtぃb",
+            "kind": "homepage",
+            "lang": "en",
+            "url": "https://matplotlib.org/"
+        },
+        {
+            "target": "Matplotlib",
+            "keyword": "matplotlib|plt|まtpぉtぃb",
+            "kind": "doc",
+            "lang": "en",
+            "url": "https://matplotlib.org/stable/contents.html"
+        },
+        {
+            "target": "Matplotlib",
+            "keyword": "matplotlib|plt|まtpぉtぃb",
+            "kind": "search_by_doc",
+            "lang": "en",
+            "url": "https://matplotlib.org/stable/search.html?q={}"
         },
         {
             "target": "NumPy",
-            "homepage": [{"lang":"en", "url":"https://numpy.org/"}],
-            "doc": [{"lang":"en", "url":"https://numpy.org/doc/stable/"}],
-            "search_by_doc": [{"lang":"en", "url":"https://numpy.org/doc/stable/search.html?q={}"}],
-            "keyword": "numpy|np|ぬmpy"
+            "keyword": "numpy|np|ぬmpy",
+            "kind": "homepage",
+            "lang": "en",
+            "url": "https://numpy.org/"
+        },
+        {
+            "target": "NumPy",
+            "keyword": "numpy|np|ぬmpy",
+            "kind": "doc",
+            "lang": "en",
+            "url": "https://numpy.org/doc/stable/"
+        },
+        {
+            "target": "NumPy",
+            "keyword": "numpy|np|ぬmpy",
+            "kind": "search_by_doc",
+            "lang": "en",
+            "url": "https://numpy.org/doc/stable/search.html?q={}"
         },
         {
             "target": "C++",
-            "homepage": [{"lang":"en", "url":"https://isocpp.org/"}],
-            "doc": [],
-            "search_by_doc": [],
-            "keyword": "c\\+\\+|cpp|cっp"
+            "keyword": "c\\+\\+|cpp|cっp",
+            "kind": "homepage",
+            "lang": "en",
+            "url": "https://isocpp.org/"
         },
         {
             "target": "GitHub",
-            "homepage": [
-                {"lang":"en", "url":"https://github.com"},
-                {"lang":"ja", "url":"https://github.co.jp/"}
-            ],
-            "doc": [
-                {"lang":"en", "url":"https://docs.github.com/en"},
-                {"lang":"ja", "url":"https://docs.github.com/ja"}
-            ],
-            "search_by_doc": [
-                {"lang":"en", "url":"https://docs.github.com/en?query={}"},
-                {"lang":"ja", "url":"https://docs.github.com/ja?query={}"}
-            ],
-            "keyword": "github|ぎてゅb"
+            "keyword": "github|ぎてゅb",
+            "kind": "homepage",
+            "lang": "en",
+            "url": "https://github.com"
+        },
+        {
+            "target": "GitHub",
+            "keyword": "github|ぎてゅb",
+            "kind": "homepage",
+            "lang": "ja",
+            "url": "https://github.co.jp/"
+        },
+        {
+            "target": "GitHub",
+            "keyword": "github|ぎてゅb",
+            "kind": "doc",
+            "lang": "en",
+            "url": "https://docs.github.com/en"
+        },
+        {
+            "target": "GitHub",
+            "keyword": "github|ぎてゅb",
+            "kind": "doc",
+            "lang": "ja",
+            "url": "https://docs.github.com/ja"
+        },
+        {
+            "target": "GitHub",
+            "keyword": "github|ぎてゅb",
+            "kind": "search_by_doc",
+            "lang": "en",
+            "url": "https://docs.github.com/en?query={}"
+        },
+        {
+            "target": "GitHub",
+            "keyword": "github|ぎてゅb",
+            "kind": "search_by_doc",
+            "lang": "ja",
+            "url": "https://docs.github.com/ja?query={}"
         },
         {
             "target": "Qiita",
-            "homepage": [ {"lang":"ja", "url":"https://qiita.com/"} ],
-            "doc": [ {"lang":"ja", "url":"https://help.qiita.com/"} ],
-            "search_by_doc": [ {"lang":"ja", "url":"https://help.qiita.com/ja/search?query={}"} ],
-            "keyword": "qiita|くぃいた"
+            "keyword": "qiita|くぃいた",
+            "kind": "homepage",
+            "lang": "ja",
+            "url": "https://qiita.com/"
+        },
+        {
+            "target": "Qiita",
+            "keyword": "qiita|くぃいた",
+            "kind": "doc",
+            "lang": "ja",
+            "url": "https://help.qiita.com/"
+        },
+        {
+            "target": "Qiita",
+            "keyword": "qiita|くぃいた",
+            "kind": "search_by_doc",
+            "lang": "ja",
+            "url": "https://help.qiita.com/ja/search?query={}"
         },
         {
             "target": "Tailwind CSS",
-            "homepage": [ {"lang":"en", "url":"https://tailwindcss.com/"} ],
-            "doc": [ {"lang":"en", "url":"https://tailwindcss.com/docs"} ],
-            "search_by_doc": [],
-            "keyword": "tailwind\\s?css|たいlwいんdcっs"
+            "keyword": "tailwind\\s?css|たいlwいんdcっs",
+            "kind": "homepage",
+            "lang": "en",
+            "url": "https://tailwindcss.com/"
+        },
+        {
+            "target": "Tailwind CSS",
+            "keyword": "tailwind\\s?css|たいlwいんdcっs",
+            "kind": "doc",
+            "lang": "en",
+            "url": "https://tailwindcss.com/docs"
         },
         {
             "target": "Vue.js",
-            "homepage": [
-                {"lang":"en v2", "url":"https://vuejs.org/"},
-                {"lang":"en v3", "url":"https://v3.vuejs.org/"},
-                {"lang":"ja v2", "url":"https://jp.vuejs.org/"},
-                {"lang":"ja v3", "url":"https://v3.ja.vuejs.org/"}
-            ],
-            "doc": [
-                {"lang":"en v2", "url":"https://vuejs.org/v2/api/"},
-                {"lang":"en v3", "url":"https://jp.vuejs.org/v2/api/"},
-                {"lang":"ja v2", "url":"https://v3.ja.vuejs.org/api/application-config.html"},
-                {"lang":"ja v3", "url":"https://v3.ja.vuejs.org/api/application-config.html"}
-            ],
-            "search_by_doc": [],
-            "keyword": "vue\\.js|vue|ゔえ"
+            "keyword": "vue\\.js|vue|ゔえ",
+            "kind": "homepage",
+            "lang": "en v2",
+            "url": "https://vuejs.org/"
+        },
+        {
+            "target": "Vue.js",
+            "keyword": "vue\\.js|vue|ゔえ",
+            "kind": "homepage",
+            "lang": "en v3",
+            "url": "https://v3.vuejs.org/"
+        },
+        {
+            "target": "Vue.js",
+            "keyword": "vue\\.js|vue|ゔえ",
+            "kind": "homepage",
+            "lang": "ja v2",
+            "url": "https://jp.vuejs.org/"
+        },
+        {
+            "target": "Vue.js",
+            "keyword": "vue\\.js|vue|ゔえ",
+            "kind": "homepage",
+            "lang": "ja v3",
+            "url": "https://v3.ja.vuejs.org/"
+        },
+        {
+            "target": "Vue.js",
+            "keyword": "vue\\.js|vue|ゔえ",
+            "kind": "doc",
+            "lang": "en v2",
+            "url": "https://vuejs.org/v2/api/"
+        },
+        {
+            "target": "Vue.js",
+            "keyword": "vue\\.js|vue|ゔえ",
+            "kind": "doc",
+            "lang": "en v3",
+            "url": "https://jp.vuejs.org/v2/api/"
+        },
+        {
+            "target": "Vue.js",
+            "keyword": "vue\\.js|vue|ゔえ",
+            "kind": "doc",
+            "lang": "ja v2",
+            "url": "https://v3.ja.vuejs.org/api/application-config.html"
+        },
+        {
+            "target": "Vue.js",
+            "keyword": "vue\\.js|vue|ゔえ",
+            "kind": "doc",
+            "lang": "ja v3",
+            "url": "https://v3.ja.vuejs.org/api/application-config.html"
         },
         {
             "target": "Vue CLI",
-            "homepage": [ {"lang":"en", "url":"https://cli.vuejs.org/"} ],
-            "doc": [ {"lang":"en", "url":"https://cli.vuejs.org/"} ],
-            "search_by_doc": [],
-            "keyword": "vue\\scli|vue"
+            "keyword": "vue\\scli|vue",
+            "kind": "homepage",
+            "lang": "en",
+            "url": "https://cli.vuejs.org/"
+        },
+        {
+            "target": "Vue CLI",
+            "keyword": "vue\\scli|vue",
+            "kind": "doc",
+            "lang": "en",
+            "url": "https://cli.vuejs.org/"
         },
         {
             "target": "Chrome Extensions",
-            "homepage": [ {"lang":"en", "url":"https://chrome.google.com/webstore/category/extensions"} ],
-            "doc": [ {"lang":"en", "url":"https://developer.chrome.com/docs/extensions/"} ],
-            "search_by_doc": [],
-            "keyword": "chrome\\sextensions?|chrome\\s拡張機能"
+            "keyword": "chrome\\sextensions?|chrome\\s拡張機能",
+            "kind": "homepage",
+            "lang": "en",
+            "url": "https://chrome.google.com/webstore/category/extensions"
+        },
+        {
+            "target": "Chrome Extensions",
+            "keyword": "chrome\\sextensions?|chrome\\s拡張機能",
+            "kind": "doc",
+            "lang": "en",
+            "url": "https://developer.chrome.com/docs/extensions/"
         },
         {
             "target": "MATLAB",
-            "homepage": [
-                {"lang":"en", "url":"https://mathworks.com/index.html"},
-                {"lang":"ja", "url":"https://jp.mathworks.com/index.html"}
-            ],
-            "doc": [
-                {"lang":"en", "url":"https://mathworks.com/help/"},
-                {"lang":"ja", "url":"https://jp.mathworks.com/help/"}
-            ],
-            "search_by_doc": [
-                {"lang":"en", "url":"https://mathworks.com/support/search.html?q={}"},
-                {"lang":"ja", "url":"https://jp.mathworks.com/support/search.html?q={}"}
-            ],
-            "keyword": "matlab|マトラボ|まtぁb"
+            "keyword": "matlab|マトラボ|まtぁb",
+            "kind": "homepage",
+            "lang": "en",
+            "url": "https://mathworks.com/index.html"
+        },
+        {
+            "target": "MATLAB",
+            "keyword": "matlab|マトラボ|まtぁb",
+            "kind": "homepage",
+            "lang": "ja",
+            "url": "https://jp.mathworks.com/index.html"
+        },
+        {
+            "target": "MATLAB",
+            "keyword": "matlab|マトラボ|まtぁb",
+            "kind": "doc",
+            "lang": "en",
+            "url": "https://mathworks.com/help/"
+        },
+        {
+            "target": "MATLAB",
+            "keyword": "matlab|マトラボ|まtぁb",
+            "kind": "doc",
+            "lang": "ja",
+            "url": "https://jp.mathworks.com/help/"
+        },
+        {
+            "target": "MATLAB",
+            "keyword": "matlab|マトラボ|まtぁb",
+            "kind": "search_by_doc",
+            "lang": "en",
+            "url": "https://mathworks.com/support/search.html?q={}"
+        },
+        {
+            "target": "MATLAB",
+            "keyword": "matlab|マトラボ|まtぁb",
+            "kind": "search_by_doc",
+            "lang": "ja",
+            "url": "https://jp.mathworks.com/support/search.html?q={}"
         },
         {
             "target": "POV-Ray",
-            "homepage": [
-                {"lang":"en", "url":"https://www.povray.org/"}
-            ],
-            "doc": [
-                {"lang":"en v3.7", "url":"https://www.povray.org/documentation/3.7.0/"},
-                {"lang":"en v3.6", "url":"https://www.povray.org/documentation/index-3.6.php"}
-            ],
-            "keyword": "pov(\\s|-)?ray"
+            "keyword": "pov(\\s|-)?ray",
+            "kind": "homepage",
+            "lang": "en",
+            "url": "https://www.povray.org/"
+        },
+        {
+            "target": "POV-Ray",
+            "keyword": "pov(\\s|-)?ray",
+            "kind": "doc",
+            "lang": "en v3.7",
+            "url": "https://www.povray.org/documentation/3.7.0/"
+        },
+        {
+            "target": "POV-Ray",
+            "keyword": "pov(\\s|-)?ray",
+            "kind": "doc",
+            "lang": "en v3.6",
+            "url": "https://www.povray.org/documentation/index-3.6.php"
         },
         {
             "target": "JavaScript",
-            "homepage": [
-                {"lang":"en", "url":"https://developer.mozilla.org/en-US/docs/Web/JavaScript"},
-                {"lang":"ja", "url":"https://developer.mozilla.org/ja/docs/Web/JavaScript"}
-            ],
-            "doc": [
-                {"lang":"en", "url":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"},
-                {"lang":"ja", "url":"https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference"}
-            ],
-            "search_by_doc": [
-                {"lang":"en", "url":"https://developer.mozilla.org/en-US/search?q={}"},
-                {"lang":"ja", "url":"https://developer.mozilla.org/ja/search?q={}"}
-            ],
-            "keyword": "javascript|js|じゃゔぁscりpt"
+            "keyword": "javascript|js|じゃゔぁscりpt",
+            "kind": "homepage",
+            "lang": "en",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+        },
+        {
+            "target": "JavaScript",
+            "keyword": "javascript|js|じゃゔぁscりpt",
+            "kind": "homepage",
+            "lang": "ja",
+            "url": "https://developer.mozilla.org/ja/docs/Web/JavaScript"
+        },
+        {
+            "target": "JavaScript",
+            "keyword": "javascript|js|じゃゔぁscりpt",
+            "kind": "doc",
+            "lang": "en",
+            "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+        },
+        {
+            "target": "JavaScript",
+            "keyword": "javascript|js|じゃゔぁscりpt",
+            "kind": "doc",
+            "lang": "ja",
+            "url": "https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference"
+        },
+        {
+            "target": "JavaScript",
+            "keyword": "javascript|js|じゃゔぁscりpt",
+            "kind": "search_by_doc",
+            "lang": "en",
+            "url": "https://developer.mozilla.org/en-US/search?q={}"
+        },
+        {
+            "target": "JavaScript",
+            "keyword": "javascript|js|じゃゔぁscりpt",
+            "kind": "search_by_doc",
+            "lang": "ja",
+            "url": "https://developer.mozilla.org/ja/search?q={}"
         }
     ]
 }

@@ -22,7 +22,10 @@
         </button>
       </div>
     </div>
-    <div class="pt-2 text-base text-red-600">TODO: エラーの表示</div>
+    <div class="pt-2 text-base whitespace-pre-wrap">{{ messages }}</div>
+    <div class="pt-2 text-base text-red-600 whitespace-pre-wrap">
+      TODO: エラーの表示
+    </div>
   </div>
   <div class="mt-5 mb-2 text-lg">Recipes</div>
   <div class="mb-5 shadow rounded-lg w-full">
@@ -71,11 +74,12 @@ import InputText from "@/components/InputText.vue";
 import InputSelect from "@/components/InputSelect.vue";
 import iconTrash from "@/components/icons/iconTrash.vue";
 import iconUpload from "@/components/icons/iconUpload.vue";
-import { checkRecipeList, setRecipe } from "@/composables/setRecipe.js";
+import { checkRecipeJson, setRecipe } from "@/composables/setRecipe.js";
 export default {
   components: { InputText, InputSelect, iconTrash, iconUpload },
   setup() {
     const options = ["homepage", "doc", "search by doc"];
+    const messages = ref("");
     const newTarget = ref("");
     const newLang = ref("");
     const newKeyword = ref("");
@@ -96,10 +100,11 @@ export default {
 
     const resetRecipes = () => {
       chrome.storage.local.clear();
-      const json = require("@/assets/official-info.json");
-      let localRecipes = checkRecipeList(json);
-      setRecipe(localRecipes);
-      recipes.value = localRecipes;
+      const json = require("@/assets/default_recipes.csv");
+      let resRecipes = checkRecipeJson(json);
+      setRecipe(resRecipes.recipes);
+      recipes.value = resRecipes.recipes;
+      messages.value = "The recipe has been reset.";
       console.log("reset");
     };
 
@@ -114,10 +119,12 @@ export default {
       console.log("Keyword:" + newKeyword.value);
       console.log("Kind:" + newKind.value);
       console.log("URL:" + newURL.value);
+      console.log(JSON.stringify(recipes.value));
       // TODO: ここで入力欄KindとURLのリセット
     };
     return {
       options,
+      messages,
       newTarget,
       newLang,
       newKeyword,
