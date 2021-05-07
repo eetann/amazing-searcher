@@ -24,7 +24,7 @@
     </div>
     <div class="pt-2 text-base whitespace-pre-wrap">{{ messages }}</div>
     <div class="pt-2 text-base text-red-600 whitespace-pre-wrap">
-      TODO: エラーの表示
+      {{ errorMessages }}
     </div>
   </div>
   <div class="mt-5 mb-2 text-lg">Recipes</div>
@@ -74,12 +74,17 @@ import InputText from "@/components/InputText.vue";
 import InputSelect from "@/components/InputSelect.vue";
 import iconTrash from "@/components/icons/iconTrash.vue";
 import iconUpload from "@/components/icons/iconUpload.vue";
-import { checkRecipeJson, setRecipe } from "@/composables/setRecipe.js";
+import {
+  checkRecipe,
+  checkRecipeJson,
+  setRecipe,
+} from "@/composables/setRecipe.js";
 export default {
   components: { InputText, InputSelect, iconTrash, iconUpload },
   setup() {
     const options = ["homepage", "doc", "search by doc"];
     const messages = ref("");
+    const errorMessages = ref("");
     const newTarget = ref("");
     const newLang = ref("");
     const newKeyword = ref("");
@@ -99,32 +104,55 @@ export default {
     });
 
     const resetRecipes = () => {
+      errorMessages.value = "";
       chrome.storage.local.clear();
       const json = require("@/assets/default_recipes.csv");
       let resRecipes = checkRecipeJson(json);
       setRecipe(resRecipes.recipes);
       recipes.value = resRecipes.recipes;
       messages.value = "The recipe has been reset.";
-      console.log("reset");
     };
 
     const removeRecipe = (recipeId) => {
+      // clear messages
+      errorMessages.value = "";
       recipes.value.splice(recipeId, 1);
       setRecipe(recipes.value);
+      messages.value = "The recipe has been deleted";
     };
     const addRecipe = () => {
-      // TODO: ここでチェック
-      console.log("Target:" + newTarget.value);
-      console.log("Lang:" + newLang.value);
-      console.log("Keyword:" + newKeyword.value);
-      console.log("Kind:" + newKind.value);
-      console.log("URL:" + newURL.value);
-      console.log(JSON.stringify(recipes.value));
-      // TODO: ここで入力欄KindとURLのリセット
+      // clear messages
+      errorMessages.value = "";
+      messages.value = "";
+
+      let newRecipe = {
+        target: newTarget.value,
+        lang: newLang.value,
+        keyword: newKeyword.value,
+        kind: newKind.value,
+        url: newURL.value,
+      };
+
+      // check recipe
+      try {
+        checkRecipe(newRecipe);
+      } catch (e) {
+        errorMessages.value = "Error :" + e;
+        return;
+      }
+
+      // add new recipe
+      recipes.value.push(newRecipe);
+      setRecipe(recipes.value);
+      messages.value = "The new recipe has been added!";
+
+      // clear the value of 'url'
+      newURL.value = "";
     };
     return {
       options,
       messages,
+      errorMessages,
       newTarget,
       newLang,
       newKeyword,

@@ -1,59 +1,50 @@
-function checkElement(element) {
-  // check for correct formant of element of recipe
-  return ("lang" in element &&
-    typeof element.lang == "string" &&
-    "url" in element &&
-    typeof element.url == "string")
-}
-
-function checkRecipe(recipe) {
+export function checkRecipe(recipe) {
   // check for correct recipe format
   // check 'target'
   if (!recipe.target) {
-    throw "The value of the 'target' key is empty."
+    throw "The value of the 'target' key is empty.\n"
   }
 
   // The 'lang' key can be empty, so don't check it.
 
   // check 'keyword'
   if (!recipe.keyword) {
-    throw "The value of the 'keyword' key is empty."
+    throw "The value of the 'keyword' key is empty.\n"
   }
   // check the regular expression
   try {
     new RegExp(recipe.keyword);
   } catch (e) {
-    throw "The regular expression for the 'lang' key " + recipe.keyword + " is wrong."
+    throw "The regular expression for the 'lang' key " + recipe.keyword + " is wrong.\n"
   }
 
   // check 'kind'
   if (!recipe.kind) {
-    throw "The value of the 'kind' key is empty."
+    throw "The value of the 'kind' key is empty.\n"
   }
 
   // check 'URL'
   if (!recipe.url) {
-    throw "The value of the 'url' key is empty."
+    throw "The value of the 'url' key is empty.\n"
   }
-  return true
 }
 
 export function checkRecipeJson(resjson) {
   // check for correct 'recipe list' format
   if (!Array.isArray(resjson)) {
-    throw "There is no recipe list.";
+    throw "There is no recipe list.\n";
   }
 
   // get recipes
   let errorMsg = "";
   let recipes = resjson.filter((recipe, idx) => {
-    let correctRecipe = false;
     try {
-      correctRecipe = checkRecipe(recipe);
+      checkRecipe(recipe);
     } catch (e) {
-      errorMsg += "Eoor in recipe at index " + idx + ":" + e + "\n";
+      errorMsg += "Error in recipe at index " + idx + ":" + e + "\n";
+      return false
     }
-    return correctRecipe
+    return true
   });
   return {recipes: recipes, errorMsg: errorMsg}
 }
