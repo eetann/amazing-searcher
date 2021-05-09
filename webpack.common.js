@@ -23,7 +23,7 @@ module.exports = {
     alias: {
       "@": path.resolve(__dirname, './src')
     },
-    extensions: ['.js', '.vue', '.json']
+    extensions: ['.js', '.vue']
   },
   module: {
     rules: [
@@ -51,9 +51,12 @@ module.exports = {
         },
       },
       {
-        test: /\.json$/,
-        type: 'javascript/auto',
-        loader: 'json-loader',
+        test: /\.csv$/,
+        loader: 'csv-loader',
+        options: {
+          header: true,
+          skipEmptyLines: true
+        }
       },
     ],
   },

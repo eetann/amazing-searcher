@@ -1,19 +1,18 @@
 {
-    "manifest_version": 3,
-    "name": "AmazingSearcher",
-    "version": "0.1.0",
-    "description": "Add useful infomation at result of Google Search",
-    "author": "eetann",
-    "content_scripts": [
-        {
-            "matches": ["https://www.google.com/search?*"],
-            "css": ["chunk.css"],
-            "js": ["chunk.js", "content.js"]
-        }
-    ],
-    "options_page": "options.html",
-    "web_accessible_resources": [{
-        "resources": ["/imgs/*"],
-        "matches": []
-        }]
+  "manifest_version": 3,
+  "name": "AmazingSearcher",
+  "version": "0.1.0",
+  "description": "Add useful infomation at result of Google Search",
+  "author": "eetann",
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/search?*"],
+      "css": ["chunk.css"],
+      "js": ["chunk.js", "content.js"]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "options_page": "options.html"
 }
