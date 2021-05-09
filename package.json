@@ -3,39 +3,40 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service build --mode=development --watch",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "NODE_ENV=development webpack --config=webpack.dev.js --mode=development",
+    "build": "webpack --config webpack.prod.js"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
+    "core-js": "^3.8.3",
+    "csv-loader": "^3.0.3",
+    "socket.io": "^3.1.2",
     "vue": "^3.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.3",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-babel": "^4.5.11",
+    "@vue/cli-plugin-eslint": "^4.5.11",
+    "@vue/cli-service": "^4.5.11",
     "@vue/compiler-sfc": "^3.0.0",
     "autoprefixer": "^9.8.6",
     "babel-eslint": "^10.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0",
-    "html-loader": "^1.3.2",
+    "eslint-plugin-vue": "^7.5.0",
+    "json-loader": "^0.5.7",
     "postcss": "^7.0.35",
+    "postcss-prefix-selector": "^1.7.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3",
     "vue-loader": "^16.1.2",
-    "vue-template-compiler": "^2.6.12",
-    "webpack-cli": "^4.4.0",
-    "webpack-extension-reloader": "^1.1.4",
+    "webpack-cli": "^4.5.0",
     "zip-webpack-plugin": "^4.0.1"
   },
   "eslintConfig": {
     "root": true,
     "env": {
       "node": true,
-      "browser": true
+      "browser": true,
+      "webextensions": true
     },
     "extends": [
       "plugin:vue/vue3-essential",
@@ -45,6 +46,9 @@
       "parser": "babel-eslint"
     },
     "rules": {}
+  },
+  "browser": {
+    "fs": false
   },
   "browserslist": [
     "> 1%",
