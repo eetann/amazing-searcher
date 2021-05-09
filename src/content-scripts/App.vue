@@ -1,11 +1,6 @@
 <template>
   <div class="flex flex-col border rounded-lg border-gray-300">
-    <Suspense>
-      <template #default>
-        <MyRecipes />
-      </template>
-      <template #fallback> Loading... </template>
-    </Suspense>
+    <MyRecipes></MyRecipes>
   </div>
 </template>
 
