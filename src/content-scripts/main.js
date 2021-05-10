@@ -23,6 +23,8 @@ amzSchRoot.style.marginLeft = `${amzSchRoolMl}px`;
 
 let rhs = document.getElementById('rhs');
 if (rhs) {
+  let rhsStyle = window.getComputedStyle(rhs);
+  amzSchRoot.style.marginLeft = rhsStyle.marginLeft;
   rhs.insertAdjacentElement('beforebegin', amzSchRoot);
 } else {
   // make dummy div for position adjustment
