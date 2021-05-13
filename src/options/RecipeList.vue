@@ -27,7 +27,9 @@
         <button type="button" class="my-button">Import</button>
       </div>
       <div class="w-24">
-        <button type="button" class="my-button">Export</button>
+        <button type="button" class="my-button" @click="exportCSV">
+          Export
+        </button>
       </div>
     </div>
     <div class="mb-5 shadow rounded-lg w-full">
@@ -151,6 +153,35 @@ export default {
       // clear the value of 'url'
       newURL.value = "";
     };
+
+    const exportCSV = () => {
+      let csvStr = '"target","lang","keyword","kind","url"\n';
+      csvStr += recipes.value
+        .map((recipe) => {
+          return (
+            '"' +
+            recipe.target +
+            '","' +
+            recipe.lang +
+            '","' +
+            recipe.keyword +
+            '","' +
+            recipe.kind +
+            '","' +
+            recipe.url +
+            '"'
+          );
+        })
+        .join("\n");
+      const blob = new Blob([csvStr], { type: "text/csv" });
+      const dlURL = window.URL.createObjectURL(blob);
+      const aTagDl = document.createElement("a");
+      aTagDl.href = dlURL;
+      aTagDl.download = "amazing-searcher-recipes.csv";
+      aTagDl.click();
+      window.URL.revokeObjectURL(dlURL);
+    };
+
     return {
       options,
       messages,
@@ -165,6 +196,7 @@ export default {
       resetRecipes,
       removeRecipe,
       addRecipe,
+      exportCSV,
     };
   },
 };
