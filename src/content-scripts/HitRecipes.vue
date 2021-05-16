@@ -1,6 +1,6 @@
 <template>
   <div
-    class="m-4 text-2xl"
+    class="mx-4 mb-4 text-2xl"
     v-for="(targets, targetName) in showHitRecipes"
     :key="targetName"
   >
