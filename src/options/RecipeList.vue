@@ -24,7 +24,9 @@
     <div class="mt-5 mb-2 text-lg font-semibold">Recipes</div>
     <div class="flex space-x-4 my-4">
       <div class="w-24">
-        <button type="button" class="my-button">Import</button>
+        <button type="button" class="my-button" @click="importCSV">
+          Import
+        </button>
       </div>
       <div class="w-24">
         <button type="button" class="my-button" @click="exportCSV">
@@ -108,6 +110,7 @@ export default {
     });
 
     const resetRecipes = () => {
+      messages.value = "";
       errorMessages.value = "";
       chrome.storage.local.clear();
       const json = require("@/assets/default_recipes.csv");
@@ -155,21 +158,19 @@ export default {
     };
 
     const exportCSV = () => {
-      let csvStr = '"target","lang","keyword","kind","url"\n';
+      let csvStr = "target,lang,keyword,kind,url\n";
       csvStr += recipes.value
         .map((recipe) => {
           return (
-            '"' +
             recipe.target +
-            '","' +
+            "," +
             recipe.lang +
-            '","' +
+            "," +
             recipe.keyword +
-            '","' +
+            "," +
             recipe.kind +
-            '","' +
-            recipe.url +
-            '"'
+            "," +
+            recipe.url
           );
         })
         .join("\n");
@@ -180,6 +181,55 @@ export default {
       aTagDl.download = "amazing-searcher-recipes.csv";
       aTagDl.click();
       window.URL.revokeObjectURL(dlURL);
+    };
+
+    const importCSV = () => {
+      // clear messages
+      errorMessages.value = "";
+      messages.value = "";
+
+      // read csv file
+      const input = document.createElement("input");
+      input.type = "file";
+      input.accept = ".csv";
+      input.onchange = (e) => {
+        let errorMsg = "";
+        const fileName = e.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (readerEvent) => {
+          let csvRow = readerEvent.target.result.split("\n");
+          let csvRecipes = [];
+          for (let i = 1; i < csvRow.length; i++) {
+            // TODO: ,が文字列に含まれていた場合の対処
+            // TODO: 前後に空白が文字列に含まれていた場合の対処
+            let row = csvRow[i].split(",");
+            if (row.length != 5) {
+              errorMsg +=
+                "Error at index " + idx + ": Recipe elements are missing.\n";
+              continue;
+            }
+            let newRecipe = {
+              target: row[0],
+              lang: row[1],
+              keyword: row[2],
+              kind: row[3],
+              url: row[4],
+            };
+            try {
+              checkRecipe(newRecipe);
+            } catch (e) {
+              errorMsg += "Error at index " + idx + ":" + e + "\n";
+            }
+            csvRecipes.push(newRecipe);
+          }
+          recipes.value.push(...csvRecipes);
+          setRecipe(recipes.value);
+          messages.value = "The new recipes have been added!";
+          errorMessages.value = errorMsg;
+        };
+        reader.readAsText(fileName);
+      };
+      input.click();
     };
 
     return {
@@ -197,6 +247,7 @@ export default {
       removeRecipe,
       addRecipe,
       exportCSV,
+      importCSV,
     };
   },
 };
