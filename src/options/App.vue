@@ -7,7 +7,7 @@
 
 <script>
 import { ref } from "vue";
-import RecipeList from "@/components/RecipeList.vue";
+import RecipeList from "@/options/RecipeList.vue";
 export default {
   components: {
     RecipeList,
