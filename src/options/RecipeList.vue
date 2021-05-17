@@ -112,7 +112,6 @@ export default {
     const resetRecipes = () => {
       messages.value = "";
       errorMessages.value = "";
-      chrome.storage.local.clear();
       const json = require("@/assets/default_recipes.csv");
       let resRecipes = checkRecipeJson(json);
       setRecipe(resRecipes.recipes);
@@ -252,15 +251,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.my-button {
-  @apply py-2 px-4 bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg;
-}
-.table-head-th > tr > *,
-.table-body-td > tr > *,
-.table-out-div > * {
-  @apply px-5 py-1 text-left text-base;
-}
-</style>
-

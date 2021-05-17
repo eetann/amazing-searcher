@@ -1,13 +1,13 @@
 <template>
   <div class="w-96 mx-4 mt-4 text-base">
-    Within
+    Term
     <div class="flex flex-wrap">
       <a
-        v-for="(withinStr, id) in withinRef"
-        :key="id"
-        :href="getWithinLink(withinStr)"
+        v-for="term in showTerms"
+        :key="term.id"
+        :href="getTermLink(term.str)"
         class="m-1 h-8 inline-flex items-center px-2 text-blue-600 ring-1 ring-blue-600 rounded-md"
-        >{{ withinStr }}</a
+        >{{ term.str }}</a
       >
     </div>
   </div>
@@ -26,34 +26,38 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 export default {
   setup() {
-    const withinRef = ref([
-      "all",
-      "h3",
-      "d1",
-      "w1",
-      "m1",
-      "m3",
-      "m6",
-      "y1",
-      "y2",
-      "y3",
-    ]);
+    // TODO: 何があってもallは最初から加える
+    const termRef = ref([]);
+    chrome.storage.local.get("terms", (result) => {
+      // join terms
+      if (typeof result.terms !== "undefined") {
+        termRef.value.push(...JSON.parse(result.terms));
+      }
+    });
     const langRef = ref(["lang_en", "lang_ja"]);
     let nowURL = new URL(document.location);
     let paramQ = nowURL.searchParams.get("q");
     let paramAs_qdr = nowURL.searchParams.get("as_qdr");
     let paramLr = nowURL.searchParams.get("lr");
     let qLink = nowURL.toString().replace(/\?.*$/, "") + "?q=" + paramQ;
-    const getWithinLink = (withinStr) => {
-      let withinLink = qLink + "&as_qdr=" + withinStr;
+
+    const showTerms = computed(() => {
+      let terms = [{ id: -1, str: "all", unit: "", num: 0 }];
+      terms.push(...termRef.value);
+      return terms;
+    });
+
+    const getTermLink = (termStr) => {
+      let termLink = qLink + "&as_qdr=" + termStr;
       if (paramLr) {
-        withinLink += "&lr=" + paramLr;
+        termLink += "&lr=" + paramLr;
       }
-      return withinLink;
+      return termLink;
     };
+
     const getLangLink = (langStr) => {
       let langLink = qLink + "&lr=" + langStr;
       if (paramAs_qdr) {
@@ -61,7 +65,8 @@ export default {
       }
       return langLink;
     };
-    return { withinRef, langRef, getWithinLink, getLangLink };
+
+    return { termRef, langRef, showTerms, getTermLink, getLangLink };
   },
 };
 </script>
