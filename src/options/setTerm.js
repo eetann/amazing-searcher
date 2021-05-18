@@ -34,6 +34,10 @@ export function checkTermJson(resjson) {
     }
     return true
   });
+  terms = terms.map(term => {
+    term.str = term.unit + String(term.num)
+    return term
+  })
   return {terms: terms, errorMsg: errorMsg}
 }
 
@@ -51,11 +55,11 @@ export function setTerm(terms) {
   let termId = 0;
   newTerms = newTerms.map((term) => {
     term.id = termId;
-    term.str = term.unit + String(term.num);
     termId++;
     return term;
   });
   chrome.storage.local.set({
     terms: JSON.stringify(newTerms),
   });
+  return newTerms
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="mt-5">
     <div class="text-lg font-semibold">Term</div>
-    <div class="flex space-x-4 items-end">
+    <div class="flex items-end space-x-4">
       <InputText label="Number" type="text" v-model="newNumber"></InputText>
       <InputSelect
         label="Unit"
@@ -19,7 +19,7 @@
   </div>
   <div>
     <div class="mt-5 mb-2 text-lg font-semibold">Term List</div>
-    <div class="flex space-x-4 my-4">
+    <div class="flex my-4 space-x-4">
       <div class="w-24">
         <button type="button" class="my-button" @click="importCSV">
           Import
@@ -31,17 +31,17 @@
         </button>
       </div>
     </div>
-    <div class="mb-5 shadow rounded-lg w-72">
-      <table class="divide-y divide-gray-200 w-full table-fixed">
+    <div class="mb-5 rounded-lg shadow w-72">
+      <table class="w-full table-fixed divide-y divide-gray-200">
         <thead class="bg-gray-50 table-head-th">
-          <tr class="text-left font-medium">
+          <tr class="font-medium text-left">
             <th class="w-2/3">Term</th>
             <th class="w-1/3">Remove</th>
           </tr>
         </thead>
         <tbody class="text-base divide-y divide-gray-200 table-body-td">
           <tr v-for="term in showTerms" :key="term.id">
-            <td>{{ term.str }}</td>
+            <td>{{ term.within }}</td>
             <td>
               <iconTrash
                 class="cursor-pointer"
@@ -103,7 +103,7 @@ export default {
             unit = "month(s)";
             break;
         }
-        term.str = term.num + " " + unit;
+        term.within = term.num + " " + unit;
         return term;
       });
     });
@@ -113,16 +113,17 @@ export default {
       errorMessages.value = "";
       const json = require("@/assets/default_terms.csv");
       let resTerms = checkTermJson(json);
-      setTerm(resTerms.terms);
-      terms.value = resTerms.terms;
+      let newTerms = setTerm(resTerms.terms);
+      terms.value = newTerms;
       messages.value = "The 'term' has been reset.";
     };
 
     const removeTerm = (termId) => {
       // clear messages
       errorMessages.value = "";
-      terms.value.splice(termId, 1);
-      setTerm(terms.value);
+      let newTerms = terms.value.filter((term) => term.id != termId);
+      newTerms = setTerm(newTerms);
+      terms.value = newTerms;
       messages.value = "The 'term' has been deleted";
     };
 
@@ -134,6 +135,7 @@ export default {
       let newTerm = {
         unit: newUnit.value,
         num: newNumber.value,
+        str: newUnit.value + String(newNumber.value),
       };
 
       // check term
@@ -145,8 +147,10 @@ export default {
       }
 
       // add new term
-      terms.value.push(newTerm);
-      setTerm(terms.value);
+      let newTerms = [newTerm];
+      newTerms.push(...terms.value);
+      newTerms = setTerm(newTerms);
+      terms.value = newTerms;
       messages.value = "The new 'term' has been added!";
 
       // clear the value of 'number'
