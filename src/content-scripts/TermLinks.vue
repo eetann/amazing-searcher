@@ -1,0 +1,52 @@
+<template>
+  <div class="w-96 mx-4 mt-4 text-base">
+    Term
+    <div class="flex flex-wrap">
+      <a
+        v-for="term in showTerms"
+        :key="term.id"
+        :href="getTermLink(term.str)"
+        class="m-1 h-8 inline-flex items-center px-2 text-blue-600 ring-1 ring-blue-600 rounded-md"
+        >{{ term.str }}</a
+      >
+    </div>
+  </div>
+</template>
+
+<script>
+import { ref, computed } from "vue";
+export default {
+  setup() {
+    const termRef = ref([]);
+    chrome.storage.local.get("terms", (result) => {
+      // join terms
+      if (typeof result.terms !== "undefined") {
+        termRef.value.push(...JSON.parse(result.terms));
+      }
+    });
+    let nowURL = new URL(document.location);
+    let paramQ = nowURL.searchParams.get("q");
+    let paramLr = nowURL.searchParams.get("lr");
+    let qLink = nowURL.toString().replace(/\?.*$/, "") + "?q=" + paramQ;
+
+    const showTerms = computed(() => {
+      let terms = [{ id: -1, str: "all", unit: "", num: 0 }];
+      terms.push(...termRef.value);
+      return terms;
+    });
+
+    const getTermLink = (termStr) => {
+      let termLink = qLink;
+      if (termStr != "all") {
+        termLink += "&tbs=qdr:" + termStr;
+      }
+      if (paramLr) {
+        termLink += "&lr=" + paramLr;
+      }
+      return termLink;
+    };
+
+    return { termRef, showTerms, getTermLink };
+  },
+};
+</script>

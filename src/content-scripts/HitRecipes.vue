@@ -37,14 +37,12 @@
 
 <script>
 import { ref, computed } from "vue";
-import WithinButtons from "@/content-scripts/WithinButtons.vue";
 import iconBadgeCheck from "@/components/icons/iconBadgeCheck.vue";
 import iconDocumentText from "@/components/icons/iconDocumentText.vue";
 import iconDocumentSearch from "@/components/icons/iconDocumentSearch.vue";
 import iconSearch from "@/components/icons/iconSearch.vue";
 export default {
   components: {
-    WithinButtons,
     iconBadgeCheck,
     iconDocumentText,
     iconDocumentSearch,
