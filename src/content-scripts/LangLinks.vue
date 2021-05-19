@@ -16,7 +16,8 @@
 <script>
 import { ref, computed } from "vue";
 export default {
-  setup() {
+  props: ["qLink", "paramTbs"],
+  setup(props) {
     const langRef = ref([]);
 
     chrome.storage.local.get("langs", (result) => {
@@ -26,12 +27,6 @@ export default {
       }
     });
 
-    let nowURL = new URL(document.location);
-    let paramQ = nowURL.searchParams.get("q");
-    let paramTbs = nowURL.searchParams.get("tbs");
-    let paramLr = nowURL.searchParams.get("lr");
-    let qLink = nowURL.toString().replace(/\?.*$/, "") + "?q=" + paramQ;
-
     const showLangs = computed(() => {
       let langs = [{ id: -1, str: "all" }];
       langs.push(...langRef.value);
@@ -39,12 +34,12 @@ export default {
     });
 
     const getLangLink = (langStr) => {
-      let langLink = qLink;
+      let langLink = props.qLink;
       if (langStr != "all") {
         langLink += "&lr=" + langStr;
       }
-      if (paramTbs) {
-        langLink += "&tbs=qdr:" + paramTbs;
+      if (props.paramTbs) {
+        langLink += "&tbs=qdr:" + props.paramTbs;
       }
       return langLink;
     };

@@ -48,12 +48,9 @@ export default {
     iconDocumentSearch,
     iconSearch,
   },
-  setup() {
+  props: ["paramQ"],
+  setup(props) {
     const hitRecipesRef = ref({});
-    // get the query for the current search result
-    var queryString = window.location.search;
-    let params = new URLSearchParams(queryString);
-    let param_q = params.get("q");
 
     // get recipes
     chrome.storage.local.get("recipes", (result) => {
@@ -67,12 +64,12 @@ export default {
             "(^|\\s)(" + recipe.keyword + ")(\\s|$)",
             "i"
           );
-          if (!regex_q.test(param_q)) {
+          if (!regex_q.test(props.paramQ)) {
             continue;
           }
           // delete and replace keyword from the query to add 'Search by'
           const regex_r = new RegExp(recipe.keyword, "i");
-          recipe.keyword = param_q.replace(regex_r, "").trim();
+          recipe.keyword = props.paramQ.replace(regex_r, "").trim();
 
           if (!(recipe.target in hitRecipes)) {
             hitRecipes[recipe.target] = {
