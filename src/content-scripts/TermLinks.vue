@@ -26,7 +26,6 @@ export default {
     });
     let nowURL = new URL(document.location);
     let paramQ = nowURL.searchParams.get("q");
-    let paramAs_qdr = nowURL.searchParams.get("as_qdr");
     let paramLr = nowURL.searchParams.get("lr");
     let qLink = nowURL.toString().replace(/\?.*$/, "") + "?q=" + paramQ;
 
@@ -37,7 +36,10 @@ export default {
     });
 
     const getTermLink = (termStr) => {
-      let termLink = qLink + "&as_qdr=" + termStr;
+      let termLink = qLink;
+      if (termStr != "all") {
+        termLink += "&tbs=qdr:" + termStr;
+      }
       if (paramLr) {
         termLink += "&lr=" + paramLr;
       }

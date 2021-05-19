@@ -28,7 +28,7 @@ export default {
 
     let nowURL = new URL(document.location);
     let paramQ = nowURL.searchParams.get("q");
-    let paramAs_qdr = nowURL.searchParams.get("as_qdr");
+    let paramTbs = nowURL.searchParams.get("tbs");
     let paramLr = nowURL.searchParams.get("lr");
     let qLink = nowURL.toString().replace(/\?.*$/, "") + "?q=" + paramQ;
 
@@ -43,8 +43,8 @@ export default {
       if (langStr != "all") {
         langLink += "&lr=" + langStr;
       }
-      if (paramAs_qdr) {
-        langLink += "&as_qdr=" + paramAs_qdr;
+      if (paramTbs) {
+        langLink += "&tbs=qdr:" + paramTbs;
       }
       return langLink;
     };
