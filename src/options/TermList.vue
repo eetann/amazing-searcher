@@ -69,7 +69,14 @@ import { checkTerm, checkTermJson, setTerm } from "@/options/setTerm.js";
 export default {
   components: { InputText, InputSelect, iconTrash },
   setup() {
-    const options = ["n", "h", "d", "w", "m", "y"];
+    const options = [
+      { key: "minute(s)", value: "n" },
+      { key: "hour(s)", value: "h" },
+      { key: "day(s)", value: "d" },
+      { key: "week(s)", value: "w" },
+      { key: "month(s)", value: "m" },
+      { key: "year(s)", value: "y" },
+    ];
     const messages = ref("");
     const errorMessages = ref("");
     const newUnit = ref("");

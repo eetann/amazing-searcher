@@ -2,7 +2,11 @@
   <div class="mt-5">
     <div class="text-lg font-semibold">Lang</div>
     <div class="flex space-x-4 items-end">
-      <InputText label="Lang" type="text" v-model="newLang"></InputText>
+      <InputSelect
+        label="Lang"
+        :options="options"
+        v-model="newLang"
+      ></InputSelect>
       <div class="w-24">
         <button type="button" class="my-button" @click="addLang">Add</button>
       </div>
@@ -42,12 +46,49 @@
 
 <script>
 import { ref, computed } from "vue";
-import InputText from "@/options/InputText.vue";
+import InputSelect from "@/options/InputSelect.vue";
 import iconTrash from "@/components/icons/iconTrash.vue";
 import { setLang } from "@/options/setLang.js";
 export default {
-  components: { InputText, iconTrash },
+  components: { InputSelect, iconTrash },
   setup() {
+    const options = [
+      { key: "Arabic", value: "lang_ar" },
+      { key: "Bulgarian", value: "lang_bg" },
+      { key: "Catalan", value: "lang_ca" },
+      { key: "Chinese (Simplified)", value: "lang_zh-CN" },
+      { key: "Chinese (Traditional)", value: "lang_zh-TW" },
+      { key: "Croatian", value: "lang_hr" },
+      { key: "Czech", value: "lang_cs" },
+      { key: "Danish", value: "lang_da" },
+      { key: "Dutch", value: "lang_nl" },
+      { key: "English", value: "lang_en" },
+      { key: "Estonian", value: "lang_et" },
+      { key: "Finnish", value: "lang_fi" },
+      { key: "French", value: "lang_fr" },
+      { key: "German", value: "lang_de" },
+      { key: "Greek", value: "lang_el" },
+      { key: "Hebrew", value: "lang_iw" },
+      { key: "Hungarian", value: "lang_hu" },
+      { key: "Icelandic", value: "lang_is" },
+      { key: "Indonesian", value: "lang_id" },
+      { key: "Italian", value: "lang_it" },
+      { key: "Japanese", value: "lang_ja" },
+      { key: "Korean", value: "lang_ko" },
+      { key: "Latvian", value: "lang_lv" },
+      { key: "Lithuanian", value: "lang_lt" },
+      { key: "Norwegian", value: "lang_no" },
+      { key: "Polish", value: "lang_pl" },
+      { key: "Portuguese", value: "lang_pt" },
+      { key: "Romanian", value: "lang_ro" },
+      { key: "Russian", value: "lang_ru" },
+      { key: "Serbian", value: "lang_sr" },
+      { key: "Slovak", value: "lang_sk" },
+      { key: "Slovenian", value: "lang_sl" },
+      { key: "Spanish", value: "lang_es" },
+      { key: "Swedish", value: "lang_sv" },
+      { key: "Turkish", value: "lang_tr" },
+    ];
     const messages = ref("");
     const newLang = ref("");
     // get storage.local lang
@@ -98,6 +139,7 @@ export default {
     };
 
     return {
+      options,
       messages,
       newLang,
       langs,

@@ -88,7 +88,11 @@ import {
 export default {
   components: { InputText, InputSelect, iconTrash },
   setup() {
-    const options = ["homepage", "doc", "search by doc"];
+    const options = [
+      { key: "Hopepage", value: "homepage" },
+      { key: "Document", value: "doc" },
+      { key: "Search By Document", value: "search by doc" },
+    ];
     const messages = ref("");
     const errorMessages = ref("");
     const newTarget = ref("");
