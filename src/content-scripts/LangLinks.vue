@@ -5,7 +5,7 @@
       <a
         v-for="lang in showLangs"
         :key="lang.id"
-        :href="getLangLink(lang.str)"
+        :href="getLangLink(lang.param)"
         class="m-1 h-8 inline-flex items-center px-2 text-blue-600 ring-1 ring-blue-600 rounded-md"
         >{{ lang.str }}</a
       >
@@ -16,7 +16,8 @@
 <script>
 import { ref, computed } from "vue";
 export default {
-  setup() {
+  props: ["qLink", "paramTbs"],
+  setup(props) {
     const langRef = ref([]);
 
     chrome.storage.local.get("langs", (result) => {
@@ -26,25 +27,19 @@ export default {
       }
     });
 
-    let nowURL = new URL(document.location);
-    let paramQ = nowURL.searchParams.get("q");
-    let paramTbs = nowURL.searchParams.get("tbs");
-    let paramLr = nowURL.searchParams.get("lr");
-    let qLink = nowURL.toString().replace(/\?.*$/, "") + "?q=" + paramQ;
-
     const showLangs = computed(() => {
-      let langs = [{ id: -1, str: "all" }];
+      let langs = [{ id: -1, param: "all", str: "all" }];
       langs.push(...langRef.value);
       return langs;
     });
 
-    const getLangLink = (langStr) => {
-      let langLink = qLink;
-      if (langStr != "all") {
-        langLink += "&lr=" + langStr;
+    const getLangLink = (langParam) => {
+      let langLink = props.qLink;
+      if (langParam != "all") {
+        langLink += "&lr=" + langParam;
       }
-      if (paramTbs) {
-        langLink += "&tbs=qdr:" + paramTbs;
+      if (props.paramTbs) {
+        langLink += "&tbs=qdr:" + props.paramTbs;
       }
       return langLink;
     };

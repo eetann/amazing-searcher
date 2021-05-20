@@ -16,7 +16,8 @@
 <script>
 import { ref, computed } from "vue";
 export default {
-  setup() {
+  props: ["qLink", "paramLr"],
+  setup(props) {
     const termRef = ref([]);
     chrome.storage.local.get("terms", (result) => {
       // join terms
@@ -24,10 +25,6 @@ export default {
         termRef.value.push(...JSON.parse(result.terms));
       }
     });
-    let nowURL = new URL(document.location);
-    let paramQ = nowURL.searchParams.get("q");
-    let paramLr = nowURL.searchParams.get("lr");
-    let qLink = nowURL.toString().replace(/\?.*$/, "") + "?q=" + paramQ;
 
     const showTerms = computed(() => {
       let terms = [{ id: -1, str: "all", unit: "", num: 0 }];
@@ -36,12 +33,12 @@ export default {
     });
 
     const getTermLink = (termStr) => {
-      let termLink = qLink;
+      let termLink = props.qLink;
       if (termStr != "all") {
         termLink += "&tbs=qdr:" + termStr;
       }
-      if (paramLr) {
-        termLink += "&lr=" + paramLr;
+      if (props.paramLr) {
+        termLink += "&lr=" + props.paramLr;
       }
       return termLink;
     };

@@ -1,6 +1,6 @@
 <template>
   <div class="mt-5">
-    <div class="text-lg font-semibold">Term</div>
+    <div class="text-lg font-semibold">New Term</div>
     <div class="flex items-end space-x-4">
       <InputText label="Number" type="text" v-model="newNumber"></InputText>
       <InputSelect
@@ -18,7 +18,6 @@
     </div>
   </div>
   <div>
-    <div class="mt-5 mb-2 text-lg font-semibold">Term List</div>
     <div class="flex my-4 space-x-4">
       <div class="w-24">
         <button type="button" class="my-button" @click="importCSV">
@@ -35,8 +34,8 @@
       <table class="w-full table-fixed divide-y divide-gray-200">
         <thead class="bg-gray-50 table-head-th">
           <tr class="font-medium text-left">
-            <th class="w-2/3">Term</th>
-            <th class="w-1/3">Remove</th>
+            <th class="w-1/2">Term</th>
+            <th class="w-1/2">Remove</th>
           </tr>
         </thead>
         <tbody class="text-base divide-y divide-gray-200 table-body-td">
@@ -69,7 +68,14 @@ import { checkTerm, checkTermJson, setTerm } from "@/options/setTerm.js";
 export default {
   components: { InputText, InputSelect, iconTrash },
   setup() {
-    const options = ["n", "h", "d", "w", "m", "y"];
+    const options = [
+      { key: "minute(s)", value: "n" },
+      { key: "hour(s)", value: "h" },
+      { key: "day(s)", value: "d" },
+      { key: "week(s)", value: "w" },
+      { key: "month(s)", value: "m" },
+      { key: "year(s)", value: "y" },
+    ];
     const messages = ref("");
     const errorMessages = ref("");
     const newUnit = ref("");
@@ -135,7 +141,7 @@ export default {
       let newTerm = {
         unit: newUnit.value,
         num: newNumber.value,
-        str: newUnit.value + String(newNumber.value),
+        str: newUnit.value + newNumber.value,
       };
 
       // check term
@@ -201,6 +207,7 @@ export default {
             let newTerm = {
               unit: row[0],
               num: row[1],
+              str: row[0] + row[1],
             };
             try {
               checkTerm(newTerm);
@@ -209,8 +216,9 @@ export default {
             }
             csvTerms.push(newTerm);
           }
-          terms.value.push(...csvTerms);
-          setTerm(terms.value);
+          csvTerms.push(...terms.value);
+          csvTerms = setTerm(csvTerms);
+          terms.value = csvTerms;
           messages.value = "The new 'terms' have been added!";
           errorMessages.value = errorMsg;
         };

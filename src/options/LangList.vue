@@ -1,8 +1,12 @@
 <template>
   <div class="mt-5">
-    <div class="text-lg font-semibold">Lang</div>
+    <div class="text-lg font-semibold">New Lang</div>
     <div class="flex space-x-4 items-end">
-      <InputText label="Lang" type="text" v-model="newLang"></InputText>
+      <InputSelect
+        label="Lang"
+        :options="options"
+        v-model="newLang"
+      ></InputSelect>
       <div class="w-24">
         <button type="button" class="my-button" @click="addLang">Add</button>
       </div>
@@ -10,13 +14,12 @@
     <div class="pt-2 text-base whitespace-pre-wrap">{{ messages }}</div>
   </div>
   <div>
-    <div class="mt-5 mb-2 text-lg font-semibold">Lang List</div>
     <div class="mb-5 shadow rounded-lg w-72">
       <table class="divide-y divide-gray-200 w-full table-fixed">
         <thead class="bg-gray-50 table-head-th">
           <tr class="text-left font-medium">
-            <th class="w-2/3">Lang</th>
-            <th class="w-1/3">Remove</th>
+            <th class="w-1/2">Lang</th>
+            <th class="w-1/2">Remove</th>
           </tr>
         </thead>
         <tbody class="text-base divide-y divide-gray-200 table-body-td">
@@ -42,12 +45,53 @@
 
 <script>
 import { ref, computed } from "vue";
-import InputText from "@/options/InputText.vue";
+import InputSelect from "@/options/InputSelect.vue";
 import iconTrash from "@/components/icons/iconTrash.vue";
 import { setLang } from "@/options/setLang.js";
 export default {
-  components: { InputText, iconTrash },
+  components: { InputSelect, iconTrash },
   setup() {
+    const langList = {
+      lang_ar: "Arabic",
+      lang_bg: "Bulgarian",
+      lang_ca: "Catalan",
+      "lang_zh-CN": "Chinese (Simplified)",
+      "lang_zh-TW": "Chinese (Traditional)",
+      lang_hr: "Croatian",
+      lang_cs: "Czech",
+      lang_da: "Danish",
+      lang_nl: "Dutch",
+      lang_en: "English",
+      lang_et: "Estonian",
+      lang_fi: "Finnish",
+      lang_fr: "French",
+      lang_de: "German",
+      lang_el: "Greek",
+      lang_iw: "Hebrew",
+      lang_hu: "Hungarian",
+      lang_is: "Icelandic",
+      lang_id: "Indonesian",
+      lang_it: "Italian",
+      lang_ja: "Japanese",
+      lang_ko: "Korean",
+      lang_lv: "Latvian",
+      lang_lt: "Lithuanian",
+      lang_no: "Norwegian",
+      lang_pl: "Polish",
+      lang_pt: "Portuguese",
+      lang_ro: "Romanian",
+      lang_ru: "Russian",
+      lang_sr: "Serbian",
+      lang_sk: "Slovak",
+      lang_sl: "Slovenian",
+      lang_es: "Spanish",
+      lang_sv: "Swedish",
+      lang_tr: "Turkish",
+    };
+    const options = Object.entries(langList).map(([key, value]) => ({
+      key: value,
+      value: key,
+    }));
     const messages = ref("");
     const newLang = ref("");
     // get storage.local lang
@@ -66,8 +110,8 @@ export default {
     const resetLangs = () => {
       messages.value = "";
       let defaultLangs = [
-        { id: 0, str: "lang_en" },
-        { id: 1, str: "lang_ja" },
+        { id: 0, param: "lang_en", str: langList["lang_en"] },
+        { id: 1, param: "lang_ja", str: langList["lang_ja"] },
       ];
       let newLangs = setLang(defaultLangs);
       langs.value = newLangs;
@@ -87,7 +131,7 @@ export default {
       messages.value = "";
 
       // add new lang
-      let newLangs = [{ str: newLang.value }];
+      let newLangs = [{ param: newLang.value, str: langList[newLang.value] }];
       newLangs.push(...langs.value);
       newLangs = setLang(newLangs);
       langs.value = newLangs;
@@ -98,6 +142,7 @@ export default {
     };
 
     return {
+      options,
       messages,
       newLang,
       langs,

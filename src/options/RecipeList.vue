@@ -1,6 +1,6 @@
 <template>
   <div class="mt-5">
-    <div class="text-lg font-semibold">Add new recipe.</div>
+    <div class="text-lg font-semibold">New Recipe</div>
     <div class="flex space-x-4 items-end">
       <InputText label="Target" type="text" v-model="newTarget"></InputText>
       <InputText label="Lang" type="text" v-model="newLang"></InputText>
@@ -21,7 +21,6 @@
     </div>
   </div>
   <div>
-    <div class="mt-5 mb-2 text-lg font-semibold">Recipes</div>
     <div class="flex space-x-4 my-4">
       <div class="w-24">
         <button type="button" class="my-button" @click="importCSV">
@@ -88,7 +87,11 @@ import {
 export default {
   components: { InputText, InputSelect, iconTrash },
   setup() {
-    const options = ["homepage", "doc", "search by doc"];
+    const options = [
+      { key: "Homepage", value: "homepage" },
+      { key: "Document", value: "doc" },
+      { key: "Search By Document", value: "search by doc" },
+    ];
     const messages = ref("");
     const errorMessages = ref("");
     const newTarget = ref("");
@@ -114,16 +117,17 @@ export default {
       errorMessages.value = "";
       const json = require("@/assets/default_recipes.csv");
       let resRecipes = checkRecipeJson(json);
-      setRecipe(resRecipes.recipes);
-      recipes.value = resRecipes.recipes;
+      let newRecipes = setRecipe(resRecipes.recipes);
+      recipes.value = newRecipes;
       messages.value = "The recipe has been reset.";
     };
 
     const removeRecipe = (recipeId) => {
       // clear messages
       errorMessages.value = "";
-      recipes.value.splice(recipeId, 1);
-      setRecipe(recipes.value);
+      let newRecipes = recipes.value.filter((recipe) => recipe.id != recipeId);
+      newRecipes = setRecipe(newRecipes);
+      recipes.value = newRecipes;
       messages.value = "The recipe has been deleted";
     };
     const addRecipe = () => {
@@ -148,8 +152,10 @@ export default {
       }
 
       // add new recipe
-      recipes.value.push(newRecipe);
-      setRecipe(recipes.value);
+      let newRecipes = [newRecipe];
+      newRecipes.push(...recipes.value);
+      newRecipes = setRecipe(newRecipes);
+      recipes.value = newRecipes;
       messages.value = "The new recipe has been added!";
 
       // clear the value of 'url'
@@ -221,8 +227,9 @@ export default {
             }
             csvRecipes.push(newRecipe);
           }
-          recipes.value.push(...csvRecipes);
-          setRecipe(recipes.value);
+          csvRecipes.push(...recipes.value);
+          csvRecipes = setRecipe(csvRecipes);
+          recipes.value = csvRecipes;
           messages.value = "The new recipes have been added!";
           errorMessages.value = errorMsg;
         };

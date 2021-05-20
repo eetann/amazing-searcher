@@ -9,11 +9,11 @@
       >
         <option
           v-for="option in options"
-          :key="option"
-          :value="option"
-          :selected="option === modelValue"
+          :key="option.key"
+          :value="option.value"
+          :selected="option.value === modelValue"
         >
-          {{ option }}
+          {{ option.key }}
         </option>
       </select>
     </label>
@@ -25,7 +25,7 @@ import { onMounted } from "vue";
 export default {
   props: {
     label: String,
-    options: Array,
+    options: Object,
     modelValue: String,
   },
   setup(props, { emit }) {
@@ -33,7 +33,7 @@ export default {
       emit("update:modelValue", e.target.value);
     };
     onMounted(() => {
-      emit("update:modelValue", props.options[0]);
+      emit("update:modelValue", props.options[0].value);
     });
     return {
       inputHandler,
