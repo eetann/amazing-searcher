@@ -1,6 +1,6 @@
 <template>
   <div class="mt-5">
-    <div class="text-lg font-semibold">Add new recipe.</div>
+    <div class="text-lg font-semibold">New Recipe</div>
     <div class="flex space-x-4 items-end">
       <InputText label="Target" type="text" v-model="newTarget"></InputText>
       <InputText label="Lang" type="text" v-model="newLang"></InputText>
@@ -21,7 +21,6 @@
     </div>
   </div>
   <div>
-    <div class="mt-5 mb-2 text-lg font-semibold">Recipes</div>
     <div class="flex space-x-4 my-4">
       <div class="w-24">
         <button type="button" class="my-button" @click="importCSV">

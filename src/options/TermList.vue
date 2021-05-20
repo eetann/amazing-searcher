@@ -1,6 +1,6 @@
 <template>
   <div class="mt-5">
-    <div class="text-lg font-semibold">Term</div>
+    <div class="text-lg font-semibold">New Term</div>
     <div class="flex items-end space-x-4">
       <InputText label="Number" type="text" v-model="newNumber"></InputText>
       <InputSelect
@@ -18,7 +18,6 @@
     </div>
   </div>
   <div>
-    <div class="mt-5 mb-2 text-lg font-semibold">Term List</div>
     <div class="flex my-4 space-x-4">
       <div class="w-24">
         <button type="button" class="my-button" @click="importCSV">
@@ -35,8 +34,8 @@
       <table class="w-full table-fixed divide-y divide-gray-200">
         <thead class="bg-gray-50 table-head-th">
           <tr class="font-medium text-left">
-            <th class="w-2/3">Term</th>
-            <th class="w-1/3">Remove</th>
+            <th class="w-1/2">Term</th>
+            <th class="w-1/2">Remove</th>
           </tr>
         </thead>
         <tbody class="text-base divide-y divide-gray-200 table-body-td">

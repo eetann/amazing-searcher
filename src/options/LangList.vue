@@ -1,6 +1,6 @@
 <template>
   <div class="mt-5">
-    <div class="text-lg font-semibold">Lang</div>
+    <div class="text-lg font-semibold">New Lang</div>
     <div class="flex space-x-4 items-end">
       <InputSelect
         label="Lang"
@@ -14,13 +14,12 @@
     <div class="pt-2 text-base whitespace-pre-wrap">{{ messages }}</div>
   </div>
   <div>
-    <div class="mt-5 mb-2 text-lg font-semibold">Lang List</div>
     <div class="mb-5 shadow rounded-lg w-72">
       <table class="divide-y divide-gray-200 w-full table-fixed">
         <thead class="bg-gray-50 table-head-th">
           <tr class="text-left font-medium">
-            <th class="w-2/3">Lang</th>
-            <th class="w-1/3">Remove</th>
+            <th class="w-1/2">Lang</th>
+            <th class="w-1/2">Remove</th>
           </tr>
         </thead>
         <tbody class="text-base divide-y divide-gray-200 table-body-td">
