@@ -5,7 +5,7 @@
       <a
         v-for="lang in showLangs"
         :key="lang.id"
-        :href="getLangLink(lang.str)"
+        :href="getLangLink(lang.param)"
         class="m-1 h-8 inline-flex items-center px-2 text-blue-600 ring-1 ring-blue-600 rounded-md"
         >{{ lang.str }}</a
       >
@@ -28,15 +28,15 @@ export default {
     });
 
     const showLangs = computed(() => {
-      let langs = [{ id: -1, str: "all" }];
+      let langs = [{ id: -1, param: "all", str: "all" }];
       langs.push(...langRef.value);
       return langs;
     });
 
-    const getLangLink = (langStr) => {
+    const getLangLink = (langParam) => {
       let langLink = props.qLink;
-      if (langStr != "all") {
-        langLink += "&lr=" + langStr;
+      if (langParam != "all") {
+        langLink += "&lr=" + langParam;
       }
       if (props.paramTbs) {
         langLink += "&tbs=qdr:" + props.paramTbs;

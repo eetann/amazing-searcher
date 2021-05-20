@@ -89,7 +89,7 @@ export default {
   components: { InputText, InputSelect, iconTrash },
   setup() {
     const options = [
-      { key: "Hopepage", value: "homepage" },
+      { key: "Homepage", value: "homepage" },
       { key: "Document", value: "doc" },
       { key: "Search By Document", value: "search by doc" },
     ];

@@ -52,43 +52,47 @@ import { setLang } from "@/options/setLang.js";
 export default {
   components: { InputSelect, iconTrash },
   setup() {
-    const options = [
-      { key: "Arabic", value: "lang_ar" },
-      { key: "Bulgarian", value: "lang_bg" },
-      { key: "Catalan", value: "lang_ca" },
-      { key: "Chinese (Simplified)", value: "lang_zh-CN" },
-      { key: "Chinese (Traditional)", value: "lang_zh-TW" },
-      { key: "Croatian", value: "lang_hr" },
-      { key: "Czech", value: "lang_cs" },
-      { key: "Danish", value: "lang_da" },
-      { key: "Dutch", value: "lang_nl" },
-      { key: "English", value: "lang_en" },
-      { key: "Estonian", value: "lang_et" },
-      { key: "Finnish", value: "lang_fi" },
-      { key: "French", value: "lang_fr" },
-      { key: "German", value: "lang_de" },
-      { key: "Greek", value: "lang_el" },
-      { key: "Hebrew", value: "lang_iw" },
-      { key: "Hungarian", value: "lang_hu" },
-      { key: "Icelandic", value: "lang_is" },
-      { key: "Indonesian", value: "lang_id" },
-      { key: "Italian", value: "lang_it" },
-      { key: "Japanese", value: "lang_ja" },
-      { key: "Korean", value: "lang_ko" },
-      { key: "Latvian", value: "lang_lv" },
-      { key: "Lithuanian", value: "lang_lt" },
-      { key: "Norwegian", value: "lang_no" },
-      { key: "Polish", value: "lang_pl" },
-      { key: "Portuguese", value: "lang_pt" },
-      { key: "Romanian", value: "lang_ro" },
-      { key: "Russian", value: "lang_ru" },
-      { key: "Serbian", value: "lang_sr" },
-      { key: "Slovak", value: "lang_sk" },
-      { key: "Slovenian", value: "lang_sl" },
-      { key: "Spanish", value: "lang_es" },
-      { key: "Swedish", value: "lang_sv" },
-      { key: "Turkish", value: "lang_tr" },
-    ];
+    const langList = {
+      lang_ar: "Arabic",
+      lang_bg: "Bulgarian",
+      lang_ca: "Catalan",
+      "lang_zh-CN": "Chinese (Simplified)",
+      "lang_zh-TW": "Chinese (Traditional)",
+      lang_hr: "Croatian",
+      lang_cs: "Czech",
+      lang_da: "Danish",
+      lang_nl: "Dutch",
+      lang_en: "English",
+      lang_et: "Estonian",
+      lang_fi: "Finnish",
+      lang_fr: "French",
+      lang_de: "German",
+      lang_el: "Greek",
+      lang_iw: "Hebrew",
+      lang_hu: "Hungarian",
+      lang_is: "Icelandic",
+      lang_id: "Indonesian",
+      lang_it: "Italian",
+      lang_ja: "Japanese",
+      lang_ko: "Korean",
+      lang_lv: "Latvian",
+      lang_lt: "Lithuanian",
+      lang_no: "Norwegian",
+      lang_pl: "Polish",
+      lang_pt: "Portuguese",
+      lang_ro: "Romanian",
+      lang_ru: "Russian",
+      lang_sr: "Serbian",
+      lang_sk: "Slovak",
+      lang_sl: "Slovenian",
+      lang_es: "Spanish",
+      lang_sv: "Swedish",
+      lang_tr: "Turkish",
+    };
+    const options = Object.entries(langList).map(([key, value]) => ({
+      key: value,
+      value: key,
+    }));
     const messages = ref("");
     const newLang = ref("");
     // get storage.local lang
@@ -107,8 +111,8 @@ export default {
     const resetLangs = () => {
       messages.value = "";
       let defaultLangs = [
-        { id: 0, str: "lang_en" },
-        { id: 1, str: "lang_ja" },
+        { id: 0, param: "lang_en", str: langList["lang_en"] },
+        { id: 1, param: "lang_ja", str: langList["lang_ja"] },
       ];
       let newLangs = setLang(defaultLangs);
       langs.value = newLangs;
@@ -128,7 +132,7 @@ export default {
       messages.value = "";
 
       // add new lang
-      let newLangs = [{ str: newLang.value }];
+      let newLangs = [{ param: newLang.value, str: langList[newLang.value] }];
       newLangs.push(...langs.value);
       newLangs = setLang(newLangs);
       langs.value = newLangs;
