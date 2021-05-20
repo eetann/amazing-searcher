@@ -142,7 +142,7 @@ export default {
       let newTerm = {
         unit: newUnit.value,
         num: newNumber.value,
-        str: newUnit.value + String(newNumber.value),
+        str: newUnit.value + newNumber.value,
       };
 
       // check term
@@ -208,6 +208,7 @@ export default {
             let newTerm = {
               unit: row[0],
               num: row[1],
+              str: row[0] + row[1],
             };
             try {
               checkTerm(newTerm);
@@ -216,8 +217,9 @@ export default {
             }
             csvTerms.push(newTerm);
           }
-          terms.value.push(...csvTerms);
-          setTerm(terms.value);
+          csvTerms.push(...terms.value);
+          csvTerms = setTerm(csvTerms);
+          terms.value = csvTerms;
           messages.value = "The new 'terms' have been added!";
           errorMessages.value = errorMsg;
         };

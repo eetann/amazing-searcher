@@ -60,4 +60,5 @@ export function setRecipe(recipes) {
   chrome.storage.local.set({
     recipes: JSON.stringify(newRecipes),
   });
+  return newRecipes
 }

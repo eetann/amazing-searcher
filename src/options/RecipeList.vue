@@ -118,16 +118,17 @@ export default {
       errorMessages.value = "";
       const json = require("@/assets/default_recipes.csv");
       let resRecipes = checkRecipeJson(json);
-      setRecipe(resRecipes.recipes);
-      recipes.value = resRecipes.recipes;
+      let newRecipes = setRecipe(resRecipes.recipes);
+      recipes.value = newRecipes;
       messages.value = "The recipe has been reset.";
     };
 
     const removeRecipe = (recipeId) => {
       // clear messages
       errorMessages.value = "";
-      recipes.value.splice(recipeId, 1);
-      setRecipe(recipes.value);
+      let newRecipes = recipes.value.filter((recipe) => recipe.id != recipeId);
+      newRecipes = setRecipe(newRecipes);
+      recipes.value = newRecipes;
       messages.value = "The recipe has been deleted";
     };
     const addRecipe = () => {
@@ -152,8 +153,10 @@ export default {
       }
 
       // add new recipe
-      recipes.value.push(newRecipe);
-      setRecipe(recipes.value);
+      let newRecipes = [newRecipe];
+      newRecipes.push(...recipes.value);
+      newRecipes = setRecipe(newRecipes);
+      recipes.value = newRecipes;
       messages.value = "The new recipe has been added!";
 
       // clear the value of 'url'
@@ -225,8 +228,9 @@ export default {
             }
             csvRecipes.push(newRecipe);
           }
-          recipes.value.push(...csvRecipes);
-          setRecipe(recipes.value);
+          csvRecipes.push(...recipes.value);
+          csvRecipes = setRecipe(csvRecipes);
+          recipes.value = csvRecipes;
           messages.value = "The new recipes have been added!";
           errorMessages.value = errorMsg;
         };
