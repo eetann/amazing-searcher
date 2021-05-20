@@ -63,7 +63,7 @@
 import { ref, computed } from "vue";
 import InputText from "@/options/InputText.vue";
 import InputSelect from "@/options/InputSelect.vue";
-import iconTrash from "@/components/icons/iconTrash.vue";
+import iconTrash from "@/components/iconTrash.vue";
 import { checkTerm, checkTermJson, setTerm } from "@/options/setTerm.js";
 export default {
   components: { InputText, InputSelect, iconTrash },
