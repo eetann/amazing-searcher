@@ -78,7 +78,7 @@
 import { ref, computed } from "vue";
 import InputText from "@/options/InputText.vue";
 import InputSelect from "@/options/InputSelect.vue";
-import iconTrash from "@/components/icons/iconTrash.vue";
+import iconTrash from "@/components/iconTrash.vue";
 import {
   checkRecipe,
   checkRecipeJson,

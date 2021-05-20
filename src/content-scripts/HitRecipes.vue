@@ -37,10 +37,10 @@
 
 <script>
 import { ref, computed } from "vue";
-import iconBadgeCheck from "@/components/icons/iconBadgeCheck.vue";
-import iconDocumentText from "@/components/icons/iconDocumentText.vue";
-import iconDocumentSearch from "@/components/icons/iconDocumentSearch.vue";
-import iconSearch from "@/components/icons/iconSearch.vue";
+import iconBadgeCheck from "@/components/iconBadgeCheck.vue";
+import iconDocumentText from "@/components/iconDocumentText.vue";
+import iconDocumentSearch from "@/components/iconDocumentSearch.vue";
+import iconSearch from "@/components/iconSearch.vue";
 export default {
   components: {
     iconBadgeCheck,

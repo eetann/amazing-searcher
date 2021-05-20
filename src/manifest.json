@@ -1,9 +1,15 @@
 {
   "manifest_version": 3,
   "name": "AmazingSearcher",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Add useful infomation at result of Google Search",
   "author": "eetann",
+  "icons": {
+      "16":  "imgs/extension_icon16.png",
+      "32":  "imgs/extension_icon32.png",
+      "48":  "imgs/extension_icon48.png",
+      "128": "imgs/extension_icon128.png"
+  },
   "content_scripts": [
     {
       "matches": ["https://www.google.com/search?*"],

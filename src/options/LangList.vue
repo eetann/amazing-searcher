@@ -46,7 +46,7 @@
 <script>
 import { ref, computed } from "vue";
 import InputSelect from "@/options/InputSelect.vue";
-import iconTrash from "@/components/icons/iconTrash.vue";
+import iconTrash from "@/components/iconTrash.vue";
 import { setLang } from "@/options/setLang.js";
 export default {
   components: { InputSelect, iconTrash },
