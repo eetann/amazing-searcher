@@ -22,11 +22,7 @@
             :key="recipe.id"
           >
             <a :href="recipe.url" class="text-xl text-blue-600">
-              {{
-                target.links.length > 1
-                  ? target.title + " (" + recipe.lang + ")"
-                  : target.title
-              }}
+              {{ target.title }}
             </a>
           </div>
         </div>

@@ -1,54 +1,49 @@
-target,lang,keyword,kind,url
-Python,en,python|pyてょn,homepage,https://www.python.org/
-Python,en,python|pyてょn,doc,https://docs.python.org/
-Python,en,python|pyてょn,search_by_doc,https://docs.python.org/ja/3/search.html?q={}&check_keywords=yes&area=default
-Python,ja,python|pyてょn,homepage,https://www.python.jp/
-Python,ja,python|pyてょn,doc,https://docs.python.org/ja/
-Python,ja,python|pyてょn,search_by_doc,https://docs.python.org/3/search.html?q={}&check_keywords=yes&area=default
-Zenn,ja,zenn|ぜん,homepage,https://zenn.dev/
-Zenn,ja,zenn|ぜん,doc,https://zenn.dev/zenn
-Matplotlib,en,matplotlib|plt|まtpぉtぃb,homepage,https://matplotlib.org/
-Matplotlib,en,matplotlib|plt|まtpぉtぃb,doc,https://matplotlib.org/stable/contents.html
-Matplotlib,en,matplotlib|plt|まtpぉtぃb,search_by_doc,https://matplotlib.org/stable/search.html?q={}
-NumPy,en,numpy|np|ぬmpy,homepage,https://numpy.org/
-NumPy,en,numpy|np|ぬmpy,doc,https://numpy.org/doc/stable/
-NumPy,en,numpy|np|ぬmpy,search_by_doc,https://numpy.org/doc/stable/search.html?q={}
-C++,en,c\+\+|cpp|cっp,homepage,https://isocpp.org/
-GitHub,en,github|ぎてゅb,homepage,https://github.com
-GitHub,en,github|ぎてゅb,doc,https://docs.github.com/en
-GitHub,en,github|ぎてゅb,search_by_doc,https://docs.github.com/en?query={}
-GitHub,ja,github|ぎてゅb,homepage,https://github.co.jp/
-GitHub,ja,github|ぎてゅb,doc,https://docs.github.com/ja
-GitHub,ja,github|ぎてゅb,search_by_doc,https://docs.github.com/ja?query={}
-Qiita,ja,qiita|くぃいた,homepage,https://qiita.com/
-Qiita,ja,qiita|くぃいた,doc,https://help.qiita.com/
-Qiita,ja,qiita|くぃいた,search_by_doc,https://help.qiita.com/ja/search?query={}
-Tailwind CSS,en,tailwind\s?css|たいlwいんdcっs,homepage,https://tailwindcss.com/
-Tailwind CSS,en,tailwind\s?css|たいlwいんdcっs,doc,https://tailwindcss.com/docs
-Vue.js,en v2,vue\.js|vue|ゔえ,homepage,https://vuejs.org/
-Vue.js,en v2,vue\.js|vue|ゔえ,doc,https://vuejs.org/v2/api/
-Vue.js,en v3,vue\.js|vue|ゔえ,homepage,https://v3.vuejs.org/
-Vue.js,en v3,vue\.js|vue|ゔえ,doc,https://jp.vuejs.org/v2/api/
-Vue.js,ja v2,vue\.js|vue|ゔえ,homepage,https://jp.vuejs.org/
-Vue.js,ja v2,vue\.js|vue|ゔえ,doc,https://v3.ja.vuejs.org/api/application-config.html
-Vue.js,ja v3,vue\.js|vue|ゔえ,homepage,https://v3.ja.vuejs.org/
-Vue.js,ja v3,vue\.js|vue|ゔえ,doc,https://v3.ja.vuejs.org/api/application-config.html
-Vue CLI,en,vue\scli|vue,homepage,https://cli.vuejs.org/
-Vue CLI,en,vue\scli|vue,doc,https://cli.vuejs.org/
-Chrome Extensions,en,chrome\sextensions?|chrome\s拡張機能,homepage,https://chrome.google.com/webstore/category/extensions
-Chrome Extensions,en,chrome\sextensions?|chrome\s拡張機能,doc,https://developer.chrome.com/docs/extensions/
-MATLAB,en,matlab|マトラボ|まtぁb,homepage,https://mathworks.com/index.html
-MATLAB,en,matlab|マトラボ|まtぁb,doc,https://mathworks.com/help/
-MATLAB,en,matlab|マトラボ|まtぁb,search_by_doc,https://mathworks.com/support/search.html?q={}
-MATLAB,ja,matlab|マトラボ|まtぁb,homepage,https://jp.mathworks.com/index.html
-MATLAB,ja,matlab|マトラボ|まtぁb,doc,https://jp.mathworks.com/help/
-MATLAB,ja,matlab|マトラボ|まtぁb,search_by_doc,https://jp.mathworks.com/support/search.html?q={}
-POV-Ray,en,pov(\s|-)?ray,homepage,https://www.povray.org/
-POV-Ray,en v3.7,pov(\s|-)?ray,doc,https://www.povray.org/documentation/3.7.0/
-POV-Ray,en v3.6,pov(\s|-)?ray,doc,https://www.povray.org/documentation/index-3.6.php
-JavaScript,en,javascript|js|じゃゔぁscりpt,homepage,https://developer.mozilla.org/en-US/docs/Web/JavaScript
-JavaScript,en,javascript|js|じゃゔぁscりpt,doc,https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
-JavaScript,en,javascript|js|じゃゔぁscりpt,search_by_doc,https://developer.mozilla.org/en-US/search?q={}
-JavaScript,ja,javascript|js|じゃゔぁscりpt,homepage,https://developer.mozilla.org/ja/docs/Web/JavaScript
-JavaScript,ja,javascript|js|じゃゔぁscりpt,doc,https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference
-JavaScript,ja,javascript|js|じゃゔぁscりpt,search_by_doc,https://developer.mozilla.org/ja/search?q={}
+target,keyword,kind,url
+Python en,python|pyてょn,homepage,https://www.python.org/
+Python en,python|pyてょn,doc,https://docs.python.org/
+Python en,python|pyてょn,search_by_doc,https://docs.python.org/ja/3/search.html?q={}&check_keywords=yes&area=default
+Python ja,python|pyてょn,homepage,https://www.python.jp/
+Python ja,python|pyてょn,doc,https://docs.python.org/ja/
+Python ja,python|pyてょn,search_by_doc,https://docs.python.org/3/search.html?q={}&check_keywords=yes&area=default
+Zenn,zenn|ぜん,homepage,https://zenn.dev/
+Zenn,zenn|ぜん,doc,https://zenn.dev/zenn
+Matplotlib,matplotlib|plt|まtpぉtぃb,homepage,https://matplotlib.org/
+Matplotlib,matplotlib|plt|まtpぉtぃb,doc,https://matplotlib.org/stable/contents.html
+Matplotlib,matplotlib|plt|まtpぉtぃb,search_by_doc,https://matplotlib.org/stable/search.html?q={}
+NumPy,numpy|np|ぬmpy,homepage,https://numpy.org/
+NumPy,numpy|np|ぬmpy,doc,https://numpy.org/doc/stable/
+NumPy,numpy|np|ぬmpy,search_by_doc,https://numpy.org/doc/stable/search.html?q={}
+C++,c\+\+|cpp|cっp,homepage,https://isocpp.org/
+GitHub en,github|ぎてゅb,homepage,https://github.com
+GitHub en,github|ぎてゅb,doc,https://docs.github.com/en
+GitHub en,github|ぎてゅb,search_by_doc,https://docs.github.com/en?query={}
+GitHub ja,github|ぎてゅb,homepage,https://github.co.jp/
+GitHub ja,github|ぎてゅb,doc,https://docs.github.com/ja
+GitHub ja,github|ぎてゅb,search_by_doc,https://docs.github.com/ja?query={}
+Qiita,qiita|くぃいた,homepage,https://qiita.com/
+Qiita,qiita|くぃいた,doc,https://help.qiita.com/
+Qiita,qiita|くぃいた,search_by_doc,https://help.qiita.com/ja/search?query={}
+Tailwind CSS,tailwind\s?css|たいlwいんdcっs,homepage,https://tailwindcss.com/
+Tailwind CSS,tailwind\s?css|たいlwいんdcっs,doc,https://tailwindcss.com/docs
+Vue.js en v3,vue\.js|vue|ゔえ,homepage,https://v3.vuejs.org/
+Vue.js en v3,vue\.js|vue|ゔえ,doc,https://v3.vuejs.org/api/
+Vue.js ja v3,vue\.js|vue|ゔえ,homepage,https://v3.ja.vuejs.org/
+Vue.js ja v3,vue\.js|vue|ゔえ,doc,https://v3.ja.vuejs.org/api/
+Vue CLI,vue\scli|vue,homepage,https://cli.vuejs.org/
+Vue CLI,vue\scli|vue,doc,https://cli.vuejs.org/
+Chrome Extensions,chrome\sextensions?|chrome\s拡張機能,homepage,https://chrome.google.com/webstore/category/extensions
+Chrome Extensions,chrome\sextensions?|chrome\s拡張機能,doc,https://developer.chrome.com/docs/extensions/
+MATLAB en,matlab|マトラボ|まtぁb,homepage,https://mathworks.com/index.html
+MATLAB en,matlab|マトラボ|まtぁb,doc,https://mathworks.com/help/
+MATLAB en,matlab|マトラボ|まtぁb,search_by_doc,https://mathworks.com/support/search.html?q={}
+MATLAB ja,matlab|マトラボ|まtぁb,homepage,https://jp.mathworks.com/index.html
+MATLAB ja,matlab|マトラボ|まtぁb,doc,https://jp.mathworks.com/help/
+MATLAB ja,matlab|マトラボ|まtぁb,search_by_doc,https://jp.mathworks.com/support/search.html?q={}
+POV-Ray,pov(\s|-)?ray,homepage,https://www.povray.org/
+POV-Ray,pov(\s|-)?ray,doc,https://www.povray.org/documentation/3.7.0/
+JavaScript en,javascript|js|じゃゔぁscりpt,homepage,https://developer.mozilla.org/en-US/docs/Web/JavaScript
+JavaScript en,javascript|js|じゃゔぁscりpt,doc,https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+JavaScript en,javascript|js|じゃゔぁscりpt,search_by_doc,https://developer.mozilla.org/en-US/search?q={}
+JavaScript ja,javascript|js|じゃゔぁscりpt,homepage,https://developer.mozilla.org/ja/docs/Web/JavaScript
+JavaScript ja,javascript|js|じゃゔぁscりpt,doc,https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference
+JavaScript ja,javascript|js|じゃゔぁscりpt,search_by_doc,https://developer.mozilla.org/ja/search?q={}
