@@ -1,34 +1,28 @@
 <template>
   <div
-    class="m-4 space-y-2 text-2xl"
-    v-for="(headings, target) in showHitRecipes"
-    :key="target"
+    class="mx-4 mb-4 text-2xl"
+    v-for="(targets, targetName) in showHitRecipes"
+    :key="targetName"
   >
-    {{ target }}
-    <div v-for="heading in headings" :key="target + heading.title">
-      <div v-if="heading.links.length > 0" class="flex items-center">
-        <iconBadgeCheck v-if="heading.title == 'Homepage'"></iconBadgeCheck>
+    {{ targetName }}
+    <div v-for="target in targets" :key="targetName + target.title">
+      <div v-if="target.links.length > 0" class="flex items-center">
+        <iconBadgeCheck v-if="target.title == 'Homepage'"></iconBadgeCheck>
         <iconDocumentText
-          v-else-if="heading.title == 'Document'"
+          v-else-if="target.title == 'Document'"
         ></iconDocumentText>
         <iconDocumentSearch
-          v-else-if="heading.title == 'Search by Document'"
+          v-else-if="target.title == 'Search by Document'"
         ></iconDocumentSearch>
-        <iconSearch
-          v-else-if="heading.title == 'Search by Google'"
-        ></iconSearch>
+        <iconSearch v-else-if="target.title == 'Search by Google'"></iconSearch>
         <div>
           <div
             class="flex items-center"
-            v-for="recipe in heading.links"
+            v-for="recipe in target.links"
             :key="recipe.id"
           >
             <a :href="recipe.url" class="text-xl text-blue-600">
-              {{
-                heading.links.length > 1
-                  ? heading.title + " (" + recipe.lang + ")"
-                  : heading.title
-              }}
+              {{ target.title }}
             </a>
           </div>
         </div>
@@ -39,10 +33,10 @@
 
 <script>
 import { ref, computed } from "vue";
-import iconBadgeCheck from "@/components/icons/iconBadgeCheck.vue";
-import iconDocumentText from "@/components/icons/iconDocumentText.vue";
-import iconDocumentSearch from "@/components/icons/iconDocumentSearch.vue";
-import iconSearch from "@/components/icons/iconSearch.vue";
+import iconBadgeCheck from "@/components/iconBadgeCheck.vue";
+import iconDocumentText from "@/components/iconDocumentText.vue";
+import iconDocumentSearch from "@/components/iconDocumentSearch.vue";
+import iconSearch from "@/components/iconSearch.vue";
 export default {
   components: {
     iconBadgeCheck,
@@ -50,17 +44,15 @@ export default {
     iconDocumentSearch,
     iconSearch,
   },
-  setup() {
-    const hitRecipes = ref({});
-    // get the query for the current search result
-    var queryString = window.location.search;
-    let params = new URLSearchParams(queryString);
-    let param_q = params.get("q");
+  props: ["paramQ"],
+  setup(props) {
+    const hitRecipesRef = ref({});
 
     // get recipes
     chrome.storage.local.get("recipes", (result) => {
       // join recipes
       if (typeof result.recipes !== "undefined") {
+        let hitRecipes = {};
         let recipes = JSON.parse(result.recipes);
         // search recipes that match.
         for (let recipe of recipes) {
@@ -68,15 +60,15 @@ export default {
             "(^|\\s)(" + recipe.keyword + ")(\\s|$)",
             "i"
           );
-          if (!regex_q.test(param_q)) {
+          if (!regex_q.test(props.paramQ)) {
             continue;
           }
           // delete and replace keyword from the query to add 'Search by'
           const regex_r = new RegExp(recipe.keyword, "i");
-          recipe.keyword = param_q.replace(regex_r, "").trim();
+          recipe.keyword = props.paramQ.replace(regex_r, "").trim();
 
-          if (!(recipe.target in hitRecipes.value)) {
-            hitRecipes.value[recipe.target] = {
+          if (!(recipe.target in hitRecipes)) {
+            hitRecipes[recipe.target] = {
               homepage: { title: "Homepage", links: [] },
               doc: { title: "Document", links: [] },
               sbd: { title: "Search by Document", links: [] },
@@ -85,9 +77,9 @@ export default {
           }
           if (recipe.kind == "search_by_doc") {
             recipe.url = recipe.url.replace("{}", recipe.keyword);
-            hitRecipes.value[recipe.target].sbd.links.push(recipe);
+            hitRecipes[recipe.target].sbd.links.push(recipe);
           } else if (recipe.kind == "doc") {
-            hitRecipes.value[recipe.target].doc.links.push(recipe);
+            hitRecipes[recipe.target].doc.links.push(recipe);
 
             // add 'Search by Google'
             let sbgRecipe = Object.assign({}, recipe);
@@ -99,17 +91,18 @@ export default {
               doc_url +
               " " +
               sbgRecipe.keyword;
-            hitRecipes.value[sbgRecipe.target].sbg.links.push(sbgRecipe);
+            hitRecipes[sbgRecipe.target].sbg.links.push(sbgRecipe);
           } else {
-            hitRecipes.value[recipe.target].homepage.links.push(recipe);
+            hitRecipes[recipe.target].homepage.links.push(recipe);
           }
         }
+        hitRecipesRef.value = hitRecipes;
       }
     });
     const showHitRecipes = computed(() => {
-      return hitRecipes.value;
+      return hitRecipesRef.value;
     });
-    return { hitRecipes, showHitRecipes };
+    return { hitRecipesRef, showHitRecipes };
   },
 };
 </script>

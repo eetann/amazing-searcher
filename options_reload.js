@@ -10,3 +10,6 @@ sock.addEventListener("message", e => {
     chrome.runtime.sendMessage('restart');
   }
 })
+sock.addEventListener("error", (e) => {
+  console.log("WebSocket error: ", e);
+})
