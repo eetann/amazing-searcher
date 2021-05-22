@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "AmazingSearcher",
   "version": "1.0.0",
-  "description": "Add useful infomation at result of Google Search",
+  "description": "Add useful information to Google Search results",
   "author": "eetann",
   "icons": {
       "16":  "imgs/extension_icon16.png",
