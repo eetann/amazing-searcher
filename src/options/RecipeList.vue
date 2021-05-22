@@ -1,6 +1,22 @@
 <template>
-  <div class="mt-5">
+  <div>
     <div class="text-lg font-semibold">New Recipe</div>
+    <div class="pt-2 text-base whitespace-pre-wrap">
+      <ul class="list-disc list-inside">
+        <li>
+          Commas are not allowed in "Target", "Keyword", and "URL" values for
+          csv import
+        </li>
+        <li>
+          To set the value of "Kind" to "Search By Doc", replace the query
+          string in "URL" with "{}"
+        </li>
+        <li>
+          The regular expression for the value of "Keyword" will be checked as
+          "new RegExp(value)"
+        </li>
+      </ul>
+    </div>
     <div class="flex space-x-4 items-end">
       <InputText label="Target" type="text" v-model="newTarget"></InputText>
       <InputText label="Keyword" type="text" v-model="newKeyword"></InputText>

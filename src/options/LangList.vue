@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-5">
+  <div>
     <div class="text-lg font-semibold">New Lang</div>
     <div class="flex space-x-4 items-end">
       <InputSelect
