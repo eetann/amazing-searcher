@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-5">
+  <div>
     <div class="text-lg font-semibold">New Term</div>
     <div class="flex items-end space-x-4">
       <InputText label="Number" type="text" v-model="newNumber"></InputText>

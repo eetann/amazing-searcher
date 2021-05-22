@@ -16,7 +16,7 @@
 <script>
 import { ref, computed } from "vue";
 export default {
-  props: ["qLink", "paramTbs"],
+  props: ["qLink", "paramTbm", "paramTbs"],
   setup(props) {
     const langRef = ref([]);
 
@@ -38,8 +38,11 @@ export default {
       if (langParam != "all") {
         langLink += "&lr=" + langParam;
       }
+      if (props.paramTbm) {
+        langLink += "&tbm=" + props.paramTbm;
+      }
       if (props.paramTbs) {
-        langLink += "&tbs=qdr:" + props.paramTbs;
+        langLink += "&tbs=" + props.paramTbs;
       }
       return langLink;
     };

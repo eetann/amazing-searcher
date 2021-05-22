@@ -5,8 +5,6 @@ export function checkRecipe(recipe) {
     throw "The value of the 'target' key is empty.\n"
   }
 
-  // The 'lang' key can be empty, so don't check it.
-
   // check 'keyword'
   if (!recipe.keyword) {
     throw "The value of the 'keyword' key is empty.\n"
@@ -15,7 +13,7 @@ export function checkRecipe(recipe) {
   try {
     new RegExp(recipe.keyword);
   } catch (e) {
-    throw "The regular expression for the 'lang' key " + recipe.keyword + " is wrong.\n"
+    throw "The regular expression for the 'keyword' key " + recipe.keyword + " is wrong.\n"
   }
 
   // check 'kind'

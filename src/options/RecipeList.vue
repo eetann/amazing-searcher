@@ -1,9 +1,24 @@
 <template>
-  <div class="mt-5">
+  <div>
     <div class="text-lg font-semibold">New Recipe</div>
+    <div class="pt-2 text-base whitespace-pre-wrap">
+      <ul class="list-disc list-inside">
+        <li>
+          Commas are not allowed in "Target", "Keyword", and "URL" values for
+          csv import
+        </li>
+        <li>
+          To set the value of "Kind" to "Search By Doc", replace the query
+          string in "URL" with "{}"
+        </li>
+        <li>
+          The regular expression for the value of "Keyword" will be checked as
+          "new RegExp(value)"
+        </li>
+      </ul>
+    </div>
     <div class="flex space-x-4 items-end">
       <InputText label="Target" type="text" v-model="newTarget"></InputText>
-      <InputText label="Lang" type="text" v-model="newLang"></InputText>
       <InputText label="Keyword" type="text" v-model="newKeyword"></InputText>
       <InputSelect
         label="Kind"
@@ -38,8 +53,7 @@
         <thead class="bg-gray-50 table-head-th">
           <tr class="text-left font-medium">
             <th class="w-2/12">Target</th>
-            <th class="w-1/12">Lang</th>
-            <th class="w-3/12">Keyword</th>
+            <th class="w-4/12">Keyword</th>
             <th class="w-2/12">Kind</th>
             <th class="w-3/12">URL</th>
             <th class="w-1/12">Remove</th>
@@ -48,7 +62,6 @@
         <tbody class="text-base divide-y divide-gray-200 table-body-td">
           <tr v-for="recipe in showRecipes" :key="recipe.id">
             <td class="truncate">{{ recipe.target }}</td>
-            <td>{{ recipe.lang }}</td>
             <td>{{ recipe.keyword }}</td>
             <td v-if="recipe.kind == 'homepage'">homepage</td>
             <td v-else-if="recipe.kind == 'doc'">document</td>
@@ -95,7 +108,6 @@ export default {
     const messages = ref("");
     const errorMessages = ref("");
     const newTarget = ref("");
-    const newLang = ref("");
     const newKeyword = ref("");
     const newKind = ref("");
     const newURL = ref("");
@@ -137,7 +149,6 @@ export default {
 
       let newRecipe = {
         target: newTarget.value,
-        lang: newLang.value,
         keyword: newKeyword.value,
         kind: newKind.value,
         url: newURL.value,
@@ -163,13 +174,11 @@ export default {
     };
 
     const exportCSV = () => {
-      let csvStr = "target,lang,keyword,kind,url\n";
+      let csvStr = "target,keyword,kind,url\n";
       csvStr += recipes.value
         .map((recipe) => {
           return (
             recipe.target +
-            "," +
-            recipe.lang +
             "," +
             recipe.keyword +
             "," +
@@ -215,10 +224,9 @@ export default {
             }
             let newRecipe = {
               target: row[0],
-              lang: row[1],
-              keyword: row[2],
-              kind: row[3],
-              url: row[4],
+              keyword: row[1],
+              kind: row[2],
+              url: row[3],
             };
             try {
               checkRecipe(newRecipe);
@@ -243,7 +251,6 @@ export default {
       messages,
       errorMessages,
       newTarget,
-      newLang,
       newKeyword,
       newKind,
       newURL,
