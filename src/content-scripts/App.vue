@@ -1,7 +1,15 @@
 <template>
   <div class="flex flex-col border rounded-lg border-gray-300">
-    <TermLinks :qLink="qLink" :paramLr="paramLr"></TermLinks>
-    <LangLinks :qLink="qLink" :paramTbs="paramTbs"></LangLinks>
+    <TermLinks
+      :qLink="qLink"
+      :paramTbm="paramTbm"
+      :paramLr="paramLr"
+    ></TermLinks>
+    <LangLinks
+      :qLink="qLink"
+      :paramTbm="paramTbm"
+      :paramTbs="paramTbs"
+    ></LangLinks>
     <HitRecipes :paramQ="paramQ"></HitRecipes>
   </div>
 </template>
@@ -17,12 +25,12 @@ export default {
     LangLinks,
     HitRecipes,
   },
-  setup() {
-    const nowURL = new URL(document.location);
-    const paramQ = nowURL.searchParams.get("q");
-    const paramTbs = nowURL.searchParams.get("tbs");
-    const paramLr = nowURL.searchParams.get("lr");
-    const qLink = nowURL.toString().replace(/\?.*$/, "") + "?q=" + paramQ;
+  props: ["nowURL", "paramTbm"],
+  setup(props) {
+    const paramQ = props.nowURL.searchParams.get("q");
+    const paramTbs = props.nowURL.searchParams.get("tbs");
+    const paramLr = props.nowURL.searchParams.get("lr");
+    const qLink = props.nowURL.toString().replace(/\?.*$/, "") + "?q=" + paramQ;
     return { paramQ, paramTbs, paramLr, qLink };
   },
 };

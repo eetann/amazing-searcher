@@ -16,7 +16,7 @@
 <script>
 import { ref, computed } from "vue";
 export default {
-  props: ["qLink", "paramLr"],
+  props: ["qLink", "paramTbm", "paramLr"],
   setup(props) {
     const termRef = ref([]);
     chrome.storage.local.get("terms", (result) => {
@@ -36,6 +36,9 @@ export default {
       let termLink = props.qLink;
       if (termStr != "all") {
         termLink += "&tbs=qdr:" + termStr;
+      }
+      if (props.paramTbm) {
+        termLink += "&tbm=" + props.paramTbm;
       }
       if (props.paramLr) {
         termLink += "&lr=" + props.paramLr;
