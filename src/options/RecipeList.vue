@@ -1,21 +1,36 @@
 <template>
   <div>
     <div class="text-lg font-semibold">New Recipe</div>
-    <div class="pt-2 text-base whitespace-pre-wrap">
-      <ul class="list-disc list-inside">
-        <li>
-          Commas are not allowed in "Target", "Keyword", and "URL" values for
-          csv import
-        </li>
-        <li>
-          To set the value of "Kind" to "Search By Doc", replace the query
-          string in "URL" with "%s"
-        </li>
-        <li>
-          The regular expression for the value of "Keyword" will be checked as
-          "new RegExp(value)"
-        </li>
-      </ul>
+    <div class="pt-2 text-base">
+      <p class="mb-2">
+        Commas are not allowed in
+        <span class="text-purple-600">`Target`</span>,
+        <span class="text-purple-600">`Keyword`</span>, and
+        <span class="text-purple-600">`URL`</span> values for csv import.
+      </p>
+      <p class="mb-2">
+        To set the value of <span class="text-purple-600">`Kind`</span> to
+        <span class="text-purple-600">`Search By Doc`</span>, replace the query
+        string in <span class="text-purple-600">`URL` </span>with
+        <span class="text-purple-600 font-bold">`%s` </span>.<br />
+        EXAMPLE:
+        <span class="text-purple-600"
+          >`https://docs.python.org/3/search.html?q=<span class="font-bold"
+            >foo</span
+          >` </span
+        >should be changed to<span class="text-purple-600"
+          >`https://docs.python.org/3/search.html?q=<span class="font-bold"
+            >%s</span
+          >`</span
+        >
+      </p>
+      <p class="mb-2">
+        You can use Regular Expression for
+        <span class="text-purple-600">`Keyword` </span>.<br />
+        The regular expression for the value of
+        <span class="text-purple-600">`Keyword` </span>will be checked as
+        <span class="text-purple-600">`new RegExp(value)`</span>.
+      </p>
     </div>
     <div class="flex space-x-4 items-end">
       <InputText label="Target" type="text" v-model="newTarget"></InputText>
