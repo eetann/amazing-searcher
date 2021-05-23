@@ -76,7 +76,7 @@ export default {
             };
           }
           if (recipe.kind == "search_by_doc") {
-            recipe.url = recipe.url.replace("{}", recipe.keyword);
+            recipe.url = recipe.url.replace("%s", recipe.keyword);
             hitRecipes[recipe.target].sbd.links.push(recipe);
           } else if (recipe.kind == "doc") {
             hitRecipes[recipe.target].doc.links.push(recipe);

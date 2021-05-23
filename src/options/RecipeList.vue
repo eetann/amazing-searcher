@@ -9,7 +9,7 @@
         </li>
         <li>
           To set the value of "Kind" to "Search By Doc", replace the query
-          string in "URL" with "{}"
+          string in "URL" with "%s"
         </li>
         <li>
           The regular expression for the value of "Keyword" will be checked as

@@ -1,28 +1,28 @@
 target,keyword,kind,url
 Python en,python|pyてょn,homepage,https://www.python.org/
 Python en,python|pyてょn,doc,https://docs.python.org/
-Python en,python|pyてょn,search_by_doc,https://docs.python.org/ja/3/search.html?q={}&check_keywords=yes&area=default
+Python en,python|pyてょn,search_by_doc,https://docs.python.org/3/search.html?q=%s
 Python ja,python|pyてょn,homepage,https://www.python.jp/
 Python ja,python|pyてょn,doc,https://docs.python.org/ja/
-Python ja,python|pyてょn,search_by_doc,https://docs.python.org/3/search.html?q={}&check_keywords=yes&area=default
+Python ja,python|pyてょn,search_by_doc,https://docs.python.org/ja/3/search.html?q=%s
 Zenn,zenn|ぜん,homepage,https://zenn.dev/
 Zenn,zenn|ぜん,doc,https://zenn.dev/zenn
 Matplotlib,matplotlib|plt|まtpぉtぃb,homepage,https://matplotlib.org/
 Matplotlib,matplotlib|plt|まtpぉtぃb,doc,https://matplotlib.org/stable/contents.html
-Matplotlib,matplotlib|plt|まtpぉtぃb,search_by_doc,https://matplotlib.org/stable/search.html?q={}
+Matplotlib,matplotlib|plt|まtpぉtぃb,search_by_doc,https://matplotlib.org/stable/search.html?q=%s
 NumPy,numpy|np|ぬmpy,homepage,https://numpy.org/
 NumPy,numpy|np|ぬmpy,doc,https://numpy.org/doc/stable/
-NumPy,numpy|np|ぬmpy,search_by_doc,https://numpy.org/doc/stable/search.html?q={}
+NumPy,numpy|np|ぬmpy,search_by_doc,https://numpy.org/doc/stable/search.html?q=%s
 C++,c\+\+|cpp|cっp,homepage,https://isocpp.org/
 GitHub en,github|ぎてゅb,homepage,https://github.com
 GitHub en,github|ぎてゅb,doc,https://docs.github.com/en
-GitHub en,github|ぎてゅb,search_by_doc,https://docs.github.com/en?query={}
+GitHub en,github|ぎてゅb,search_by_doc,https://docs.github.com/en?query=%s
 GitHub ja,github|ぎてゅb,homepage,https://github.co.jp/
 GitHub ja,github|ぎてゅb,doc,https://docs.github.com/ja
-GitHub ja,github|ぎてゅb,search_by_doc,https://docs.github.com/ja?query={}
+GitHub ja,github|ぎてゅb,search_by_doc,https://docs.github.com/ja?query=%s
 Qiita,qiita|くぃいた,homepage,https://qiita.com/
 Qiita,qiita|くぃいた,doc,https://help.qiita.com/
-Qiita,qiita|くぃいた,search_by_doc,https://help.qiita.com/ja/search?query={}
+Qiita,qiita|くぃいた,search_by_doc,https://help.qiita.com/ja/search?query=%s
 Tailwind CSS,tailwind\s?css|たいlwいんdcっs,homepage,https://tailwindcss.com/
 Tailwind CSS,tailwind\s?css|たいlwいんdcっs,doc,https://tailwindcss.com/docs
 Vue.js en v3,vue\.js|vue|ゔえ,homepage,https://v3.vuejs.org/
@@ -35,15 +35,15 @@ Chrome Extensions,chrome\sextensions?|chrome\s拡張機能,homepage,https://chro
 Chrome Extensions,chrome\sextensions?|chrome\s拡張機能,doc,https://developer.chrome.com/docs/extensions/
 MATLAB en,matlab|マトラボ|まtぁb,homepage,https://mathworks.com/index.html
 MATLAB en,matlab|マトラボ|まtぁb,doc,https://mathworks.com/help/
-MATLAB en,matlab|マトラボ|まtぁb,search_by_doc,https://mathworks.com/support/search.html?q={}
+MATLAB en,matlab|マトラボ|まtぁb,search_by_doc,https://mathworks.com/support/search.html?q=%s
 MATLAB ja,matlab|マトラボ|まtぁb,homepage,https://jp.mathworks.com/index.html
 MATLAB ja,matlab|マトラボ|まtぁb,doc,https://jp.mathworks.com/help/
-MATLAB ja,matlab|マトラボ|まtぁb,search_by_doc,https://jp.mathworks.com/support/search.html?q={}
+MATLAB ja,matlab|マトラボ|まtぁb,search_by_doc,https://jp.mathworks.com/support/search.html?q=%s
 POV-Ray,pov(\s|-)?ray,homepage,https://www.povray.org/
 POV-Ray,pov(\s|-)?ray,doc,https://www.povray.org/documentation/3.7.0/
 JavaScript en,javascript|js|じゃゔぁscりpt,homepage,https://developer.mozilla.org/en-US/docs/Web/JavaScript
 JavaScript en,javascript|js|じゃゔぁscりpt,doc,https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
-JavaScript en,javascript|js|じゃゔぁscりpt,search_by_doc,https://developer.mozilla.org/en-US/search?q={}
+JavaScript en,javascript|js|じゃゔぁscりpt,search_by_doc,https://developer.mozilla.org/en-US/search?q=%s
 JavaScript ja,javascript|js|じゃゔぁscりpt,homepage,https://developer.mozilla.org/ja/docs/Web/JavaScript
 JavaScript ja,javascript|js|じゃゔぁscりpt,doc,https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference
-JavaScript ja,javascript|js|じゃゔぁscりpt,search_by_doc,https://developer.mozilla.org/ja/search?q={}
+JavaScript ja,javascript|js|じゃゔぁscりpt,search_by_doc,https://developer.mozilla.org/ja/search?q=%s
