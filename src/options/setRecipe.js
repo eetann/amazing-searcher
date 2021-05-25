@@ -2,28 +2,43 @@ export function checkRecipe(recipe) {
   // check for correct recipe format
   // check 'target'
   if (!recipe.target) {
-    throw "The value of the 'target' key is empty.\n"
+    throw "The value of the 'Target' key is empty.\n"
   }
 
   // check 'keyword'
   if (!recipe.keyword) {
-    throw "The value of the 'keyword' key is empty.\n"
+    throw "The value of the 'Keyword' key is empty.\n"
   }
   // check the regular expression
   try {
     new RegExp(recipe.keyword);
   } catch (e) {
-    throw "The regular expression for the 'keyword' key " + recipe.keyword + " is wrong.\n"
+    throw "The regular expression for the 'Keyword' key " + recipe.keyword + " is wrong.\n"
   }
 
   // check 'kind'
   if (!recipe.kind) {
-    throw "The value of the 'kind' key is empty.\n"
+    throw "The value of the 'Kind' key is empty.\n"
   }
 
-  // check 'URL'
-  if (!recipe.url) {
-    throw "The value of the 'url' key is empty.\n"
+  if (recipe.kind == "Memo") {
+    // check 'url' as 'Memo' 
+    if (!recipe.url) {
+      throw "The value of the 'Memo' key is empty.\n"
+    }
+  } else {
+    // check 'URL'
+    if (!recipe.url) {
+      throw "The value of the 'URL' key is empty.\n"
+    } else if (!recipe.url.match(/^https?:\/\//)) {
+      throw "The value of the 'URL' key is bad .\n"
+    }
+    if (recipe.kind == "Search By Reference") {
+      // check 'URL'
+      if (!recipe.url.match(/%s/)) {
+        throw "To set the value of Kind to 'Search By Reference', replace the query string in URL with '%s'.\n"
+      }
+    }
   }
 }
 

@@ -9,8 +9,8 @@
           >
             <a
               class="text-sm font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
-              v-on:click="toggleTabs(1)"
-              v-bind:class="{
+              @click="toggleTabs(1)"
+              :class="{
                 'text-red-600 bg-white': openTab !== 1,
                 'text-white bg-red-600': openTab === 1,
               }"
@@ -23,8 +23,8 @@
           >
             <a
               class="text-sm font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
-              v-on:click="toggleTabs(2)"
-              v-bind:class="{
+              @click="toggleTabs(2)"
+              :class="{
                 'text-red-600 bg-white': openTab !== 2,
                 'text-white bg-red-600': openTab === 2,
               }"
@@ -37,8 +37,8 @@
           >
             <a
               class="text-sm font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
-              v-on:click="toggleTabs(3)"
-              v-bind:class="{
+              @click="toggleTabs(3)"
+              :class="{
                 'text-red-600 bg-white': openTab !== 3,
                 'text-white bg-red-600': openTab === 3,
               }"

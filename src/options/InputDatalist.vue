@@ -2,39 +2,43 @@
   <div class="text-base text-gray-700">
     <label>
       {{ label }}
-      <select
-        @change="inputHandler"
-        class="block w-52 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+      <input
+        :type="type"
         :name="label"
-      >
+        :placeholder="label"
+        :list="listId"
+        :value="modelValue"
+        maxlength="100"
+        @change="inputHandler"
+        class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+        required
+      />
+      <datalist :id="listId">
         <option
           v-for="option in options"
           :key="option.key"
           :value="option.value"
-          :selected="option.value === modelValue"
         >
           {{ option.key }}
         </option>
-      </select>
+      </datalist>
     </label>
   </div>
 </template>
 
 <script>
-import { onMounted } from "vue";
 export default {
   props: {
     label: String,
+    type: String,
+    listId: String,
     options: Array,
     modelValue: String,
   },
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     const inputHandler = (e) => {
       emit("update:modelValue", e.target.value);
     };
-    onMounted(() => {
-      emit("update:modelValue", props.options[0].value);
-    });
     return {
       inputHandler,
     };
