@@ -1,30 +1,30 @@
 <template>
   <div
     class="mx-4 mb-4 text-2xl w-96"
-    v-for="(targets, targetName) in showHitRecipes"
+    v-for="(target, targetName) in showHitRecipes"
     :key="targetName"
   >
     {{ targetName }}
-    <div v-for="target in targets" :key="targetName + target.title">
-      <ul v-if="target.links.length > 0" class="list-disc list-inside">
-        <li
-          class="text-xl break-all"
-          v-for="recipe in target.links"
-          :key="recipe.id"
-        >
-          <span v-if="target.title == 'Memo'">
+    <div v-for="(links, kindName) in target" :key="targetName + kindName">
+      <ul v-if="links.length > 0" class="list-disc list-inside">
+        <li class="text-xl break-all" v-for="recipe in links" :key="recipe.id">
+          <span v-if="kindName == 'Memo'">
             {{ recipe.url }}
           </span>
           <a
-            v-else-if="target.title == 'Another'"
+            v-else-if="kindName == 'Query'"
             :href="recipe.url"
             class="text-blue-600"
           >
             {{ recipe.kind }}
           </a>
-          <a v-else :href="recipe.url" class="text-xl text-blue-600">
-            {{ target.title }}
-          </a>
+          <span v-else>
+            <a :href="recipe.url" class="text-xl text-blue-600">
+              {{ recipe.kind }} </a
+            ><a :href="recipe.sbg" class="text-xl text-blue-600">
+              Search By Google
+            </a></span
+          >
         </li>
       </ul>
     </div>
@@ -69,37 +69,35 @@ export default {
 
           if (!(recipe.target in hitRecipes)) {
             hitRecipes[recipe.target] = {
-              homepage: { title: "Homepage", links: [] },
-              doc: { title: "Document", links: [] },
-              sbd: { title: "Search by Document", links: [] },
-              sbg: { title: "Search by Google", links: [] },
-              memo: { title: "Memo", links: [] },
-              another: { title: "Another", links: [] },
+              Homepage: [],
+              Reference: [],
+              Query: [],
+              Memo: [],
+              Another: [],
             };
           }
-          if (recipe.kind == "Search By Reference") {
+          if (recipe.kind == "Memo") {
+            hitRecipes[recipe.target].Memo.push(recipe);
+          } else if (recipe.url.match(/%s/)) {
             recipe.url = recipe.url.replace("%s", recipe.keyword);
-            hitRecipes[recipe.target].sbd.links.push(recipe);
-          } else if (recipe.kind == "Reference") {
-            hitRecipes[recipe.target].doc.links.push(recipe);
-
+            hitRecipes[recipe.target].Query.push(recipe);
+          } else {
             // add 'Search by Google'
-            let sbgRecipe = Object.assign({}, recipe);
-            let doc_url = sbgRecipe.url
+            let doc_url = recipe.url
               .replace(/^https?:\/\//, "")
               .replace(/[^/]*\.(html|php)$/, "");
-            sbgRecipe.url =
+            recipe.sbg =
               "https://www.google.com/search?q=site:" +
               doc_url +
               " " +
-              encodeURIComponent(sbgRecipe.keyword);
-            hitRecipes[sbgRecipe.target].sbg.links.push(sbgRecipe);
-          } else if (recipe.kind == "Homepage") {
-            hitRecipes[recipe.target].homepage.links.push(recipe);
-          } else if (recipe.kind == "Memo") {
-            hitRecipes[recipe.target].memo.links.push(recipe);
-          } else {
-            hitRecipes[recipe.target].another.links.push(recipe);
+              encodeURIComponent(recipe.keyword);
+            if (recipe.kind == "Reference") {
+              hitRecipes[recipe.target].Reference.push(recipe);
+            } else if (recipe.kind == "Homepage") {
+              hitRecipes[recipe.target].Homepage.push(recipe);
+            } else {
+              hitRecipes[recipe.target].Another.push(recipe);
+            }
           }
         }
         hitRecipesRef.value = hitRecipes;
