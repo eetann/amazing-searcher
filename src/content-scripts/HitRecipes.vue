@@ -12,16 +12,18 @@
           v-for="recipe in links"
           :key="recipe.id"
         >
-          <div v-if="kindName == 'Memo'" class="flex flex-wrap">
-            <iconPencil></iconPencil>
-            {{ recipe.url }}
+          <div v-if="kindName == 'Memo'" class="flex">
+            <iconPencil class="inline-block flex-none"></iconPencil>
+            <span>
+              {{ recipe.url }}
+            </span>
           </div>
           <a
             v-else-if="kindName == 'Query'"
             :href="recipe.url"
             class="block flex text-blue-600"
           >
-            <iconDocumentSearch></iconDocumentSearch>
+            <iconDocumentSearch class="flex-none"></iconDocumentSearch>
             {{ recipe.kind }}
           </a>
           <div v-else class="flex space-x-2 items-center">
@@ -29,7 +31,7 @@
               :href="recipe.sbg"
               class="block p-1 text-blue-600 ring-1 ring-blue-600 rounded-md"
             >
-              <iconSearch width="20" height="20"></iconSearch>
+              <iconSearch :width="20" :height="20"></iconSearch>
             </a>
             <a :href="recipe.url" class="block flex text-xl text-blue-600">
               <iconExternalLink></iconExternalLink>
@@ -82,9 +84,9 @@ export default {
             hitRecipes[recipe.target] = {
               Homepage: [],
               Reference: [],
+              Another: [],
               Query: [],
               Memo: [],
-              Another: [],
             };
           }
           if (recipe.kind == "Memo") {
