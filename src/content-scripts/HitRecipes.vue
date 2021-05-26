@@ -31,9 +31,12 @@
               :href="recipe.sbg"
               class="block p-1 text-blue-600 ring-1 ring-blue-600 rounded-md"
             >
-              <iconSearch :width="20" :height="20"></iconSearch>
+              <iconSearch :width="16" :height="16"></iconSearch>
             </a>
-            <a :href="recipe.url" class="block flex text-xl text-blue-600">
+            <a
+              :href="recipe.url"
+              class="block flex items-center text-xl text-blue-600"
+            >
               <iconExternalLink></iconExternalLink>
               {{ recipe.kind }}
             </a>
