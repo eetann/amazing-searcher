@@ -6,41 +6,52 @@
   >
     {{ targetName }}
     <div v-for="(links, kindName) in target" :key="targetName + kindName">
-      <ul v-if="links.length > 0" class="list-disc list-inside">
-        <li class="text-xl break-all" v-for="recipe in links" :key="recipe.id">
-          <span v-if="kindName == 'Memo'">
+      <div v-if="links.length > 0">
+        <div
+          class="text-xl break-all my-2"
+          v-for="recipe in links"
+          :key="recipe.id"
+        >
+          <div v-if="kindName == 'Memo'" class="flex flex-wrap">
+            <iconPencil></iconPencil>
             {{ recipe.url }}
-          </span>
+          </div>
           <a
             v-else-if="kindName == 'Query'"
             :href="recipe.url"
-            class="text-blue-600"
+            class="block flex text-blue-600"
           >
+            <iconDocumentSearch></iconDocumentSearch>
             {{ recipe.kind }}
           </a>
-          <span v-else>
-            <a :href="recipe.url" class="text-xl text-blue-600">
-              {{ recipe.kind }} </a
-            ><a :href="recipe.sbg" class="text-xl text-blue-600">
-              Search By Google
-            </a></span
-          >
-        </li>
-      </ul>
+          <div v-else class="flex space-x-2 items-center">
+            <a
+              :href="recipe.sbg"
+              class="block p-1 text-blue-600 ring-1 ring-blue-600 rounded-md"
+            >
+              <iconSearch width="20" height="20"></iconSearch>
+            </a>
+            <a :href="recipe.url" class="block flex text-xl text-blue-600">
+              <iconExternalLink></iconExternalLink>
+              {{ recipe.kind }}
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { ref, computed } from "vue";
-import iconBadgeCheck from "@/components/iconBadgeCheck.vue";
-import iconDocumentText from "@/components/iconDocumentText.vue";
+import iconExternalLink from "@/components/iconExternalLink.vue";
+import iconPencil from "@/components/iconPencil.vue";
 import iconDocumentSearch from "@/components/iconDocumentSearch.vue";
 import iconSearch from "@/components/iconSearch.vue";
 export default {
   components: {
-    iconBadgeCheck,
-    iconDocumentText,
+    iconExternalLink,
+    iconPencil,
     iconDocumentSearch,
     iconSearch,
   },
