@@ -32,25 +32,23 @@
         display the memo in the search results.
       </p>
     </div>
-    <form @submit.prevent="addRecipe">
-      <div class="flex space-x-4 items-end">
-        <InputText label="Target" type="text" v-model="newTarget"></InputText>
-        <InputText label="Keyword" type="text" v-model="newKeyword"></InputText>
-        <InputDatalist
-          label="Kind"
-          type="text"
-          listId="kindlist"
-          :options="options"
-          v-model="newKind"
-        ></InputDatalist>
-        <InputText
-          :label="newKind != 'Memo' ? 'URL' : 'Memo'"
-          :type="newKind != 'Memo' ? 'url' : 'text'"
-          v-model="newURL"
-        ></InputText>
-        <div class="w-24">
-          <button type="submit" class="my-button">Add</button>
-        </div>
+    <form @submit.prevent="addRecipe" class="flex space-x-4 items-end">
+      <InputText label="Target" type="text" v-model="newTarget"></InputText>
+      <InputText label="Keyword" type="text" v-model="newKeyword"></InputText>
+      <InputDatalist
+        label="Kind"
+        type="text"
+        listId="kindlist"
+        :options="options"
+        v-model="newKind"
+      ></InputDatalist>
+      <InputText
+        :label="newKind != 'Memo' ? 'URL' : 'Memo'"
+        :type="newKind != 'Memo' ? 'url' : 'text'"
+        v-model="newURL"
+      ></InputText>
+      <div class="w-24">
+        <button type="submit" class="my-button">Add</button>
       </div>
     </form>
     <div class="pt-2 text-base whitespace-pre-wrap">{{ messages }}</div>
