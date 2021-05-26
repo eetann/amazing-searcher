@@ -1,17 +1,19 @@
 <template>
   <div>
     <div class="text-lg font-semibold">New Term</div>
-    <div class="flex items-end space-x-4">
-      <InputText label="Number" type="text" v-model="newNumber"></InputText>
-      <InputSelect
-        label="Unit"
-        :options="options"
-        v-model="newUnit"
-      ></InputSelect>
-      <div class="w-24">
-        <button type="button" class="my-button" @click="addTerm">Add</button>
+    <form @submit.prevent="addTerm">
+      <div class="flex items-end space-x-4">
+        <InputText label="Number" type="number" v-model="newNumber"></InputText>
+        <InputSelect
+          label="Unit"
+          :options="options"
+          v-model="newUnit"
+        ></InputSelect>
+        <div class="w-24">
+          <button type="submit" class="my-button">Add</button>
+        </div>
       </div>
-    </div>
+    </form>
     <div class="pt-2 text-base whitespace-pre-wrap">{{ messages }}</div>
     <div class="pt-2 text-base text-red-600 whitespace-pre-wrap">
       {{ errorMessages }}

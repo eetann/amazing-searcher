@@ -1,16 +1,18 @@
 <template>
   <div>
     <div class="text-lg font-semibold">New Lang</div>
-    <div class="flex space-x-4 items-end">
-      <InputSelect
-        label="Lang"
-        :options="options"
-        v-model="newLang"
-      ></InputSelect>
-      <div class="w-24">
-        <button type="button" class="my-button" @click="addLang">Add</button>
+    <form @submit.prevent="addLang">
+      <div class="flex space-x-4 items-end">
+        <InputSelect
+          label="Lang"
+          :options="options"
+          v-model="newLang"
+        ></InputSelect>
+        <div class="w-24">
+          <button type="submit" class="my-button">Add</button>
+        </div>
       </div>
-    </div>
+    </form>
     <div class="pt-2 text-base whitespace-pre-wrap">{{ messages }}</div>
   </div>
   <div>
