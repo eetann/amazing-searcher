@@ -81,7 +81,9 @@ export default {
           }
           // delete and replace keyword from the query to add 'Search by'
           const regex_r = new RegExp(recipe.keyword, "i");
-          recipe.keyword = props.paramQ.replace(regex_r, "").trim();
+          recipe.keyword = encodeURIComponent(
+            props.paramQ.replace(regex_r, "").trim()
+          );
 
           if (!(recipe.target in hitRecipes)) {
             hitRecipes[recipe.target] = {
@@ -106,7 +108,7 @@ export default {
               "https://www.google.com/search?q=site:" +
               doc_url +
               " " +
-              encodeURIComponent(recipe.keyword);
+              recipe.keyword;
             if (recipe.kind == "Reference") {
               hitRecipes[recipe.target].Reference.push(recipe);
             } else if (recipe.kind == "Homepage") {
