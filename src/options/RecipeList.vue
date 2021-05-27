@@ -191,7 +191,8 @@ export default {
       recipes.value = newRecipes;
       messages.value = "The new recipe has been added!";
 
-      // clear the value of 'URL' and 'Memo'
+      // clear the value of 'Kind' and 'URL(Memo)'
+      newKind.value = "";
       newURL.value = "";
     };
 
