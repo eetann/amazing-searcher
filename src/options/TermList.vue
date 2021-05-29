@@ -1,17 +1,22 @@
 <template>
   <div>
     <div class="text-lg font-semibold">New Term</div>
-    <div class="flex items-end space-x-4">
-      <InputText label="Number" type="text" v-model="newNumber"></InputText>
+    <form @submit.prevent="addTerm" class="flex items-end space-x-4">
+      <InputNumber
+        label="Number"
+        :nmin="1"
+        :nmax="1000"
+        v-model="newNumber"
+      ></InputNumber>
       <InputSelect
         label="Unit"
         :options="options"
         v-model="newUnit"
       ></InputSelect>
       <div class="w-24">
-        <button type="button" class="my-button" @click="addTerm">Add</button>
+        <button type="submit" class="my-button">Add</button>
       </div>
-    </div>
+    </form>
     <div class="pt-2 text-base whitespace-pre-wrap">{{ messages }}</div>
     <div class="pt-2 text-base text-red-600 whitespace-pre-wrap">
       {{ errorMessages }}
@@ -61,12 +66,12 @@
 
 <script>
 import { ref, computed } from "vue";
-import InputText from "@/options/InputText.vue";
+import InputNumber from "@/options/InputNumber.vue";
 import InputSelect from "@/options/InputSelect.vue";
 import iconTrash from "@/components/iconTrash.vue";
 import { checkTerm, checkTermJson, setTerm } from "@/options/setTerm.js";
 export default {
-  components: { InputText, InputSelect, iconTrash },
+  components: { InputNumber, InputSelect, iconTrash },
   setup() {
     const options = [
       { key: "minute(s)", value: "n" },

@@ -1,35 +1,56 @@
 <template>
   <div>
     <div class="text-lg font-semibold">New Recipe</div>
-    <div class="pt-2 text-base whitespace-pre-wrap">
-      <ul class="list-disc list-inside">
-        <li>
-          Commas are not allowed in "Target", "Keyword", and "URL" values for
-          csv import
-        </li>
-        <li>
-          To set the value of "Kind" to "Search By Doc", replace the query
-          string in "URL" with "{}"
-        </li>
-        <li>
-          The regular expression for the value of "Keyword" will be checked as
-          "new RegExp(value)"
-        </li>
-      </ul>
+    <div class="pt-2 text-base">
+      <p class="mb-2">Commas are not allowed the values for csv import.</p>
+      <p class="mb-2">
+        You can use regular expression for
+        <code>Keyword</code> value.<br />
+        It will be checked as <code>new RegExp(value)</code>.
+      </p>
+      <p class="mb-2">
+        If you include <code>%s</code> in <code>URL</code> value, it will
+        replace the part without the hit <code>keyword</code>. <br />
+        Example : If you search for <code>python range</code> and there is a
+        recipe registered with <code>Keyword:python</code> and
+        <code
+          >URL:https://docs.python.org/3/search.html?q=<span class="font-bold"
+            >%s</span
+          ></code
+        >, <br />
+        then the link
+        <code
+          >https://docs.python.org/3/search.html?q=<span class="font-bold"
+            >range</span
+          ></code
+        >
+        will show up the search results.
+      </p>
+      <p class="mb-2">
+        If you set the value of <code>Kind</code> to <code>Memo</code>, the
+        <code>URL</code> will be changed to <code>Memo</code> and you can
+        display the memo in the search results.
+      </p>
     </div>
-    <div class="flex space-x-4 items-end">
+    <form @submit.prevent="addRecipe" class="flex space-x-4 items-end">
       <InputText label="Target" type="text" v-model="newTarget"></InputText>
       <InputText label="Keyword" type="text" v-model="newKeyword"></InputText>
-      <InputSelect
+      <InputDatalist
         label="Kind"
+        type="text"
+        listId="kindlist"
         :options="options"
         v-model="newKind"
-      ></InputSelect>
-      <InputText label="URL" type="URL" v-model="newURL"></InputText>
+      ></InputDatalist>
+      <InputText
+        :label="newKind != 'Memo' ? 'URL' : 'Memo'"
+        :type="newKind != 'Memo' ? 'url' : 'text'"
+        v-model="newURL"
+      ></InputText>
       <div class="w-24">
-        <button type="button" class="my-button" @click="addRecipe">Add</button>
+        <button type="submit" class="my-button">Add</button>
       </div>
-    </div>
+    </form>
     <div class="pt-2 text-base whitespace-pre-wrap">{{ messages }}</div>
     <div class="pt-2 text-base text-red-600 whitespace-pre-wrap">
       {{ errorMessages }}
@@ -55,7 +76,7 @@
             <th class="w-2/12">Target</th>
             <th class="w-4/12">Keyword</th>
             <th class="w-2/12">Kind</th>
-            <th class="w-3/12">URL</th>
+            <th class="w-3/12">URL or Memo</th>
             <th class="w-1/12">Remove</th>
           </tr>
         </thead>
@@ -63,10 +84,9 @@
           <tr v-for="recipe in showRecipes" :key="recipe.id">
             <td class="truncate">{{ recipe.target }}</td>
             <td>{{ recipe.keyword }}</td>
-            <td v-if="recipe.kind == 'homepage'">homepage</td>
-            <td v-else-if="recipe.kind == 'doc'">document</td>
-            <td v-else>search by doc</td>
-            <td class="truncate text-blue-600">
+            <td>{{ recipe.kind }}</td>
+            <td v-if="recipe.kind == 'Memo'">{{ recipe.url }}</td>
+            <td v-else class="truncate text-blue-600">
               <a :href="recipe.url">{{ recipe.url }}</a>
             </td>
             <td>
@@ -90,7 +110,7 @@
 <script>
 import { ref, computed } from "vue";
 import InputText from "@/options/InputText.vue";
-import InputSelect from "@/options/InputSelect.vue";
+import InputDatalist from "@/options/InputDatalist.vue";
 import iconTrash from "@/components/iconTrash.vue";
 import {
   checkRecipe,
@@ -98,12 +118,13 @@ import {
   setRecipe,
 } from "@/options/setRecipe.js";
 export default {
-  components: { InputText, InputSelect, iconTrash },
+  components: { InputText, InputDatalist, iconTrash },
   setup() {
     const options = [
-      { key: "Homepage", value: "homepage" },
-      { key: "Document", value: "doc" },
-      { key: "Search By Document", value: "search by doc" },
+      { key: "Homepage", value: "Homepage" },
+      { key: "Reference", value: "Reference" },
+      { key: "Search By Reference", value: "Search By Reference" },
+      { key: "Memo", value: "Memo" },
     ];
     const messages = ref("");
     const errorMessages = ref("");
@@ -142,6 +163,7 @@ export default {
       recipes.value = newRecipes;
       messages.value = "The recipe has been deleted";
     };
+
     const addRecipe = () => {
       // clear messages
       errorMessages.value = "";
@@ -169,7 +191,8 @@ export default {
       recipes.value = newRecipes;
       messages.value = "The new recipe has been added!";
 
-      // clear the value of 'url'
+      // clear the value of 'Kind' and 'URL(Memo)'
+      newKind.value = "";
       newURL.value = "";
     };
 
@@ -265,3 +288,9 @@ export default {
   },
 };
 </script>
+
+<style>
+code {
+  @apply bg-gray-200 px-1 rounded;
+}
+</style>
