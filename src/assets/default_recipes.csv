@@ -1,54 +1,55 @@
 target,keyword,kind,url
+Deno,deno,Homepage,https://deno.land
 Google Cloud Platform,google\scloud\splatform|gcp,Search By Reference,https://cloud.google.com/s/results?q=%s
-Google Cloud Platform,google\scloud\splatform|gcp,Reference,https://cloud.google.com/docs/
-Google Cloud Platform,google\scloud\splatform|gcp,Homepage,https://cloud.google.com/
+Google Cloud Platform,google\scloud\splatform|gcp,Reference,https://cloud.google.com/docs
+Google Cloud Platform,google\scloud\splatform|gcp,Homepage,https://cloud.google.com
 Next.js,next.js|next,Reference,https://nextjs.org/docs
-Next.js,next.js|next,Homepage,https://nextjs.org/
-Nuxt.js,nuxt.js|nuxt,Homepage,https://nuxtjs.org/
-Apache,apache,Homepage,https://httpd.apache.org/
+Next.js,next.js|next,Homepage,https://nextjs.org
+Nuxt.js,nuxt.js|nuxt,Homepage,https://nuxtjs.org
+Apache,apache,Homepage,https://httpd.apache.org
 Kotlin,kotlin,Search By Reference,https://kotlinlang.org/docs/home.html?q=%s
-Kotlin,kotlin,Reference,https://kotlinlang.org/docs/
-Kotlin,kotlin,Homepage,https://kotlinlang.org/
-nginx,nginx,Reference,https://nginx.org/en/docs/
-nginx,nginx,Homepage,https://nginx.org/
+Kotlin,kotlin,Reference,https://kotlinlang.org/docs
+Kotlin,kotlin,Homepage,https://kotlinlang.org
+nginx,nginx,Reference,https://nginx.org/en/docs
+nginx,nginx,Homepage,https://nginx.org
 Kubernetes,kubernetes,Search By Reference,https://kubernetes.io/search/?q=%s
-Kubernetes,kubernetes,Reference,https://kubernetes.io/docs/
-Kubernetes,kubernetes,Homepage,https://kubernetes.io/
+Kubernetes,kubernetes,Reference,https://kubernetes.io/docs
+Kubernetes,kubernetes,Homepage,https://kubernetes.io
 Heroku,heroku,Search By Reference,https://devcenter.heroku.com/search?utf8=%E2%9C%93&q=%s
 Heroku,heroku,Reference,https://devcenter.heroku.com/categories/reference
 Heroku,heroku,Homepage,https://www.heroku.com/home
 Rust,rust,Search By Reference,https://doc.rust-lang.org/reference/?search=%s
-Rust,rust,Reference,https://doc.rust-lang.org/reference/
-Rust,rust,Homepage,https://www.rust-lang.org/
+Rust,rust,Reference,https://doc.rust-lang.org/reference
+Rust,rust,Homepage,https://www.rust-lang.org
 Flutter,flutter,Reference,https://flutter.dev/docs
-Flutter,flutter,Homepage,https://flutter.dev/
+Flutter,flutter,Homepage,https://flutter.dev
 Firebase,firebase,Reference,https://firebase.google.com/docs
-Firebase,firebase,Homepage,https://firebase.google.com/
+Firebase,firebase,Homepage,https://firebase.google.com
 Twitter Developer Platform,twitter,Search By Reference,https://developer.twitter.com/en/search-results?q=%s
 Twitter Developer Platform,twitter,Reference,https://developer.twitter.com/en/docs
 Twitter Developer Platform,twitter,Homepage,https://developer.twitter.com/en
 VSCode,vscode,Search By Reference,https://code.visualstudio.com/Search?q=%s
 VSCode,vscode,Reference,https://code.visualstudio.com/docs
-VSCode,vscode,Homepage,https://code.visualstudio.com/
+VSCode,vscode,Homepage,https://code.visualstudio.com
 Unity,unity,Search By Reference,https://docs.unity3d.com/Manual/30_search.html?q=%s
 Unity,unity,Reference,https://docs.unity3d.com/Manual/index.html
-Unity,unity,Homepage,https://unity.com/
-Laravel ja,laravel,Homepage,http://laravel.jp/
+Unity,unity,Homepage,https://unity.com
+Laravel ja,laravel,Homepage,http://laravel.jp
 Laravel en,laravel,Reference,https://laravel.com/docs
-Laravel en,laravel,Homepage,https://laravel.com/
-TypeScript,typescript,Reference,https://www.typescriptlang.org/docs/
-TypeScript,typescript,Homepage,https://www.typescriptlang.org/
-Swift,swift,Homepage,https://swift.org/
+Laravel en,laravel,Homepage,https://laravel.com
+TypeScript,typescript,Reference,https://www.typescriptlang.org/docs
+TypeScript,typescript,Homepage,https://www.typescriptlang.org
+Swift,swift,Homepage,https://swift.org
 MySQL,mysql,Search By Reference,https://dev.mysql.com/doc/search/?q=%s
-MySQL,mysql,Reference,https://dev.mysql.com/doc/
-MySQL,mysql,Homepage ja,https://www.mysql.com/jp/
-MySQL,mysql,Homepage,https://www.mysql.com/
-React ja,react,Reference,https://ja.reactjs.org/docs/
-React ja,react,Homepage,https://ja.reactjs.org/
-React en,react,Reference,https://reactjs.org/docs/
-React en,react,Homepage,https://reactjs.org/
-Node.js en,node\.js|node,Reference v15.x,https://nodejs.org/docs/latest-v15.x/api/
-Node.js en,node\.js|node,Homepage,https://nodejs.org/en/
+MySQL,mysql,Reference,https://dev.mysql.com/doc
+MySQL,mysql,Homepage ja,https://www.mysql.com/jp
+MySQL,mysql,Homepage,https://www.mysql.com
+React ja,react,Reference,https://ja.reactjs.org/docs
+React ja,react,Homepage,https://ja.reactjs.org
+React en,react,Reference,https://reactjs.org/docs
+React en,react,Homepage,https://reactjs.org
+Node.js en,node\.js|node,Reference v15.x,https://nodejs.org/docs/latest-v15.x/api
+Node.js en,node\.js|node,Homepage,https://nodejs.org/en
 CSS en,css,Search By Reference,https://developer.mozilla.org/en-US/search?q=%s
 CSS en,css,Reference,https://developer.mozilla.org/en-US/docs/Web/CSS
 CSS ja,css,Search By Reference,https://developer.mozilla.org/ja/search?q=%s
@@ -58,112 +59,112 @@ HTML en,html,Reference,https://developer.mozilla.org/en-US/docs/Web/HTML
 HTML ja,html,Search By Reference,https://developer.mozilla.org/ja/search?q=%s
 HTML ja,html,Reference,https://developer.mozilla.org/ja/docs/Web/HTML
 Docker,docker,Search By Reference,https://docs.docker.com/search/?q=%s
-Docker,docker,Reference,https://docs.docker.com/
-Docker,docker,Homepage,https://www.docker.com/
+Docker,docker,Reference,https://docs.docker.com
+Docker,docker,Homepage,https://www.docker.com
 Git,git,Search By Reference,https://git-scm.com/search/results?search=%s
 Git,git,Reference,https://git-scm.com/docs
-Git,git,Homepage,https://git-scm.com/
+Git,git,Homepage,https://git-scm.com
 AWS,aws,Search By Reference,https://docs.aws.amazon.com/search/doc-search.html?searchQuery=%s
-AWS,aws,Reference,https://docs.aws.amazon.com/
-AWS,aws,Homepage,https://aws.amazon.com/
-php,php,Reference ja,https://www.php.net/manual/ja/
-php,php,Reference en,https://www.php.net/manual/en/
-php,php,Homepage,https://www.php.net/
-Ruby on Rails,ruby\son\srails|rails|rubyonrails,Reference,https://api.rubyonrails.org/
-Ruby on Rails,ruby\son\srails|rails|rubyonrails,Homepage,https://rubyonrails.org/
-Ruby,ruby,Reference,https://www.ruby-lang.org/ja/documentation/
-Ruby,ruby,Homepage,https://www.ruby-lang.org/
+AWS,aws,Reference,https://docs.aws.amazon.com
+AWS,aws,Homepage,https://aws.amazon.com
+php,php,Reference ja,https://www.php.net/manual/ja
+php,php,Reference en,https://www.php.net/manual/en
+php,php,Homepage,https://www.php.net
+Ruby on Rails,ruby\son\srails|rails|rubyonrails,Reference,https://api.rubyonrails.org
+Ruby on Rails,ruby\son\srails|rails|rubyonrails,Homepage,https://rubyonrails.org
+Ruby,ruby,Reference,https://www.ruby-lang.org/ja/documentation
+Ruby,ruby,Homepage,https://www.ruby-lang.org
 TensorFlow,tensorflow,Search By Reference,https://www.tensorflow.org/s/results?q=%s
 TensorFlow,tensorflow,Reference,https://www.tensorflow.org/api_docs/python/tf
-TensorFlow,tensorflow,Homepage,https://www.tensorflow.org/
-Keras,keras,Reference ja,https://keras.io/ja/
+TensorFlow,tensorflow,Homepage,https://www.tensorflow.org
+Keras,keras,Reference ja,https://keras.io/ja
 Keras,keras,Keras Guide Tensorflow,https://www.tensorflow.org/guide/keras/overview
-Keras,keras,Homepage,https://keras.io/
+Keras,keras,Homepage,https://keras.io
 Zsh,zsh,Reference,https://zsh.sourceforge.io/Doc/Release/zsh_toc.html
-Zsh,zsh,Homepage,https://zsh.sourceforge.io/
-TeX Wiki,latex|tex,Wiki,https://texwiki.texjp.org/
-LaTeX,latex,Homepage,https://www.latex-project.org/
-OpenCV,opencv,Reference,https://docs.opencv.org/master/
-OpenCV,opencv,Homepage,https://opencv.org/
-Phaser,phaser,Reference,https://newdocs.phaser.io/docs/
-Phaser,phaser,Homepage,http://phaser.io/
-Godot,godot,Reference ja,https://docs.godotengine.org/ja/stable/
-Godot,godot,Reference en,https://docs.godotengine.org/en/stable/
-Godot,godot,Homepage,https://godotengine.org/
-Go,go|golang,Reference,https://golang.org/doc/
-Go,go|golang,Homepage,https://golang.org/
-PySimpleGUI,pysimplegui,Reference,https://pysimplegui.readthedocs.io/en/latest/call%20reference/
-PySimpleGUI,pysimplegui,Homepage,https://pysimplegui.readthedocs.io/
+Zsh,zsh,Homepage,https://zsh.sourceforge.io
+TeX Wiki,latex|tex,Wiki,https://texwiki.texjp.org
+LaTeX,latex,Homepage,https://www.latex-project.org
+OpenCV,opencv,Reference,https://docs.opencv.org/master
+OpenCV,opencv,Homepage,https://opencv.org
+Phaser,phaser,Reference,https://newdocs.phaser.io/docs
+Phaser,phaser,Homepage,http://phaser.io
+Godot,godot,Reference ja,https://docs.godotengine.org/ja/stable
+Godot,godot,Reference en,https://docs.godotengine.org/en/stable
+Godot,godot,Homepage,https://godotengine.org
+Go,go|golang,Reference,https://golang.org/doc
+Go,go|golang,Homepage,https://golang.org
+PySimpleGUI,pysimplegui,Reference,https://pysimplegui.readthedocs.io/en/latest/call%20reference
+PySimpleGUI,pysimplegui,Homepage,https://pysimplegui.readthedocs.io
 Google Apps Script,google\sapps\sscript|gas,Reference,https://developers.google.com/apps-script/reference
 Google Apps Script,google\sapps\sscript|gas,Homepage,https://developers.google.com/apps-script
 AutoHotKey,autohotkey|ahk,Reference,https://www.autohotkey.com/docs/AutoHotkey.htm
 AutoHotKey,autohotkey|ahk,Reference ja,http://ahkwiki.net/Top
-AutoHotKey,autohotkey|ahk,Homepage,https://www.autohotkey.com/
+AutoHotKey,autohotkey|ahk,Homepage,https://www.autohotkey.com
 Notion,notion|npedia,Npedia,https://www.notion.so/Npedia-Notion-465d99e5ac4c45f384cb905976d67988
 Notion,notion,Help ja,https://www.notion.so/Npedia-9851b488b96846c3b04c691cd3419326
 Notion,notion,Help,https://www.notion.so/Help-Support-e040febf70a94950b8620e6f00005004
 Notion,notion,Homepage,https://www.notion.so/product
 Vivaldi,vivaldi,Search By Reference,https://help.vivaldi.com/?s=%s
-Vivaldi,vivaldi,Reference,https://help.vivaldi.com/
-Vivaldi,vivaldi,Homepage,https://vivaldi.com/
+Vivaldi,vivaldi,Reference,https://help.vivaldi.com
+Vivaldi,vivaldi,Homepage,https://vivaldi.com
 Tablacus Explorer,tablacus\sexplorer,Wiki,https://github.com/tablacus/TablacusExplorer/wiki
 Tablacus Explorer,tablacus\sexplorer,Homepage,https://tablacus.github.io/explorer.html
-Slack,slack,Reference,https://slack.com/help/
+Slack,slack,Reference,https://slack.com/help
 Slack,slack,Search By Reference,https://slack.com/help/search?utf8=%E2%9C%93&query=%s
-Slack,slack,Homepage,https://slack.com/
-Slack API,slack\sapi,Reference,https://api.slack.com/
+Slack,slack,Homepage,https://slack.com
+Slack API,slack\sapi,Reference,https://api.slack.com
 Slack API,slack\sapi,Search By Reference,https://api.slack.com/search?query=%s
 tmux,tmux,tmux(1) manual page,http://man.openbsd.org/OpenBSD-current/man1/tmux.1
-Emmet,emmet,Abbreviations,https://docs.emmet.io/abbreviations/syntax/
-Emmet,emmet,Reference,https://docs.emmet.io/
-Emmet,emmet,Homepage,https://emmet.io/
+Emmet,emmet,Abbreviations,https://docs.emmet.io/abbreviations/syntax
+Emmet,emmet,Reference,https://docs.emmet.io
+Emmet,emmet,Homepage,https://emmet.io
 Neovim,neovim,Memo,:help
-Neovim,neovim,Reference,https://neovim.io/doc/user/
-Neovim,neovim,Homepage,https://neovim.io/
+Neovim,neovim,Reference,https://neovim.io/doc/user
+Neovim,neovim,Homepage,https://neovim.io
 Vim,vim,Memo,:help
-Vim,vim,Reference,https://vimhelp.org/
-Vim,vim,Homepage,https://www.vim.org/
-Vim jp,vim,Reference,https://vim-jp.org/vimdoc-ja/
-Vim jp,vim,Homepage,https://vim-jp.org/
-Python en,python|pyてょn,Homepage,https://www.python.org/
-Python en,python|pyてょn,Reference,https://docs.python.org/
+Vim,vim,Reference,https://vimhelp.org
+Vim,vim,Homepage,https://www.vim.org
+Vim jp,vim,Reference,https://vim-jp.org/vimdoc-ja
+Vim jp,vim,Homepage,https://vim-jp.org
+Python en,python|pyてょn,Homepage,https://www.python.org
+Python en,python|pyてょn,Reference,https://docs.python.org
 Python en,python|pyてょn,Search By Reference,https://docs.python.org/3/search.html?q=%s
-Python ja,python|pyてょn,Homepage,https://www.python.jp/
-Python ja,python|pyてょn,Reference,https://docs.python.org/ja/
+Python ja,python|pyてょn,Homepage,https://www.python.jp
+Python ja,python|pyてょn,Reference,https://docs.python.org/ja
 Python ja,python|pyてょn,Search By Reference,https://docs.python.org/ja/3/search.html?q=%s
-Zenn,zenn|ぜん,Homepage,https://zenn.dev/
+Zenn,zenn|ぜん,Homepage,https://zenn.dev
 Zenn,zenn|ぜん,Reference,https://zenn.dev/zenn
-Matplotlib,matplotlib|plt|まtpぉtぃb,Homepage,https://matplotlib.org/
+Matplotlib,matplotlib|plt|まtpぉtぃb,Homepage,https://matplotlib.org
 Matplotlib,matplotlib|plt|まtpぉtぃb,Reference,https://matplotlib.org/stable/contents.html
 Matplotlib,matplotlib|plt|まtpぉtぃb,Search By Reference,https://matplotlib.org/stable/search.html?q=%s
-NumPy,numpy|np|ぬmpy,Homepage,https://numpy.org/
-NumPy,numpy|np|ぬmpy,Reference,https://numpy.org/doc/stable/
+NumPy,numpy|np|ぬmpy,Homepage,https://numpy.org
+NumPy,numpy|np|ぬmpy,Reference,https://numpy.org/doc/stable
 NumPy,numpy|np|ぬmpy,Search By Reference,https://numpy.org/doc/stable/search.html?q=%s
-C++,c\+\+|cpp|cっp,Homepage,https://isocpp.org/
+C++,c\+\+|cpp|cっp,Homepage,https://isocpp.org
 GitHub en,github|ぎてゅb,Homepage,https://github.com
 GitHub en,github|ぎてゅb,Reference,https://docs.github.com/en
 GitHub en,github|ぎてゅb,Search By Reference,https://docs.github.com/en?query=%s
-GitHub ja,github|ぎてゅb,Homepage,https://github.co.jp/
+GitHub ja,github|ぎてゅb,Homepage,https://github.co.jp
 GitHub ja,github|ぎてゅb,Reference,https://docs.github.com/ja
 GitHub ja,github|ぎてゅb,Search By Reference,https://docs.github.com/ja?query=%s
-Tailwind CSS,tailwind\s?css|たいlwいんdcっs,Homepage,https://tailwindcss.com/
+Tailwind CSS,tailwind\s?css|たいlwいんdcっs,Homepage,https://tailwindcss.com
 Tailwind CSS,tailwind\s?css|たいlwいんdcっs,Reference,https://tailwindcss.com/docs
-Vue.js en v3,vue\.js|vue|ゔえ,Homepage,https://v3.vuejs.org/
-Vue.js en v3,vue\.js|vue|ゔえ,Reference,https://v3.vuejs.org/api/
-Vue.js ja v3,vue\.js|vue|ゔえ,Homepage,https://v3.ja.vuejs.org/
-Vue.js ja v3,vue\.js|vue|ゔえ,Reference,https://v3.ja.vuejs.org/api/
-Vue CLI,vue\scli|vue,Homepage,https://cli.vuejs.org/
-Vue CLI,vue\scli|vue,Reference,https://cli.vuejs.org/
+Vue.js en v3,vue\.js|vue|ゔえ,Homepage,https://v3.vuejs.org
+Vue.js en v3,vue\.js|vue|ゔえ,Reference,https://v3.vuejs.org/api
+Vue.js ja v3,vue\.js|vue|ゔえ,Homepage,https://v3.ja.vuejs.org
+Vue.js ja v3,vue\.js|vue|ゔえ,Reference,https://v3.ja.vuejs.org/api
+Vue CLI,vue\scli|vue,Homepage,https://cli.vuejs.org
+Vue CLI,vue\scli|vue,Reference,https://cli.vuejs.org
 Chrome Extensions,chrome\sextensions?|chrome\s拡張機能,Homepage,https://chrome.google.com/webstore/category/extensions
-Chrome Extensions,chrome\sextensions?|chrome\s拡張機能,Reference,https://developer.chrome.com/docs/extensions/
+Chrome Extensions,chrome\sextensions?|chrome\s拡張機能,Reference,https://developer.chrome.com/docs/extensions
 MATLAB en,matlab|マトラボ|まtぁb,Homepage,https://mathworks.com/index.html
-MATLAB en,matlab|マトラボ|まtぁb,Reference,https://mathworks.com/help/
+MATLAB en,matlab|マトラボ|まtぁb,Reference,https://mathworks.com/help
 MATLAB en,matlab|マトラボ|まtぁb,Search By Reference,https://mathworks.com/support/search.html?q=%s
 MATLAB ja,matlab|マトラボ|まtぁb,Homepage,https://jp.mathworks.com/index.html
-MATLAB ja,matlab|マトラボ|まtぁb,Reference,https://jp.mathworks.com/help/
+MATLAB ja,matlab|マトラボ|まtぁb,Reference,https://jp.mathworks.com/help
 MATLAB ja,matlab|マトラボ|まtぁb,Search By Reference,https://jp.mathworks.com/support/search.html?q=%s
-POV-Ray,pov(\s|-)?ray,Homepage,https://www.povray.org/
-POV-Ray,pov(\s|-)?ray,Reference,https://www.povray.org/documentation/3.7.0/
+POV-Ray,pov(\s|-)?ray,Homepage,https://www.povray.org
+POV-Ray,pov(\s|-)?ray,Reference,https://www.povray.org/documentation/3.7.0
 JavaScript en,javascript|js|じゃゔぁscりpt,Search By Reference,https://developer.mozilla.org/en-US/search?q=%s
 JavaScript en,javascript|js|じゃゔぁscりpt,Reference,https://developer.mozilla.org/en-US/docs/Web/JavaScript
 JavaScript ja,javascript|js|じゃゔぁscりpt,Search By Reference,https://developer.mozilla.org/ja/search?q=%s
