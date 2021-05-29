@@ -41,16 +41,6 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-          outputPath: '/images/',
-          emitFile: true,
-          esModule: false,
-        },
-      },
-      {
         test: /\.csv$/,
         loader: 'csv-loader',
         options: {
