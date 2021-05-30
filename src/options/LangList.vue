@@ -136,9 +136,6 @@ export default {
       newLangs = setLang(newLangs);
       langs.value = newLangs;
       messages.value = "The new 'Lang' has been added!";
-
-      // clear the value of 'lang'
-      newLang.value = "";
     };
 
     return {

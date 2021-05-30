@@ -63,7 +63,14 @@ class ExtensionReloader {
         entry.options = [entry.options, options_reload];
       }
     }
-    entry.reload = './background_reload.js';
+    let background_reload = './background_reload.js';
+    if (entry.background) {
+      if (Array.isArray(entry.background)) {
+        entry.background.push(background_reload);
+      } else {
+        entry.background = [entry.background, background_reload];
+      }
+    }
   };
 }
 module.exports = ExtensionReloader

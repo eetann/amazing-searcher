@@ -1,6 +1,5 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-const CopyPlugin = require("copy-webpack-plugin");
 const ExtensionReloader = require('./extension-reloader');
 
 module.exports = merge(common, {
@@ -21,21 +20,6 @@ module.exports = merge(common, {
     publicPath: false
   },
   plugins: [
-    new CopyPlugin([
-      {
-        from: 'src/manifest.json',
-        transform: (content) => {
-          return JSON.stringify(
-            Object.assign({}, JSON.parse(content.toString()), {
-              "background": {"service_worker": "reload.js"},
-            }), null, ' ');
-        },
-      },
-      {
-        context: 'public',
-        from: 'imgs/*',
-      }
-    ]),
     new ExtensionReloader(),
   ]
 });
