@@ -3,6 +3,11 @@ This is a Chrome Extension that add useful information to Google Search results
 
 ![content-scripts demo shot](./imgs/content-scripts_demo_shot.png)
 
+
+## Installation
+Chrome Web Store link is [Here](https://chrome.google.com/webstore/detail/amazing-searcher/poheekmlppakdboaalpmhfpbmnefeokj)
+
+
 ## Features
 There are three types of `Term` `Lang` `Recipe` that will be added to the Google search results.  
 All three can be customized from the options page. You can access the options from the Extensions list.  
@@ -155,10 +160,6 @@ The `RECIPE` tab of the options page has the following features
 
 In particular, by setting up a lot of `Recipe`, you can greatly reduce the time it takes to get to the information you want!  
 The default `Recipe` is quite biased. You are welcome to customize it yourself in `RECIPE` tab.
-
-
-## Installation
-Chrome Web Store link is [**Coming Soon**](#)
 
 
 ## Author
