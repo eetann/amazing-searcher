@@ -7,6 +7,8 @@ This is a Chrome Extension that add useful information to Google Search results
 ## Installation
 Chrome Web Store link is [Here](https://chrome.google.com/webstore/detail/amazing-searcher/poheekmlppakdboaalpmhfpbmnefeokj)
 
+日本語の記事は[こちら](https://zenn.dev/eetann/articles/2021-05-30-introduction-amazing-searcher)
+
 
 ## Features
 There are three types of `Term` `Lang` `Recipe` that will be added to the Google search results.  
