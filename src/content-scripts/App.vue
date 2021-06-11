@@ -30,7 +30,10 @@ export default {
     const paramQ = props.nowURL.searchParams.get("q");
     const paramTbs = props.nowURL.searchParams.get("tbs");
     const paramLr = props.nowURL.searchParams.get("lr");
-    const qLink = props.nowURL.toString().replace(/\?.*$/, "") + "?q=" + paramQ;
+    const qLink =
+      props.nowURL.toString().replace(/\?.*$/, "") +
+      "?q=" +
+      encodeURIComponent(paramQ);
     return { paramQ, paramTbs, paramLr, qLink };
   },
 };
