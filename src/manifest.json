@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Amazing Searcher",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Add useful information to Google Search results",
   "author": "eetann",
   "icons": {

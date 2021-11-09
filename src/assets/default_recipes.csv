@@ -12,9 +12,9 @@ Kotlin,kotlin,Reference,https://kotlinlang.org/docs
 Kotlin,kotlin,Homepage,https://kotlinlang.org
 nginx,nginx,Reference,https://nginx.org/en/docs
 nginx,nginx,Homepage,https://nginx.org
-Kubernetes,kubernetes,Search By Reference,https://kubernetes.io/search/?q=%s
-Kubernetes,kubernetes,Reference,https://kubernetes.io/docs
-Kubernetes,kubernetes,Homepage,https://kubernetes.io
+Kubernetes,k8s|kubernetes,Search By Reference,https://kubernetes.io/search/?q=%s
+Kubernetes,k8s|kubernetes,Reference,https://kubernetes.io/docs
+Kubernetes,k8s|kubernetes,Homepage,https://kubernetes.io
 Heroku,heroku,Search By Reference,https://devcenter.heroku.com/search?utf8=%E2%9C%93&q=%s
 Heroku,heroku,Reference,https://devcenter.heroku.com/categories/reference
 Heroku,heroku,Homepage,https://www.heroku.com/home
@@ -84,8 +84,8 @@ Zsh,zsh,Reference,https://zsh.sourceforge.io/Doc/Release/zsh_toc.html
 Zsh,zsh,Homepage,https://zsh.sourceforge.io
 TeX Wiki,latex|tex,Wiki,https://texwiki.texjp.org
 LaTeX,latex,Homepage,https://www.latex-project.org
-OpenCV,opencv,Reference,https://docs.opencv.org/master
-OpenCV,opencv,Homepage,https://opencv.org
+OpenCV,opencv|cv2,Reference,https://docs.opencv.org/master
+OpenCV,opencv|cv2,Homepage,https://opencv.org
 Phaser,phaser,Reference,https://newdocs.phaser.io/docs
 Phaser,phaser,Homepage,http://phaser.io
 Godot,godot,Reference ja,https://docs.godotengine.org/ja/stable

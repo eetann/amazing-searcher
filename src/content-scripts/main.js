@@ -8,7 +8,7 @@ if ([null, "", "vid", "nws"].includes(paramTbm)) {
   let amzSchRoot = document.createElement('div');
   amzSchRoot.id = 'amzSchRoot';
   amzSchRoot.style.position = 'relative';
-  amzSchRoot.style.width = 'max-content';
+  amzSchRoot.style.width = '350px';
 
   // set padding
   let amzSchRootPx = 8;
@@ -25,9 +25,9 @@ if ([null, "", "vid", "nws"].includes(paramTbm)) {
 
   let rhs = document.getElementById('rhs');
   if (rhs) {
-    let rhsStyle = window.getComputedStyle(rhs);
-    amzSchRoot.style.marginLeft = rhsStyle.marginLeft;
-    rhs.insertAdjacentElement('beforebegin', amzSchRoot);
+    // let rhsStyle = window.getComputedStyle(rhs);
+    amzSchRoot.style.marginLeft = 0;
+    rhs.insertAdjacentElement('afterbegin', amzSchRoot);
   } else {
     // make dummy div for position adjustment
     let amzSchDummy = document.createElement('div');
@@ -42,7 +42,7 @@ if ([null, "", "vid", "nws"].includes(paramTbm)) {
 
     // mount dummy div for position adjustment
     amzSchDummy.appendChild(amzSchRoot);
-    document.getElementById('rcnt').insertAdjacentElement('afterbegin', amzSchDummy);
+    document.getElementById('rcnt').lastElementChild.insertAdjacentElement('beforebegin', amzSchDummy);
   }
 
   // mount elements of this extension
